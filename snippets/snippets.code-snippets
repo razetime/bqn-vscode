@@ -1,0 +1,738 @@
+{
+    "Function: Conjugate, Add": {
+        "body": [
+            "+"
+        ],
+        "prefix": [
+            "+"
+        ]
+    },
+    "Function: Negate, Subtract": {
+        "body": [
+            "-"
+        ],
+        "prefix": [
+            "-"
+        ]
+    },
+    "Function: Sign, Multiply": {
+        "body": [
+            "×"
+        ],
+        "prefix": [
+            "\\="
+        ]
+    },
+    "Function: Reciprocal, Divide": {
+        "body": [
+            "÷"
+        ],
+        "prefix": [
+            "\\-"
+        ]
+    },
+    "Function: Exponential, Power": {
+        "body": [
+            "⋆"
+        ],
+        "prefix": [
+            "\\+"
+        ]
+    },
+    "Function: Square Root, Root": {
+        "body": [
+            "√"
+        ],
+        "prefix": [
+            "\\_"
+        ]
+    },
+    "Function: Floor, Minimum": {
+        "body": [
+            "⌊"
+        ],
+        "prefix": [
+            "\\b"
+        ]
+    },
+    "Function: Ceiling, Maximum": {
+        "body": [
+            "⌈"
+        ],
+        "prefix": [
+            "\\B"
+        ]
+    },
+    "Function: Sort Up, And": {
+        "body": [
+            "∧"
+        ],
+        "prefix": [
+            "\\t"
+        ]
+    },
+    "Function: Sort Down, Or": {
+        "body": [
+            "∨"
+        ],
+        "prefix": [
+            "\\v"
+        ]
+    },
+    "Function: Not, Span": {
+        "body": [
+            "¬"
+        ],
+        "prefix": [
+            "\\~"
+        ]
+    },
+    "Function: Absolute Value, Modulus": {
+        "body": [
+            "|"
+        ],
+        "prefix": [
+            "|"
+        ]
+    },
+    "Function: Less Than or Equal to": {
+        "body": [
+            "≤"
+        ],
+        "prefix": [
+            "\\<"
+        ]
+    },
+    "Function: Enclose, Less Than": {
+        "body": [
+            "<"
+        ],
+        "prefix": [
+            "<"
+        ]
+    },
+    "Function: Merge, Greater Than": {
+        "body": [
+            ">"
+        ],
+        "prefix": [
+            ">"
+        ]
+    },
+    "Function: Greater Than or Equal to": {
+        "body": [
+            "≥"
+        ],
+        "prefix": [
+            "\\>"
+        ]
+    },
+    "Function: Rank, Equals": {
+        "body": [
+            "="
+        ],
+        "prefix": [
+            "="
+        ]
+    },
+    "Function: Length, Not Equals": {
+        "body": [
+            "≠"
+        ],
+        "prefix": [
+            "\\/"
+        ]
+    },
+    "Function: Depth, Match": {
+        "body": [
+            "≡"
+        ],
+        "prefix": [
+            "\\m"
+        ]
+    },
+    "Function: Shape, Not Match": {
+        "body": [
+            "≢"
+        ],
+        "prefix": [
+            "\\M"
+        ]
+    },
+    "Function: Identity, Left": {
+        "body": [
+            "⊣"
+        ],
+        "prefix": [
+            "\\{"
+        ]
+    },
+    "Function: Identity, Right": {
+        "body": [
+            "⊢"
+        ],
+        "prefix": [
+            "\\}"
+        ]
+    },
+    "Function: Deshape, Reshape": {
+        "body": [
+            "⥊"
+        ],
+        "prefix": [
+            "\\z"
+        ]
+    },
+    "Function: Join, Join to": {
+        "body": [
+            "∾"
+        ],
+        "prefix": [
+            "\\,"
+        ]
+    },
+    "Function: Solo, Couple": {
+        "body": [
+            "≍"
+        ],
+        "prefix": [
+            "\\."
+        ]
+    },
+    "Function: Prefixes, Take": {
+        "body": [
+            "↑"
+        ],
+        "prefix": [
+            "\\r"
+        ]
+    },
+    "Function: Suffixes, Drop": {
+        "body": [
+            "↓"
+        ],
+        "prefix": [
+            "\\c"
+        ]
+    },
+    "Function: Range, Windows": {
+        "body": [
+            "↕"
+        ],
+        "prefix": [
+            "\\d"
+        ]
+    },
+    "Function: Shift Before": {
+        "body": [
+            "«"
+        ],
+        "prefix": [
+            "\\H"
+        ]
+    },
+    "Function: Shift After": {
+        "body": [
+            "»"
+        ],
+        "prefix": [
+            "\\L"
+        ]
+    },
+    "Function: Reverse, Rotate": {
+        "body": [
+            "⌽"
+        ],
+        "prefix": [
+            "\\q"
+        ]
+    },
+    "Function: Transpose, Reorder axes": {
+        "body": [
+            "⍉"
+        ],
+        "prefix": [
+            "\\a"
+        ]
+    },
+    "Function: Indices, Replicate": {
+        "body": [
+            "/"
+        ],
+        "prefix": [
+            "/"
+        ]
+    },
+    "Function: Grade Up, Bins Up": {
+        "body": [
+            "⍋"
+        ],
+        "prefix": [
+            "\\T"
+        ]
+    },
+    "Function: Grade Down, Bins Down": {
+        "body": [
+            "⍒"
+        ],
+        "prefix": [
+            "\\V"
+        ]
+    },
+    "Function: First Cell, Select": {
+        "body": [
+            "⊏"
+        ],
+        "prefix": [
+            "\\i"
+        ]
+    },
+    "Function: First, Pick": {
+        "body": [
+            "⊑"
+        ],
+        "prefix": [
+            "\\I"
+        ]
+    },
+    "Function: Classify, Index of": {
+        "body": [
+            "⊐"
+        ],
+        "prefix": [
+            "\\o"
+        ]
+    },
+    "Function: Occurrence Count, Progressive Index of": {
+        "body": [
+            "⊒"
+        ],
+        "prefix": [
+            "\\O"
+        ]
+    },
+    "Function: Mark First, Member of": {
+        "body": [
+            "∊"
+        ],
+        "prefix": [
+            "\\e"
+        ]
+    },
+    "Function: Deduplicate, Find": {
+        "body": [
+            "⍷"
+        ],
+        "prefix": [
+            "\\E"
+        ]
+    },
+    "Function: Group Indices, Group": {
+        "body": [
+            "⊔"
+        ],
+        "prefix": [
+            "\\u"
+        ]
+    },
+    "Function: Assert, Assert with message": {
+        "body": [
+            "!"
+        ],
+        "prefix": [
+            "!"
+        ]
+    },
+    "Modifier: Constant": {
+        "body": [
+            "˙"
+        ],
+        "prefix": [
+            "\\\""
+        ]
+    },
+    "Modifier: Self/Swap": {
+        "body": [
+            "˜"
+        ],
+        "prefix": [
+            "\\`"
+        ]
+    },
+    "Modifier2: Atop": {
+        "body": [
+            "∘"
+        ],
+        "prefix": [
+            "\\j"
+        ]
+    },
+    "Modifier2: Over": {
+        "body": [
+            "○"
+        ],
+        "prefix": [
+            "\\k"
+        ]
+    },
+    "Modifier2: Before/Bind": {
+        "body": [
+            "⊸"
+        ],
+        "prefix": [
+            "\\h"
+        ]
+    },
+    "Modifier2: After/Bind": {
+        "body": [
+            "⟜"
+        ],
+        "prefix": [
+            "\\l"
+        ]
+    },
+    "Modifier2: Under": {
+        "body": [
+            "⌾"
+        ],
+        "prefix": [
+            "\\K"
+        ]
+    },
+    "Modifier2: Valences": {
+        "body": [
+            "⊘"
+        ],
+        "prefix": [
+            "\\%"
+        ]
+    },
+    "Modifier2: Choose": {
+        "body": [
+            "◶"
+        ],
+        "prefix": [
+            "\\$"
+        ]
+    },
+    "Modifier2: Rank": {
+        "body": [
+            "⎉"
+        ],
+        "prefix": [
+            "\\!"
+        ]
+    },
+    "Modifier: Cells": {
+        "body": [
+            "˘"
+        ],
+        "prefix": [
+            "\\1"
+        ]
+    },
+    "Modifier2: Depth": {
+        "body": [
+            "⚇"
+        ],
+        "prefix": [
+            "\\@"
+        ]
+    },
+    "Modifier: Each": {
+        "body": [
+            "¨"
+        ],
+        "prefix": [
+            "\\2"
+        ]
+    },
+    "Modifier: Table": {
+        "body": [
+            "⌜"
+        ],
+        "prefix": [
+            "\\4"
+        ]
+    },
+    "Modifier2: Repeat": {
+        "body": [
+            "⍟"
+        ],
+        "prefix": [
+            "\\#"
+        ]
+    },
+    "Modifier: Undo": {
+        "body": [
+            "⁼"
+        ],
+        "prefix": [
+            "\\3"
+        ]
+    },
+    "Modifier: Fold": {
+        "body": [
+            "´"
+        ],
+        "prefix": [
+            "\\5"
+        ]
+    },
+    "Modifier: Insert": {
+        "body": [
+            "˝"
+        ],
+        "prefix": [
+            "\\6"
+        ]
+    },
+    "Modifier: Scan": {
+        "body": [
+            "`"
+        ],
+        "prefix": [
+            "`"
+        ]
+    },
+    "Gets: Define": {
+        "body": [
+            "←"
+        ],
+        "prefix": [
+            "\\["
+        ]
+    },
+    "Gets: Export": {
+        "body": [
+            "⇐"
+        ],
+        "prefix": [
+            "\\?"
+        ]
+    },
+    "Gets: Change": {
+        "body": [
+            "↩"
+        ],
+        "prefix": [
+            "\\'"
+        ]
+    },
+    "Gets: Return": {
+        "body": [
+            "→"
+        ],
+        "prefix": [
+            "\\]"
+        ]
+    },
+    "Separator: Separator": {
+        "body": [
+            ","
+        ],
+        "prefix": [
+            ","
+        ]
+    },
+    "Paren: Begin expression": {
+        "body": [
+            "("
+        ],
+        "prefix": [
+            "("
+        ]
+    },
+    "Paren: End expression": {
+        "body": [
+            ")"
+        ],
+        "prefix": [
+            ")"
+        ]
+    },
+    "Brace: Begin block": {
+        "body": [
+            "{"
+        ],
+        "prefix": [
+            "{"
+        ]
+    },
+    "Brace: End block": {
+        "body": [
+            "}"
+        ],
+        "prefix": [
+            "}"
+        ]
+    },
+    "Bracket: Begin list": {
+        "body": [
+            "⟨"
+        ],
+        "prefix": [
+            "\\("
+        ]
+    },
+    "Bracket: End list": {
+        "body": [
+            "⟩"
+        ],
+        "prefix": [
+            "\\)"
+        ]
+    },
+    "Ligature: Strand": {
+        "body": [
+            "‿"
+        ],
+        "prefix": [
+            "\\ "
+        ]
+    },
+    "Nothing: Nothing": {
+        "body": [
+            "·"
+        ],
+        "prefix": [
+            "\\:"
+        ]
+    },
+    "Value: System": {
+        "body": [
+            "•"
+        ],
+        "prefix": [
+            "\\0"
+        ]
+    },
+    "Value: Left argument": {
+        "body": [
+            "𝕨"
+        ],
+        "prefix": [
+            "\\w"
+        ]
+    },
+    "Function: Left argument (as function)": {
+        "body": [
+            "𝕎"
+        ],
+        "prefix": [
+            "\\W"
+        ]
+    },
+    "Value: Right argument": {
+        "body": [
+            "𝕩"
+        ],
+        "prefix": [
+            "\\x"
+        ]
+    },
+    "Function: Right argument (as function)": {
+        "body": [
+            "𝕏"
+        ],
+        "prefix": [
+            "\\X"
+        ]
+    },
+    "Value: Modifier left operand (as subject)": {
+        "body": [
+            "𝕗"
+        ],
+        "prefix": [
+            "\\f"
+        ]
+    },
+    "Function: Modifier left operand": {
+        "body": [
+            "𝔽"
+        ],
+        "prefix": [
+            "\\F"
+        ]
+    },
+    "Value: 2-modifier right operand (as subject)": {
+        "body": [
+            "𝕘"
+        ],
+        "prefix": [
+            "\\g"
+        ]
+    },
+    "Function: 2-modifier right operand": {
+        "body": [
+            "𝔾"
+        ],
+        "prefix": [
+            "\\G"
+        ]
+    },
+    "Value: Current function (as subject)": {
+        "body": [
+            "𝕤"
+        ],
+        "prefix": [
+            "\\s"
+        ]
+    },
+    "Function: Current function": {
+        "body": [
+            "𝕊"
+        ],
+        "prefix": [
+            "\\S"
+        ]
+    },
+    "Modifier: Current modifier": {
+        "body": [
+            "𝕣"
+        ],
+        "prefix": [
+            "\\R"
+        ]
+    },
+    "Nothing: Minus": {
+        "body": [
+            "¯"
+        ],
+        "prefix": [
+            "\\9"
+        ]
+    },
+    "Nothing: Pi": {
+        "body": [
+            "π"
+        ],
+        "prefix": [
+            "\\p"
+        ]
+    },
+    "Nothing: Infinity": {
+        "body": [
+            "∞"
+        ],
+        "prefix": [
+            "\\8"
+        ]
+    },
+    "String: Null character": {
+        "body": [
+            "@"
+        ],
+        "prefix": [
+            "@"
+        ]
+    },
+    "Comment: Comment": {
+        "body": [
+            "#"
+        ],
+        "prefix": [
+            "#"
+        ]
+    }
+}

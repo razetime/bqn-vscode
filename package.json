@@ -1,0 +1,33 @@
+{
+    "name": "bqn-language",
+    "displayName": "BQN language autocomplete",
+    "description": "BQN language snippets",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.54.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "bqn",
+            "aliases": ["BQN", "bqn"],
+            "extensions": [".bqn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "snippets": [
+            {
+                "language": "bqn",
+                "path": "./snippets/snippets.code-snippets"
+            }
+        ],
+        "configurationDefaults": {
+			"[bqn]": {
+				"editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
+				"editor.foldingStrategy": "auto",
+                "editor.tabCompletion": "on"
+			}
+		}
+    }
+}
