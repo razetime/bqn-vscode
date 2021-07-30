@@ -20,13 +20,13 @@ function activate(context) {
 }
 exports.activate = activate;
 function deactivate(context) {
-    if (terminal) {
+    if (terminal != null) {
         terminal.dispose();
     }
 }
 exports.deactivate = deactivate;
 function createTerminal() {
-    if (terminal == null) {
+    if (terminal == null || terminal.exitStatus != undefined) {
         const config = vscode_1.default.workspace.getConfiguration('bqn');
         terminal = vscode_1.default.window.createTerminal("BQN", config.executablePath);
         terminal.show();
@@ -34,8 +34,7 @@ function createTerminal() {
 }
 function loadScript(t, e) {
     createTerminal();
-    const name = t.document.fileName;
-    terminal.sendText(`)ex ${name}`);
+    terminal.sendText(`)ex ${t.document.fileName}`);
 }
 function executeSelection(t, e) { }
 function executeLine(t, e) {
