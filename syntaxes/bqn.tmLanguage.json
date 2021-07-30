@@ -1,0 +1,132 @@
+{
+    "comment": "Reference to the Oniguruma Regex libraray:\n  https://github.com/kkos/oniguruma/blob/master/doc/RE\n\n* The reference version for this TextMate grammar is the YAML version here:\n  https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml\n  Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)\n* Some in comments throughout the grammar\n",
+    "name": "BQN",
+    "scopeName": "source.bqn",
+    "fileTypes": ["bqn"],
+    "patterns": [
+      {
+        "include": "#bracket"
+      },
+      {
+        "include": "#number"
+      },
+      {
+        "include": "#name"
+      },
+      {
+        "include": "#operator"
+      },
+      {
+        "include": "#variable"
+      },
+      {
+        "include": "#string"
+      },
+      {
+        "include": "#comment"
+      }
+    ],
+    "repository": {
+      "bracket": {
+        "patterns": [
+          {
+            "name": "meta.bracket.bqn",
+            "match": "(\\(|\\))"
+          }
+        ]
+      },
+      "number": {
+        "patterns": [
+            {
+                "name": "constant.numeric.apl",
+                "match": "¯?[0-9][¯0-9A-Za-z]*(?:\\.[¯0-9Ee][¯0-9A-Za-z]*)*|¯?\\.[0-9Ee][¯0-9A-Za-z]*"
+            }
+        ]
+    },
+    "name": {
+        "patterns": [
+            {
+                "name": "variable.other.readwrite.apl",
+                "match": "(?x)\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*"
+            }
+        ]
+    },
+      "comment": {
+        "patterns": [
+            {
+                "name": "comment.line.apl",
+                "begin": "#",
+                "end": "$",
+                "captures": {
+                    "0": {
+                        "name": "punctuation.definition.comment.apl"
+                    }
+                }
+            }
+        ]
+      },
+      "operator": {
+        "patterns": [
+          {
+            "comment": "BQN primitive",
+            "name": "keyword.operator.function.bqn",
+            "match": "[-+×÷⋆√⌊⌈∧∨¬|≤<>≥=≠≡≢⊣⊢⥊∾≍↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!]"
+          },
+          {
+            "comment": "BQN 1-modifier",
+            "name": "keyword.operator.modifier.bqn",
+            "match": "[˙˜˘¨´˝`⌜⁼]"
+          },
+          {
+            "comment": "BQN 2-modifier",
+            "name": "keyword.operator.dimodifier.bqn",
+            "match": "[∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]"
+          },
+          {
+            "comment": "assignment",
+            "name": "keyword.operator.assignment.bqn",
+            "match": "[←⇐↩]"
+          }
+        ]
+      },
+      "variable": {
+        "patterns": [
+            {
+                "comment": "BQN block variable",
+                "name": "constant.language.variable.bqn",
+                "match": "[𝕨𝕎𝕩𝕏𝕗𝔽𝕘𝔾𝕤𝕊𝕣]"
+            }
+        ]
+      },
+      "string": {
+        "patterns": [
+          {
+            "comment": "single quote string",
+            "name": "string.quoted.single.bqn",
+            "match": "(')[^']*(?:''[^']*)*(')",
+            "captures": {
+              "1": {
+                "name": "punctuation.definition.string.begin.bqn"
+              },
+              "2": {
+                "name": "punctuation.definition.string.end.bqn"
+              }
+            }
+          },
+          {
+            "comment": "double quote string",
+            "name": "string.quoted.double.bqn",
+            "match": "(\")[^\"]*(?:\"\"[^\"]*)*(\")",
+            "captures": {
+              "1": {
+                "name": "punctuation.definition.string.begin.bqn"
+              },
+              "2": {
+                "name": "punctuation.definition.string.end.bqn"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
