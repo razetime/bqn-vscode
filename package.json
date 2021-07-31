@@ -2,20 +2,39 @@
     "name": "bqn-language",
     "displayName": "BQN language autocomplete",
     "description": "BQN language snippets",
+    "publisher": "razetime",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.54.0"
+        "vscode": "^1.58.1"
     },
     "categories": [
         "Snippets"
     ],
+    "activationEvents": [
+        "onLanguage:bqn"
+    ],
+    "main": "./src/extension.js",
     "contributes": {
-        "languages": [{
-            "id": "bqn",
-            "aliases": ["BQN", "bqn"],
-            "extensions": [".bqn"],
-            "configuration": "./language-configuration.json"
-        }],
+        "languages": [
+            {
+                "id": "bqn",
+                "aliases": [
+                    "BQN",
+                    "bqn"
+                ],
+                "extensions": [
+                    ".bqn"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "bqn",
+                "scopeName": "source.bqn",
+                "path": "./syntaxes/bqn.tmLanguage.json"
+            }
+        ],
         "snippets": [
             {
                 "language": "bqn",
@@ -23,11 +42,81 @@
             }
         ],
         "configurationDefaults": {
-			"[bqn]": {
-				"editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
-				"editor.foldingStrategy": "auto",
+            "[bqn]": {
+                "editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
+                "editor.foldingStrategy": "auto",
                 "editor.tabCompletion": "on"
-			}
-		}
+            }
+        },
+        "commands": [
+            {
+                "command": "language-bqn.createTerminal",
+                "title": "BQN: Create BQN REPL"
+            },
+            {
+                "command": "language-bqn.loadScript",
+                "title": "BQN: Load Script"
+            },
+            {
+                "command": "language-bqn.executeSelection",
+                "title": "BQN: Execute Selection"
+            },
+            {
+                "command": "language-bqn.executeLine",
+                "title": "BQN: Execute Line"
+            },
+            {
+                "command": "language-bqn.executeLineAdvance",
+                "title": "BQN: Execute Line and Advance"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "language-bqn.executeSelection",
+                "key": "ctrl+E",
+                "when": "editorTextFocus && editorLangId == 'bqn'"
+            },
+            {
+                "command": "language-bqn.loadScript",
+                "key": "ctrl+L",
+                "when": "editorTextFocus && editorLangId == 'bqn'"
+            },
+            {
+                "command": "language-bqn.executeLine",
+                "key": "ctrl+shift+enter",
+                "when": "editorTextFocus && editorLangId == 'bqn'"
+            },
+            {
+                "command": "language-bqn.executeLineAdvance",
+                "key": "ctrl+enter",
+                "when": "editorTextFocus && editorLangId == 'bqn'"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "BQN configuration",
+            "properties": {
+                "bqn.executablePath": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": "bqn",
+                    "description": "Points to the BQN executable.",
+                    "scope": "window"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/node": "^8.10.66",
+        "@types/vscode": "^1.58.1",
+        "tslint": "^5.16.0",
+        "typescript": "^3.9.10"
     }
 }

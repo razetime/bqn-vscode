@@ -82,8 +82,4 @@
             "end": "^\\s*//\\s*#?endregion\\b"
         }
     },
-    "indentationRules": {
-        "increaseIndentPattern": "^((?!.*?\\/\\*).*\\*\/)?\\s*[\\}\\]].*$",
-        "decreaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*)$"
-    }
 }
