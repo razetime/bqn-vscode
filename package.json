@@ -11,7 +11,8 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onLanguage:bqn"
+        "onLanguage:bqn",
+        "onCommand:language-bqn.backslash"
     ],
     "main": "./src/extension.js",
     "contributes": {
@@ -68,9 +69,18 @@
             {
                 "command": "language-bqn.executeLineAdvance",
                 "title": "BQN: Execute Line and Advance"
+            },
+            {
+                "command": "language-bqn.backslash",
+                "title": "BQN: Type BQN Symbol"
             }
         ],
         "keybindings": [
+            {
+                "command": "language-bqn.backslash",
+                "key": "\\",
+                "when": "editorLangId == 'bqn' && editorTextFocus"
+            },
             {
                 "command": "language-bqn.executeSelection",
                 "key": "ctrl+E",
