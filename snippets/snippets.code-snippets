@@ -183,6 +183,14 @@
             "\\z"
         ]
     },
+    "Function: Enlist, Pair": {
+        "body": [
+            "⋈"
+        ],
+        "prefix": [
+            "\\Z"
+        ]
+    },
     "Function: Join, Join to": {
         "body": [
             "∾"
