@@ -21,7 +21,6 @@ export function activate(context: vscode.ExtensionContext) {
 	let pending = false;
 
 	const command = vscode.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
-        console.log("DSAdsadasdasd");
 		e.insert(te.selection.active, "\\");
 		if (pending) {
 			return 0;

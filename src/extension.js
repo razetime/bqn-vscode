@@ -18,7 +18,6 @@ function activate(context) {
     // taken and lightly changed from prollings/apl_backtick_symbols
     let pending = false;
     const command = vscode_1.default.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
-        vscode_1.default.window.showInformationMessage("Backslash pressed");
         e.insert(te.selection.active, "\\");
         if (pending) {
             return 0;
