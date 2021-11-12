@@ -70,17 +70,17 @@
           {
             "comment": "BQN primitive",
             "name": "keyword.operator.function.bqn",
-            "match": "[-+×÷⋆√⌊⌈∧∨¬|≤<>≥=≠≡≢⊣⊢⥊∾≍↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!]"
+            "match": "[-+×÷⋆√⌊⌈∧∨¬|≤<>≥=≠≡≢⊣⊢⥊∾≍↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!⋈]"
           },
           {
             "comment": "BQN 1-modifier",
             "name": "keyword.operator.modifier.bqn",
-            "match": "[˙˜˘¨´˝`⌜⁼]"
+            "match": "([˙˜˘¨´˝`⌜⁼]|_[A-Za-z0-9]+)"
           },
           {
             "comment": "BQN 2-modifier",
             "name": "keyword.operator.dimodifier.bqn",
-            "match": "[∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]"
+            "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|_[A-Za-z0-9]+)"
           },
           {
             "comment": "assignment",

@@ -17,11 +17,11 @@ export function activate(context: vscode.ExtensionContext) {
     for(let i = 0; i < bqk.length; i++) {
         key_map[bqk[i]] = bqv[i];
     }
-    console.log(key_map);
     // taken and lightly changed from prollings/apl_backtick_symbols
 	let pending = false;
 
 	const command = vscode.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
+        console.log("DSAdsadasdasd");
 		e.insert(te.selection.active, "\\");
 		if (pending) {
 			return 0;
@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
     for(const [n, f] of cmds) { vscode.commands.registerTextEditorCommand(n, f) }
 
 
-   context.subscriptions.push(command);
+  context.subscriptions.push(command);
 
 }
 

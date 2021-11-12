@@ -11,8 +11,7 @@
         "Snippets"
     ],
     "activationEvents": [
-        "onLanguage:bqn",
-        "onCommand:language-bqn.backslash"
+        "onLanguage:bqn"
     ],
     "main": "./src/extension.js",
     "contributes": {
@@ -72,14 +71,14 @@
             },
             {
                 "command": "language-bqn.backslash",
-                "title": "BQN: Type BQN Symbol"
+                "title": "thing"
             }
         ],
         "keybindings": [
             {
                 "command": "language-bqn.backslash",
                 "key": "\\",
-                "when": "editorLangId == 'bqn' && editorTextFocus"
+                "when": "editorTextFocus && editorLangId == 'bqn'"
             },
             {
                 "command": "language-bqn.executeSelection",
