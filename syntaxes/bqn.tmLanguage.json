@@ -44,10 +44,14 @@
         ]
     },
     "name": {
-        "patterns": [
+      "patterns": [
             {
-                "name": "variable.other.readwrite.apl",
-                "match": "(?x)\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*"
+                "name": "entity.name.function.bqn",
+                "match": "(?x)\n[A-Z_À-ÖØ-Ýßþ∆⍙Ⓐ-Ⓩ]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*"
+            },
+            {
+                "name": "variable.other.readwrite.bqn",
+                "match": "(?x)\n[a-zà-öø-ü]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*"
             }
         ]
     },
