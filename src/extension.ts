@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
     for(let i = 0; i < bqk.length; i++) {
         key_map[bqk[i]] = bqv[i];
     }
-    // taken and lightly changed from prollings/apl_backtick_symbols
+    // taken and modified from prollings/apl_backtick_symbols
 	let pending = false;
 
 	const command = vscode.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
@@ -90,3 +90,24 @@ function executeLineAdvance(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
     executeLine(t, e)
     vscode.commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine"})
 }
+
+// const provider: vscode.DocumentSemanticTokensProvider = {
+//     provideDocumentSemanticTokens(
+//       document: vscode.TextDocument
+//     ): vscode.ProviderResult<vscode.SemanticTokens> {
+//       // analyze the document and return semantic tokens
+  
+//       const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
+//       // on line 1, characters 1-5 are a class declaration
+//       tokensBuilder.push(
+//         new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)),
+//         'class',
+//         ['declaration']
+//       );
+//       return tokensBuilder.build();
+//     }
+//   };
+
+// const selector = { language: 'bqn', scheme: 'file' };
+
+// vscode.languages.registerDocumentSemanticTokensProvider(selector, provider, legend);

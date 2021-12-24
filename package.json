@@ -1,9 +1,10 @@
 {
     "name": "bqn-language",
-    "displayName": "BQN language autocomplete",
-    "description": "BQN language snippets",
+    "displayName": "BQN language",
+    "description": "BQN array programming language support, backslash completion, snippets and code execution",
     "publisher": "razetime",
-    "version": "0.0.1",
+    "icon": "logo.png",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.58.1"
     },
@@ -46,10 +47,12 @@
             }
         ],
         "configurationDefaults": {
+            "bqn.executablePath": "cbqn",
             "[bqn]": {
                 "editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
                 "editor.foldingStrategy": "auto",
-                "editor.tabCompletion": "on"
+                "editor.tabCompletion": "on",
+                "editor.semanticHighlighting.enabled": true
             }
         },
         "commands": [
@@ -119,6 +122,11 @@
                     "scope": "window"
                 }
             }
+        }
+    },
+    "capabilities" : {
+        "codeLensProvider" : {
+            "resolveProvider": "true"
         }
     },
     "scripts": {

@@ -1,5 +1,5 @@
 {
-    "comment": "Reference to the Oniguruma Regex libraray:\n  https://github.com/kkos/oniguruma/blob/master/doc/RE\n\n* The reference version for this TextMate grammar is the YAML version here:\n  https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml\n  Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)\n* Some in comments throughout the grammar\n",
+    "comment": "Reference to the Oniguruma Regex library:\n  https://github.com/kkos/oniguruma/blob/master/doc/RE\n\n* The reference version for this TextMate grammar is the YAML version here:\n  https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml\n  Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)\n* Some in comments throughout the grammar\n",
     "name": "BQN",
     "scopeName": "source.bqn",
     "fileTypes": ["bqn"],
@@ -24,6 +24,9 @@
       },
       {
         "include": "#comment"
+      },
+      {
+        "include": "#entity"
       }
     ],
     "repository": {
@@ -38,63 +41,35 @@
       "number": {
         "patterns": [
             {
-                "name": "constant.numeric.apl",
-                "match": "¯?[0-9][¯0-9A-Za-z]*(?:\\.[¯0-9Ee][¯0-9A-Za-z]*)*|¯?\\.[0-9Ee][¯0-9A-Za-z]*"
+                "name": "constant.numeric.BQN",
+                "match": "(?<![A-Z_a-z0-9π∞¯])¯?(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*)(i_*(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*))?"
             }
         ]
     },
-    "name": {
+      "entity": {
         "patterns": [
-            {
-                "name": "variable.other.readwrite.apl",
-                "match": "(?x)\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ]\n[A-Z_a-zÀ-ÖØ-Ýßà-öø-üþ∆⍙Ⓐ-Ⓩ¯0-9]*"
-            }
-        ]
-    },
-      "comment": {
-        "patterns": [
-            {
-                "name": "comment.line.apl",
-                "begin": "#",
-                "end": "$",
-                "captures": {
-                    "0": {
-                        "name": "punctuation.definition.comment.apl"
-                    }
-                }
-            }
+          {
+            "comment": "BQN 1-modifier",
+            "name": "entity.name.function.modifier2.bqn",
+            "match": "([˙˜˘¨´˝`⌜⁼]|_[A-Za-z𝕣][A-Za-z¯π∞0-9]*)"
+          }
         ]
       },
       "operator": {
         "patterns": [
           {
-            "comment": "BQN primitive",
-            "name": "keyword.operator.function.bqn",
-            "match": "[-+×÷⋆√⌊⌈∧∨¬|≤<>≥=≠≡≢⊣⊢⥊∾≍↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!⋈]"
-          },
-          {
-            "comment": "BQN 1-modifier",
-            "name": "keyword.operator.modifier.bqn",
-            "match": "([˙˜˘¨´˝`⌜⁼]|_[A-Za-z0-9]+)"
-          },
-          {
             "comment": "BQN 2-modifier",
-            "name": "keyword.operator.dimodifier.bqn",
-            "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|_[A-Za-z0-9]+)"
-          },
-          {
-            "comment": "assignment",
-            "name": "keyword.operator.assignment.bqn",
-            "match": "[←⇐↩]"
+            "name": "keyword.operator.modifier2.bqn",
+            "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|_[A-Za-z𝕣][A-Za-z¯π∞0-9]*_)"
           }
         ]
       },
       "variable": {
         "patterns": [
             {
-                "comment": "BQN block variable",
-                "name": "constant.language.variable.bqn",
-                "match": "[𝕨𝕎𝕩𝕏𝕗𝔽𝕘𝔾𝕤𝕊𝕣]"
+                "comment": "BQN function",
+                "name": "constant.language.function.bqn",
+                "match": "[𝔽𝔾𝕎𝕏𝕊+\\-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!⍕⍎]|•?\\b[A-Z][A-Z_a-z0-9π∞¯]*"
             }
         ]
       },
@@ -103,7 +78,7 @@
           {
             "comment": "single quote string",
             "name": "string.quoted.single.bqn",
-            "match": "(')[^']*(?:''[^']*)*(')",
+            "match": "'(.|\\n)'",
             "captures": {
               "1": {
                 "name": "punctuation.definition.string.begin.bqn"
@@ -126,6 +101,21 @@
               }
             }
           }
+        ]
+      },
+      
+      "comment": {
+        "patterns": [
+            {
+                "name": "comment.line.bqn",
+                "begin": "#",
+                "end": "$",
+                "captures": {
+                    "0": {
+                        "name": "punctuation.definition.comment.bqn"
+                    }
+                }
+            }
         ]
       }
     }
