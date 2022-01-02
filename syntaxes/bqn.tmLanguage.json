@@ -51,7 +51,7 @@
           {
             "comment": "BQN 1-modifier",
             "name": "entity.name.function.modifier2.bqn",
-            "match": "([˙˜˘¨´˝`⌜⁼]|_[A-Za-z𝕣][A-Za-z¯π∞0-9]*)"
+            "match": "([˙˜˘¨´˝`⌜⁼]|\\b_[A-Za-z𝕣][_A-Za-z¯π∞0-9]*[^_]\\b)"
           }
         ]
       },
@@ -60,7 +60,7 @@
           {
             "comment": "BQN 2-modifier",
             "name": "keyword.operator.modifier2.bqn",
-            "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|_[A-Za-z𝕣][A-Za-z¯π∞0-9]*_)"
+            "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|\\b_[A-Za-z𝕣][_A-Za-z¯π∞0-9]*_\\b)"
           }
         ]
       },
