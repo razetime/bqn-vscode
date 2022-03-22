@@ -55,8 +55,34 @@ export function activate(context: vscode.ExtensionContext) {
         ['language-bqn.executeLineAdvance', executeLineAdvance]
     ];
     for(const [n, f] of cmds) { vscode.commands.registerTextEditorCommand(n, f) }
+    const tokenTypes = ['string'];
+const tokenModifiers = ['string'];
+const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
+let tempdoc;
 
+const provider: vscode.DocumentSemanticTokensProvider = {
+    provideDocumentSemanticTokens(
+      document: vscode.TextDocument
+    ): vscode.ProviderResult<vscode.SemanticTokens> {
+      // analyze the document and return semantic tokens
+      console.log(document);
+      tempdoc = document;
+      const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
+      // on line 1, characters 1-5 are a class declaration
+      tokensBuilder.push(
+        new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)),
+        'class',
+        ['declaration']
+      );
+      return tokensBuilder.build();
+    }
+  };
 
+const selector = { language: 'bqn', scheme: 'file' };
+
+const prov = vscode.languages.registerDocumentSemanticTokensProvider(selector, provider, legend);
+
+  context.subscriptions.push(prov);
   context.subscriptions.push(command);
 
 }
@@ -91,23 +117,3 @@ function executeLineAdvance(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
     vscode.commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine"})
 }
 
-// const provider: vscode.DocumentSemanticTokensProvider = {
-//     provideDocumentSemanticTokens(
-//       document: vscode.TextDocument
-//     ): vscode.ProviderResult<vscode.SemanticTokens> {
-//       // analyze the document and return semantic tokens
-  
-//       const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
-//       // on line 1, characters 1-5 are a class declaration
-//       tokensBuilder.push(
-//         new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)),
-//         'class',
-//         ['declaration']
-//       );
-//       return tokensBuilder.build();
-//     }
-//   };
-
-// const selector = { language: 'bqn', scheme: 'file' };
-
-// vscode.languages.registerDocumentSemanticTokensProvider(selector, provider, legend);
