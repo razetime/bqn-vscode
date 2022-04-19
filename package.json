@@ -4,7 +4,7 @@
     "description": "BQN array programming language support, backslash completion, snippets and code execution",
     "publisher": "razetime",
     "icon": "logo.png",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "engines": {
         "vscode": "^1.58.1"
     },
