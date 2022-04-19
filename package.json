@@ -78,7 +78,7 @@
             },
             {
                 "command": "language-bqn.backslash",
-                "title": "thing"
+                "title": "BQN: Convert to symbol"
             }
         ],
         "keybindings": [
