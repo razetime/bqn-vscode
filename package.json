@@ -6,7 +6,7 @@
     "icon": "logo.png",
     "version": "0.0.3",
     "engines": {
-        "vscode": "^1.58.1"
+        "vscode": "^1.66.0"
     },
     "repository": {
 		"type": "git",
@@ -136,7 +136,7 @@
     },
     "devDependencies": {
         "@types/node": "^8.10.66",
-        "@types/vscode": "^1.58.1",
+        "@types/vscode": "^1.66.0",
         "tslint": "^5.16.0",
         "typescript": "^3.9.10"
     }

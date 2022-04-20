@@ -5,16 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode_1 = __importDefault(require("vscode"));
-// Keyboard symbols.
 let terminal;
 function activate(context) {
-    // BQN keymap
     const bqk = Array.from('`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:"zxcvbm,./ZXVBM<>? \'');
     const bqv = Array.from('˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠⋈𝕏⍒⌈≢≤≥⇐‿↩');
     let key_map = {};
-    for (let i = 0; i < bqk.length; i++) {
-        key_map[bqk[i]] = bqv[i];
-    }
+    bqk.forEach((k, i) => key_map[k] = bqv[i]);
     // taken and modified from prollings/apl_backtick_symbols
     let pending = false;
     const command = vscode_1.default.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
@@ -23,20 +19,20 @@ function activate(context) {
             return 0;
         }
         pending = true;
-        let active_pos = te.selection.active;
-        let sub1 = vscode_1.default.workspace.onDidChangeTextDocument(_ => {
+        const apos = te.selection.active;
+        const sub1 = vscode_1.default.workspace.onDidChangeTextDocument(_ => {
             sub1.dispose();
-            let sub2 = vscode_1.default.workspace.onDidChangeTextDocument(ev => {
+            const sub2 = vscode_1.default.workspace.onDidChangeTextDocument(ev => {
                 sub2.dispose();
-                let this_pos = ev.contentChanges[0].range.start;
-                if (this_pos.line === active_pos.line
-                    && (this_pos.character - active_pos.character) === 1
-                    && ev.contentChanges[0].text.length === 1) {
-                    let replace_range = new vscode_1.default.Range(active_pos, this_pos.translate(0, 1));
+                const tpos = ev.contentChanges[0].range.start;
+                const cond = (tpos.line === apos.line
+                    && (tpos.character - apos.character) === 1
+                    && ev.contentChanges[0].text.length === 1);
+                if (cond) {
+                    let range = new vscode_1.default.Range(apos, tpos.translate(0, 1));
                     let key = ev.contentChanges[0].text;
                     if (key in key_map) {
-                        let symbol = key_map[key];
-                        te.edit((e) => e.replace(replace_range, symbol)).then();
+                        te.edit((e) => e.replace(range, key_map[key])).then();
                     }
                 }
                 pending = false;
@@ -56,12 +52,10 @@ function activate(context) {
     const tokenTypes = ['string'];
     const tokenModifiers = ['string'];
     const legend = new vscode_1.default.SemanticTokensLegend(tokenTypes, tokenModifiers);
-    let tempdoc;
     const provider = {
         provideDocumentSemanticTokens(document) {
             // analyze the document and return semantic tokens
             console.log(document);
-            tempdoc = document;
             const tokensBuilder = new vscode_1.default.SemanticTokensBuilder(legend);
             // on line 1, characters 1-5 are a class declaration
             tokensBuilder.push(new vscode_1.default.Range(new vscode_1.default.Position(1, 1), new vscode_1.default.Position(1, 5)), 'class', ['declaration']);
@@ -83,7 +77,9 @@ exports.deactivate = deactivate;
 function createTerminal() {
     if (terminal == null || terminal.exitStatus != undefined) {
         const config = vscode_1.default.workspace.getConfiguration('bqn');
-        terminal = vscode_1.default.window.createTerminal("BQN", config.executablePath);
+        terminal = vscode_1.default.window.createTerminal({
+            name: "BQN", shellPath: config.executablePath, isTransient: true
+        });
         terminal.show();
     }
 }
