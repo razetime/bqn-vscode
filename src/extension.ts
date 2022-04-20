@@ -1,47 +1,40 @@
 import vscode from 'vscode';
-//import { promises } from 'dns';
 
 type Cmd = (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, ...args: any[]) => void
 
-// Keyboard symbols.
-
-		
 let terminal: vscode.Terminal;
 
 export function activate(context: vscode.ExtensionContext) {
-    
-    // BQN keymap
     const bqk = Array.from('`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:"zxcvbm,./ZXVBM<>? \'');
     const bqv = Array.from('˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠⋈𝕏⍒⌈≢≤≥⇐‿↩');
-    let key_map : { [key: string]: string; }= {};
-    for(let i = 0; i < bqk.length; i++) {
-        key_map[bqk[i]] = bqv[i];
-    }
+    let key_map: {[key: string]: string} = {};  bqk.forEach((k, i) => key_map[k] = bqv[i])
+
     // taken and modified from prollings/apl_backtick_symbols
 	let pending = false;
 
 	const command = vscode.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
 		e.insert(te.selection.active, "\\");
-		if (pending) {
-			return 0;
-		}
-		pending = true;
-		let active_pos = te.selection.active;
-		let sub1 = vscode.workspace.onDidChangeTextDocument(_ => {
+
+		if (pending) {return 0}
+		
+        pending = true;  const apos = te.selection.active;
+		const sub1 = vscode.workspace.onDidChangeTextDocument(_ => {
 			sub1.dispose();
-			let sub2 = vscode.workspace.onDidChangeTextDocument(ev => {
+
+			const sub2 = vscode.workspace.onDidChangeTextDocument(ev => {
 				sub2.dispose();
-				let this_pos = ev.contentChanges[0].range.start;
-				if (this_pos.line === active_pos.line
-					&& (this_pos.character - active_pos.character) === 1
-					&& ev.contentChanges[0].text.length === 1) {
-						let replace_range = new vscode.Range(active_pos, this_pos.translate(0, 1));
-						let key = ev.contentChanges[0].text;
-						if (key in key_map) {
-							let symbol = key_map[key];
-							te.edit((e) => e.replace(replace_range, symbol)).then();
-						}
+
+				const tpos = ev.contentChanges[0].range.start;
+                const cond = (tpos.line === apos.line
+                    && (tpos.character - apos.character) === 1
+                    && ev.contentChanges[0].text.length === 1)
+
+				if (cond) {
+                    let range = new vscode.Range(apos, tpos.translate(0, 1));
+                    let key = ev.contentChanges[0].text;
+                    if (key in key_map) {te.edit( (e) => e.replace(range, key_map[key]) ).then()}
 				}
+
 				pending = false;
 			});
 		});
@@ -54,41 +47,38 @@ export function activate(context: vscode.ExtensionContext) {
         ['language-bqn.executeLine', executeLine],
         ['language-bqn.executeLineAdvance', executeLineAdvance]
     ];
-    for(const [n, f] of cmds) { vscode.commands.registerTextEditorCommand(n, f) }
+    for(const [n, f] of cmds) {vscode.commands.registerTextEditorCommand(n, f)}
+
     const tokenTypes = ['string'];
-const tokenModifiers = ['string'];
-const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
-let tempdoc;
+    const tokenModifiers = ['string'];
+    const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
 
-const provider: vscode.DocumentSemanticTokensProvider = {
-    provideDocumentSemanticTokens(
-      document: vscode.TextDocument
-    ): vscode.ProviderResult<vscode.SemanticTokens> {
-      // analyze the document and return semantic tokens
-      console.log(document);
-      tempdoc = document;
-      const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
-      // on line 1, characters 1-5 are a class declaration
-      tokensBuilder.push(
-        new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)),
-        'class',
-        ['declaration']
-      );
-      return tokensBuilder.build();
-    }
-  };
+    const provider: vscode.DocumentSemanticTokensProvider = {
+        provideDocumentSemanticTokens(document: vscode.TextDocument) :
+            vscode.ProviderResult<vscode.SemanticTokens>
+        {
+            // analyze the document and return semantic tokens
+            console.log(document);
+            const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
+            // on line 1, characters 1-5 are a class declaration
+            tokensBuilder.push(
+                new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)),
+                'class',
+                ['declaration']
+            );
+            return tokensBuilder.build();
+        }
+    };
 
-const selector = { language: 'bqn', scheme: 'file' };
+    const selector = {language: 'bqn',  scheme: 'file'};
+    const prov = vscode.languages.registerDocumentSemanticTokensProvider(selector, provider, legend);
 
-const prov = vscode.languages.registerDocumentSemanticTokensProvider(selector, provider, legend);
-
-  context.subscriptions.push(prov);
-  context.subscriptions.push(command);
-
+    context.subscriptions.push(prov);
+    context.subscriptions.push(command);
 }
 
 export function deactivate(context: vscode.ExtensionContext) {
-    if (terminal != null) { terminal.dispose() }
+    if (terminal != null) {terminal.dispose()}
 }
 
 function createTerminal() {
@@ -103,10 +93,9 @@ function createTerminal() {
 }
 
 function loadScript(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
-    createTerminal()
-
-    terminal.sendText(`)ex ${t.document.fileName}`)
+    createTerminal();  terminal.sendText(`)ex ${t.document.fileName}`)
 }
+
 function executeSelection(t: vscode.TextEditor, e: vscode.TextEditorEdit) {}
 function executeLine(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
     createTerminal()
@@ -116,6 +105,5 @@ function executeLine(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
 }
 function executeLineAdvance(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
     executeLine(t, e)
-    vscode.commands.executeCommand('cursorMove', { to: "down", by: "wrappedLine"})
+    vscode.commands.executeCommand('cursorMove', {to: "down",  by: "wrappedLine"})
 }
-
