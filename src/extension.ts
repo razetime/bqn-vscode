@@ -95,7 +95,9 @@ function createTerminal() {
     if (terminal == null || terminal.exitStatus != undefined) {
         const config = vscode.workspace.getConfiguration('bqn');
 
-        terminal = vscode.window.createTerminal("BQN", config.executablePath);
+        terminal = vscode.window.createTerminal({
+            name: "BQN",  shellPath: config.executablePath,  isTransient: true
+        });
         terminal.show();
     }
 }
