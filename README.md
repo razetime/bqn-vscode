@@ -5,7 +5,7 @@ Available for install from the [Open VSX Registry](https://open-vsx.org/extensio
 Current features:
 - backslash symbol completion (`\r` -> `↑`) that uses the [Standard BQN keymap](https://mlochbaum.github.io/BQN/keymap.html)
 - File, line and selection execution in terminal from @suhr
-  To access this, you need to add `"bqn.executablePath": "<full filepath>",` to your `settings.json` file. (Ctrl-Shift-P ->  "Open Settings") 
+  To access this, you need to add `"bqn.executablePath": "<full filepath>",` to your `settings.json` file. (Ctrl-Shift-P ->  "Open Settings (JSON)") 
 - Syntax highlight support 
 - Symbol name and data available with `Ctrl+space`
 
