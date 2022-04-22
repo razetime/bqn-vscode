@@ -10,6 +10,6 @@ Current features:
 - Symbol name and data available with `Ctrl+space`
 
 TODO:
-- Multline string highlighting
-- Block context highlighting
-- inline code execution similar to [nvim-bqn](https://git.sr.ht/~detegr/nvim-bqn) 
+- Block context highlighting for symbols like `𝕨` and `𝕣`
+- inline code execution similar to [nvim-bqn](https://git.sr.ht/~detegr/nvim-bqn)
+- CBQN WASM interpreter bundled with the extension
