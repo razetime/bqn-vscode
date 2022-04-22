@@ -27,4 +27,3 @@ a=i[1]+": "+i[0];
 }
 }
 console.log(JSON.stringify(shorts));
-//console.log(JSON.stringify(x));
