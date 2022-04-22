@@ -53,7 +53,8 @@
                 "editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
                 "editor.foldingStrategy": "auto",
                 "editor.tabCompletion": "on",
-                "editor.semanticHighlighting.enabled": true
+                "editor.semanticHighlighting.enabled": true,
+                "editor.unicodeHighlight.ambiguousCharacters": false
             }
         },
         "commands": [
