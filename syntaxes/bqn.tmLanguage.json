@@ -91,12 +91,15 @@
           {
             "comment": "double quote string",
             "name": "string.quoted.double.bqn",
-            "match": "(\")[^\"]*(?:\"\"[^\"]*)*(\")",
-            "captures": {
-              "1": {
+            "begin": "\"",
+            "beginCaptures": {
+              "0": {
                 "name": "punctuation.definition.string.begin.bqn"
-              },
-              "2": {
+              }
+            },
+            "end": "\"",
+            "endCaptures": {
+              "0": {
                 "name": "punctuation.definition.string.end.bqn"
               }
             }
