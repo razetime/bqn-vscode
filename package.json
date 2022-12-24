@@ -9,16 +9,16 @@
         "vscode": "^1.66.0"
     },
     "repository": {
-		"type": "git",
-		"url": "https://github.com/razetime/bqn-vscode"
-	},
+        "type": "git",
+        "url": "https://github.com/razetime/bqn-vscode"
+    },
     "categories": [
         "Snippets"
     ],
     "activationEvents": [
         "onLanguage:bqn"
     ],
-    "main": "./src/extension.js",
+    "main": "./out/extension.js",
     "contributes": {
         "languages": [
             {
@@ -134,12 +134,17 @@
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint --fix src/**/*.ts",
+        "fmt": "prettier -w src/**/*.ts"
     },
     "devDependencies": {
-        "@types/node": "^8.10.66",
-        "@types/vscode": "^1.66.0",
-        "tslint": "^5.16.0",
-        "typescript": "^3.9.10"
+        "@types/node": "^18.11.17",
+        "@types/vscode": "^1.74.0",
+        "@typescript-eslint/eslint-plugin": "^5.47.0",
+        "eslint": "^8.30.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.8.1",
+        "typescript": "^4.9.4"
     }
 }
