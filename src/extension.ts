@@ -1,109 +1,168 @@
-import vscode from 'vscode';
-
-type Cmd = (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, ...args: any[]) => void
-
-let terminal: vscode.Terminal;
+import * as vscode from "vscode";
+import * as path from "path";
 
 export function activate(context: vscode.ExtensionContext) {
-    const bqk = Array.from('`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:"zxcvbm,./ZXVBM<>? \'');
-    const bqv = Array.from('˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠⋈𝕏⍒⌈≢≤≥⇐‿↩');
-    let key_map: {[key: string]: string} = {};  bqk.forEach((k, i) => key_map[k] = bqv[i])
+  const bqk = Array.from(
+    "\\`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:\"zxcvbm,./ZXVBM<>? '"
+  );
+  const bqv = Array.from(
+    "\\˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠⋈𝕏⍒⌈≢≤≥⇐‿↩"
+  );
+  const map: { [key: string]: string } = {};
+  for (const [i, key] of bqk.entries()) {
+    map[key] = bqv[i];
+  }
 
-    // taken and modified from prollings/apl_backtick_symbols
-	let pending = false;
-
-	const command = vscode.commands.registerTextEditorCommand("language-bqn.backslash", (te, e) => {
-		e.insert(te.selection.active, "\\");
-
-		if (pending) {return 0}
-		
-        pending = true;  const apos = te.selection.active;
-		const sub1 = vscode.workspace.onDidChangeTextDocument(_ => {
-			sub1.dispose();
-
-			const sub2 = vscode.workspace.onDidChangeTextDocument(ev => {
-				sub2.dispose();
-
-				const tpos = ev.contentChanges[0].range.start;
-                const cond = (tpos.line === apos.line
-                    && (tpos.character - apos.character) === 1
-                    && ev.contentChanges[0].text.length === 1)
-
-				if (cond) {
-                    let range = new vscode.Range(apos, tpos.translate(0, 1));
-                    let key = ev.contentChanges[0].text;
-                    if (key in key_map) {te.edit( (e) => e.replace(range, key_map[key]) ).then()}
-				}
-
-				pending = false;
-			});
-		});
-	});
-
-    const cmds: [string, Cmd][] = [
-        ['language-bqn.createTerminal', createTerminal],
-        ['language-bqn.loadScript', loadScript],
-        ['language-bqn.executeSelection', executeSelection],
-        ['language-bqn.executeLine', executeLine],
-        ['language-bqn.executeLineAdvance', executeLineAdvance]
-    ];
-    for(const [n, f] of cmds) {vscode.commands.registerTextEditorCommand(n, f)}
-
-    const tokenTypes = ['string'];
-    const tokenModifiers = ['string'];
-    const legend = new vscode.SemanticTokensLegend(tokenTypes, tokenModifiers);
-
-    const provider: vscode.DocumentSemanticTokensProvider = {
-        provideDocumentSemanticTokens(document: vscode.TextDocument) :
-            vscode.ProviderResult<vscode.SemanticTokens>
-        {
-            // analyze the document and return semantic tokens
-            console.log(document);
-            const tokensBuilder = new vscode.SemanticTokensBuilder(legend);
-            // on line 1, characters 1-5 are a class declaration
-            tokensBuilder.push(
-                new vscode.Range(new vscode.Position(1, 1), new vscode.Position(1, 5)),
-                'class',
-                ['declaration']
-            );
-            return tokensBuilder.build();
+  let pending = false;
+  const backslashCommand = vscode.commands.registerTextEditorCommand(
+    "language-bqn.backslash",
+    (editor, edit) => {
+      edit.insert(editor.selection.active, "\\");
+      if (pending) {
+        return;
+      }
+      pending = true;
+      const p1 = editor.selection.active;
+      let sawBackslash = false;
+      const subscription = vscode.workspace.onDidChangeTextDocument((event) => {
+        event.contentChanges.forEach(onChange);
+      });
+      const onChange = (change: vscode.TextDocumentContentChangeEvent) => {
+        if (!sawBackslash) {
+          console.assert(change.text === "\\");
+          sawBackslash = true;
+          return;
         }
-    };
-
-    const selector = {language: 'bqn',  scheme: 'file'};
-    const prov = vscode.languages.registerDocumentSemanticTokensProvider(selector, provider, legend);
-
-    context.subscriptions.push(prov);
-    context.subscriptions.push(command);
-}
-
-export function deactivate(context: vscode.ExtensionContext) {
-    if (terminal != null) {terminal.dispose()}
-}
-
-function createTerminal() {
-    if (terminal == null || terminal.exitStatus != undefined) {
-        const config = vscode.workspace.getConfiguration('bqn');
-
-        terminal = vscode.window.createTerminal({
-            name: "BQN",  shellPath: config.executablePath
-        });
-        terminal.show();
+        subscription.dispose();
+        pending = false;
+        const p2 = change.range.start;
+        const key = change.text;
+        const expected =
+          p2.line === p1.line &&
+          p2.character === p1.character + 1 &&
+          key.length === 1;
+        if (!expected) {
+          return;
+        }
+        const range = new vscode.Range(p1, p2.translate(0, 1));
+        const character = map[key];
+        if (character == undefined) {
+          return;
+        }
+        editor.edit((e) => e.replace(range, character));
+      };
     }
+  );
+  context.subscriptions.push(backslashCommand);
+
+  const commands = {
+    "language-bqn.createTerminal": createTerminal,
+    "language-bqn.loadScript": loadScript,
+    "language-bqn.executeSelection": executeSelection,
+    "language-bqn.executeLine": executeLine,
+    "language-bqn.executeLineAdvance": executeLineAdvance,
+  };
+  for (const [name, callback] of Object.entries(commands)) {
+    vscode.commands.registerTextEditorCommand(name, callback);
+  }
 }
 
-function loadScript(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
-    createTerminal();  terminal.sendText(`)ex ${t.document.fileName}`)
+let terminal: vscode.Terminal;
+let terminalCwd: string;
+
+export function deactivate() {
+  if (terminal != undefined) {
+    terminal.dispose();
+  }
 }
 
-function executeSelection(t: vscode.TextEditor, e: vscode.TextEditorEdit) {}
-function executeLine(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
-    createTerminal()
-
-    let line = t.document.lineAt(t.selection.active.line).text
-    terminal.sendText(line, !line.endsWith('\n'))
+async function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
-function executeLineAdvance(t: vscode.TextEditor, e: vscode.TextEditorEdit) {
-    executeLine(t, e)
-    vscode.commands.executeCommand('cursorMove', {to: "down",  by: "wrappedLine"})
+
+function getConfig() {
+  return vscode.workspace.getConfiguration("bqn");
+}
+
+type Focus = "terminal" | "editor";
+
+function showTerminal(focus: Focus) {
+  const preserveFocus = focus === "editor";
+  terminal.show(preserveFocus);
+}
+
+async function createOrShowTerminal(editor: vscode.TextEditor, focus: Focus) {
+  if (terminal != undefined && terminal.exitStatus == undefined) {
+    showTerminal(focus);
+    return;
+  }
+  const config = getConfig();
+  terminalCwd = path.dirname(editor.document.fileName);
+  terminal = vscode.window.createTerminal({
+    name: "BQN",
+    shellPath: config.executablePath,
+    location: vscode.TerminalLocation.Panel,
+    cwd: terminalCwd,
+  });
+  showTerminal(focus);
+  await sleep(config.sendToNewReplDelay);
+}
+
+function createTerminal(editor: vscode.TextEditor) {
+  createOrShowTerminal(editor, "terminal");
+}
+
+async function loadScript(editor: vscode.TextEditor): Promise<void> {
+  const config = getConfig();
+  const tasks = [];
+  tasks.push(createOrShowTerminal(editor, "editor"));
+  if (config.saveBeforeLoadScript) {
+    tasks.push(editor.document.save());
+  }
+  await Promise.all(tasks);
+  // Use a relative path to save space, and make it more obvious when the user
+  // is loading a script from a different directory than the one they started
+  // the REPL in (and hence imports won't work properly).
+  const script = path.relative(terminalCwd, editor.document.fileName);
+  terminal.sendText(`)ex ${script}`, false);
+  await sleep(config.sendLoadScriptNewlineDelay);
+  terminal.sendText("\n", false);
+}
+
+async function execute(editor: vscode.TextEditor, code: string) {
+  await createOrShowTerminal(editor, "editor");
+  terminal.sendText(code, !code.endsWith("\n"));
+}
+
+function executeSelection(editor: vscode.TextEditor) {
+  if (editor.selection.isEmpty) {
+    return;
+  }
+  // Strip out comments to avoid "Error: Empty program" cluttering the REPL.
+  const code = editor.document
+    .getText(editor.selection)
+    .replace(/#[^\r\n]*/g, "")
+    .replace(/(\r?\n){3,}/g, "$1$1");
+  execute(editor, code);
+}
+
+function executeLine(editor: vscode.TextEditor) {
+  execute(editor, editor.document.lineAt(editor.selection.active.line).text);
+}
+
+function executeLineAdvance(editor: vscode.TextEditor) {
+  executeLine(editor);
+  const line = editor.selection.active.line;
+  let n = 1;
+  while (
+    line + n < editor.document.lineCount - 1 &&
+    /^\s*(#.*)?$/.test(editor.document.lineAt(line + n).text)
+  ) {
+    n++;
+  }
+  vscode.commands.executeCommand("cursorMove", {
+    to: "down",
+    by: "line",
+    value: n,
+  });
 }

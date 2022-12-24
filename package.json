@@ -51,9 +51,7 @@
             "terminal.integrated.enablePersistentSessions": true,
             "[bqn]": {
                 "editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
-                "editor.foldingStrategy": "auto",
                 "editor.tabCompletion": "on",
-                "editor.semanticHighlighting.enabled": true,
                 "editor.unicodeHighlight.ambiguousCharacters": false
             }
         },
@@ -80,7 +78,7 @@
             },
             {
                 "command": "language-bqn.backslash",
-                "title": "BQN: Convert to symbol"
+                "title": "BQN: Convert To Symbol"
             }
         ],
         "keybindings": [
@@ -115,20 +113,21 @@
             "title": "BQN configuration",
             "properties": {
                 "bqn.executablePath": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "default": "bqn",
-                    "description": "Points to the BQN executable.",
-                    "scope": "window"
+                    "description": "Name or full path of the BQN executable."
+                },
+                "bqn.sendToNewReplDelay": {
+                    "type": "number",
+                    "default": 500,
+                    "description": "Time in milliseconds to wait before sending text to a newly created BQN REPL. This works around a problem where input gets messed up when sent before BQN is ready."
+                },
+                "bqn.sendLoadScriptNewlineDelay": {
+                    "type": "number",
+                    "default": 20,
+                    "description": "Time in milliseconds to wait before a newline to the REPL after an `)ex` command to load a script. This works around a problem where input gets messed up when sent too quickly."
                 }
             }
-        }
-    },
-    "capabilities" : {
-        "codeLensProvider" : {
-            "resolveProvider": "true"
         }
     },
     "scripts": {
