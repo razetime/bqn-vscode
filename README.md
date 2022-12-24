@@ -1,15 +1,26 @@
 # BQN VS Code plugin
 
-Available for install from the [Open VSX Registry](https://open-vsx.org/extension/razetime/bqn-language) and [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=razetime.bqn-language).
+This VS Code extension provides language support for [BQN].
 
-Current features:
-- backslash symbol completion (`\r` -> `↑`) that uses the [Standard BQN keymap](https://mlochbaum.github.io/BQN/keymap.html)
-- File, line and selection execution in terminal from @suhr
-  To access this, you need to add `"bqn.executablePath": "<full filepath>",` to your `settings.json` file. (Ctrl-Shift-P ->  "Open Settings (JSON)") 
-- Syntax highlight support 
-- Symbol name and data available with `Ctrl+space`
+It is available on the [Open VSX Registry] and the [VS Code Marketplace].
 
-TODO:
-- Block context highlighting for symbols like `𝕨` and `𝕣`
-- inline code execution similar to [nvim-bqn](https://git.sr.ht/~detegr/nvim-bqn)
-- CBQN WASM interpreter bundled with the extension
+## Features
+
+### Current
+
+- Syntax highlighting.
+- Backslash symbol completion (`\r` -> `↑`) using the [standard BQN keymap], like in the [online REPL].
+- File, line, and selection execution in the integrated terminal (from @suhr). This requires having a `bqn` executable in your PATH, or customizing the `bqn.executablePath` setting.
+
+### Planned
+
+- Block context highlighting for symbols like `𝕨` and `𝕣`.
+- Inline code execution similar to [nvim-bqn].
+- CBQN WASM interpreter bundled with the extension.
+
+[BQN]: https://mlochbaum.github.io/BQN/
+[Open VSX Registry]: https://open-vsx.org/extension/razetime/bqn-language
+[VS Code Marketplace]: https://marketplace.visualstudio.com/items?itemName=razetime.bqn-language
+[Standard BQN keymap]: https://mlochbaum.github.io/BQN/keymap.html
+[online REPL]: https://mlochbaum.github.io/BQN/try.html
+[nvim-bqn]: https://git.sr.ht/~detegr/nvim-bqn
