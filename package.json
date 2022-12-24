@@ -47,8 +47,6 @@
             }
         ],
         "configurationDefaults": {
-            "bqn.executablePath": "cbqn",
-            "terminal.integrated.enablePersistentSessions": true,
             "[bqn]": {
                 "editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
                 "editor.tabCompletion": "on",
@@ -88,11 +86,6 @@
                 "when": "editorTextFocus && editorLangId == 'bqn'"
             },
             {
-                "command": "language-bqn.executeSelection",
-                "key": "ctrl+E",
-                "when": "editorTextFocus && editorLangId == 'bqn'"
-            },
-            {
                 "command": "language-bqn.loadScript",
                 "key": "ctrl+L",
                 "when": "editorTextFocus && editorLangId == 'bqn'"
@@ -105,7 +98,12 @@
             {
                 "command": "language-bqn.executeLineAdvance",
                 "key": "ctrl+enter",
-                "when": "editorTextFocus && editorLangId == 'bqn'"
+                "when": "editorTextFocus && editorLangId == 'bqn' && !editorHasSelection"
+            },
+            {
+                "command": "language-bqn.executeSelection",
+                "key": "ctrl+enter",
+                "when": "editorTextFocus && editorLangId == 'bqn' && editorHasSelection"
             }
         ],
         "configuration": {
