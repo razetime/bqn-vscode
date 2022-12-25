@@ -58,6 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
   const commands = {
     "language-bqn.createTerminal": createTerminal,
     "language-bqn.loadScript": loadScript,
+    "language-bqn.clearImportsAndLoadScript": clearImportsAndLoadScript,
     "language-bqn.executeSelection": executeSelection,
     "language-bqn.executeLine": executeLine,
     "language-bqn.executeLineAdvance": executeLineAdvance,
@@ -132,6 +133,11 @@ async function loadScript(editor: vscode.TextEditor): Promise<void> {
 async function execute(editor: vscode.TextEditor, code: string) {
   await createOrShowTerminal(editor, "editor");
   terminal.sendText(code, !code.endsWith("\n"));
+}
+
+function clearImportsAndLoadScript(editor: vscode.TextEditor) {
+  execute(editor, ")clearImportCache");
+  loadScript(editor);
 }
 
 function executeSelection(editor: vscode.TextEditor) {

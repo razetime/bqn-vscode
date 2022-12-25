@@ -63,6 +63,10 @@
                 "title": "BQN: Load Script"
             },
             {
+                "command": "language-bqn.clearImportsAndLoadScript",
+                "title": "BQN: Clear Imports and Load Script"
+            },
+            {
                 "command": "language-bqn.executeSelection",
                 "title": "BQN: Execute Selection"
             },
@@ -88,6 +92,11 @@
             {
                 "command": "language-bqn.loadScript",
                 "key": "ctrl+L",
+                "when": "editorTextFocus && editorLangId == 'bqn'"
+            },
+            {
+                "command": "language-bqn.clearImportsAndLoadScript",
+                "key": "ctrl+shift+L",
                 "when": "editorTextFocus && editorLangId == 'bqn'"
             },
             {
