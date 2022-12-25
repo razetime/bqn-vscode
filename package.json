@@ -124,6 +124,11 @@
                     "default": "bqn",
                     "description": "Name or full path of the BQN executable."
                 },
+                "bqn.saveBeforeLoadScript": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Save the file before loading it for the \"Load Script\" command."
+                },
                 "bqn.sendToNewReplDelay": {
                     "type": "number",
                     "default": 500,

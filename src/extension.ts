@@ -135,9 +135,9 @@ async function execute(editor: vscode.TextEditor, code: string) {
   terminal.sendText(code, !code.endsWith("\n"));
 }
 
-function clearImportsAndLoadScript(editor: vscode.TextEditor) {
-  execute(editor, ")clearImportCache");
-  loadScript(editor);
+async function clearImportsAndLoadScript(editor: vscode.TextEditor) {
+  await execute(editor, ")clearImportCache");
+  await loadScript(editor);
 }
 
 function executeSelection(editor: vscode.TextEditor) {
