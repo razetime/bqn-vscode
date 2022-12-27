@@ -9,16 +9,16 @@
         "vscode": "^1.66.0"
     },
     "repository": {
-		"type": "git",
-		"url": "https://github.com/razetime/bqn-vscode"
-	},
+        "type": "git",
+        "url": "https://github.com/razetime/bqn-vscode"
+    },
     "categories": [
         "Snippets"
     ],
     "activationEvents": [
         "onLanguage:bqn"
     ],
-    "main": "./src/extension.js",
+    "main": "./out/extension.js",
     "contributes": {
         "languages": [
             {
@@ -47,13 +47,9 @@
             }
         ],
         "configurationDefaults": {
-            "bqn.executablePath": "cbqn",
-            "terminal.integrated.enablePersistentSessions": true,
             "[bqn]": {
                 "editor.wordSeparators": "˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠𝕏⍒⌈≢≤≥⇐‿↩",
-                "editor.foldingStrategy": "auto",
                 "editor.tabCompletion": "on",
-                "editor.semanticHighlighting.enabled": true,
                 "editor.unicodeHighlight.ambiguousCharacters": false
             }
         },
@@ -65,6 +61,10 @@
             {
                 "command": "language-bqn.loadScript",
                 "title": "BQN: Load Script"
+            },
+            {
+                "command": "language-bqn.clearImportsAndLoadScript",
+                "title": "BQN: Clear Imports and Load Script"
             },
             {
                 "command": "language-bqn.executeSelection",
@@ -80,7 +80,7 @@
             },
             {
                 "command": "language-bqn.backslash",
-                "title": "BQN: Convert to symbol"
+                "title": "BQN: Convert To Symbol"
             }
         ],
         "keybindings": [
@@ -90,13 +90,13 @@
                 "when": "editorTextFocus && editorLangId == 'bqn'"
             },
             {
-                "command": "language-bqn.executeSelection",
-                "key": "ctrl+E",
+                "command": "language-bqn.loadScript",
+                "key": "ctrl+L",
                 "when": "editorTextFocus && editorLangId == 'bqn'"
             },
             {
-                "command": "language-bqn.loadScript",
-                "key": "ctrl+L",
+                "command": "language-bqn.clearImportsAndLoadScript",
+                "key": "ctrl+shift+L",
                 "when": "editorTextFocus && editorLangId == 'bqn'"
             },
             {
@@ -107,7 +107,12 @@
             {
                 "command": "language-bqn.executeLineAdvance",
                 "key": "ctrl+enter",
-                "when": "editorTextFocus && editorLangId == 'bqn'"
+                "when": "editorTextFocus && editorLangId == 'bqn' && !editorHasSelection"
+            },
+            {
+                "command": "language-bqn.executeSelection",
+                "key": "ctrl+enter",
+                "when": "editorTextFocus && editorLangId == 'bqn' && editorHasSelection"
             }
         ],
         "configuration": {
@@ -115,31 +120,42 @@
             "title": "BQN configuration",
             "properties": {
                 "bqn.executablePath": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "default": "bqn",
-                    "description": "Points to the BQN executable.",
-                    "scope": "window"
+                    "description": "Name or full path of the BQN executable."
+                },
+                "bqn.saveBeforeLoadScript": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Save the file before loading it for the \"Load Script\" command."
+                },
+                "bqn.sendToNewReplDelay": {
+                    "type": "number",
+                    "default": 500,
+                    "description": "Time in milliseconds to wait before sending text to a newly created BQN REPL. This works around a problem where input gets messed up when sent before BQN is ready."
+                },
+                "bqn.sendLoadScriptNewlineDelay": {
+                    "type": "number",
+                    "default": 20,
+                    "description": "Time in milliseconds to wait before a newline to the REPL after an `)ex` command to load a script. This works around a problem where input gets messed up when sent too quickly."
                 }
             }
-        }
-    },
-    "capabilities" : {
-        "codeLensProvider" : {
-            "resolveProvider": "true"
         }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint --fix src/**/*.ts",
+        "fmt": "prettier -w src/**/*.ts"
     },
     "devDependencies": {
-        "@types/node": "^8.10.66",
+        "@types/node": "^18.11.17",
         "@types/vscode": "^1.66.0",
-        "tslint": "^5.16.0",
-        "typescript": "^3.9.10"
+        "@typescript-eslint/eslint-plugin": "^5.47.0",
+        "eslint": "^8.30.0",
+        "eslint-config-prettier": "^8.5.0",
+        "prettier": "^2.8.1",
+        "typescript": "^4.9.4"
     }
 }
