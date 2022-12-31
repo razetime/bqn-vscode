@@ -58,7 +58,9 @@ export function activate(context: vscode.ExtensionContext) {
   const commands = {
     "language-bqn.createTerminal": cmdCreateTerminal,
     "language-bqn.loadScript": cmdLoadScript,
+    "language-bqn.clearImports": cmdClearImports,
     "language-bqn.clearImportsAndLoadScript": cmdClearImportsAndLoadScript,
+    "language-bqn.profileScript": cmdProfileScript,
     "language-bqn.executeSelection": cmdExecuteSelection,
     "language-bqn.executeLine": cmdExecuteLine,
     "language-bqn.executeLineAdvance": cmdExecuteLineAdvance,
@@ -129,12 +131,20 @@ async function runCommands(
   }
 }
 
+function cmdClearImports(editor: vscode.TextEditor) {
+  runCommands(editor, () => [")clearImportCache"]);
+}
+
 function cmdLoadScript(editor: vscode.TextEditor) {
   runCommands(editor, (script) => [`)ex ${script}`]);
 }
 
 function cmdClearImportsAndLoadScript(editor: vscode.TextEditor) {
   runCommands(editor, (script) => [")clearImportCache", `)ex ${script}`]);
+}
+
+function cmdProfileScript(editor: vscode.TextEditor) {
+  runCommands(editor, (script) => [`)profile ⟨⟩ •Import "${script}"`]);
 }
 
 async function execute(editor: vscode.TextEditor, text: string) {

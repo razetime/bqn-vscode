@@ -63,8 +63,16 @@
                 "title": "BQN: Load Script"
             },
             {
+                "command": "language-bqn.clearImports",
+                "title": "BQN: Clear Imports"
+            },
+            {
                 "command": "language-bqn.clearImportsAndLoadScript",
                 "title": "BQN: Clear Imports and Load Script"
+            },
+            {
+                "command": "language-bqn.profileScript",
+                "title": "BQN: Profile Script"
             },
             {
                 "command": "language-bqn.executeSelection",
