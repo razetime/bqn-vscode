@@ -146,6 +146,10 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Whether `bqn.executablePath` is built with REPLXX support. If it is not, set this to false."
+                },
+                "bqn.pendingBackslashBackgroundColor": {
+                    "type": "string",
+                    "description": "Background color to use for the backslash when entering a symbol."
                 }
             }
         }

@@ -1,6 +1,8 @@
 import * as vscode from "vscode";
 import * as path from "path";
 
+let pendingBackslashDecoration: vscode.TextEditorDecorationType;
+
 export function activate(context: vscode.ExtensionContext) {
   const bqk = Array.from(
     "\\`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:\"zxcvbm,./ZXVBM<>? '"
@@ -12,6 +14,12 @@ export function activate(context: vscode.ExtensionContext) {
   for (const [i, key] of bqk.entries()) {
     map[key] = bqv[i];
   }
+
+  pendingBackslashDecoration = vscode.window.createTextEditorDecorationType({
+    backgroundColor:
+      getConfig().pendingBackslashBackgroundColor ||
+      new vscode.ThemeColor("editor.symbolHighlightBackground"),
+  });
 
   let pending = false;
   const backslashCommand = vscode.commands.registerTextEditorCommand(
@@ -30,6 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
           if (!onChange(change)) {
             pending = false;
             subscription.dispose();
+            editor.setDecorations(pendingBackslashDecoration, []);
             break;
           }
         }
@@ -42,6 +51,14 @@ export function activate(context: vscode.ExtensionContext) {
         if (unseenBackslashes > 0) {
           console.assert(change.text === "\\");
           unseenBackslashes--;
+          if (unseenBackslashes === 0) {
+            editor.setDecorations(
+              pendingBackslashDecoration,
+              initialPositions.map(
+                (p) => new vscode.Range(p, p.translate(0, 1))
+              )
+            );
+          }
           return true;
         }
         const key = change.text;
@@ -95,6 +112,9 @@ let terminal: vscode.Terminal;
 let terminalCwd: string;
 
 export function deactivate() {
+  if (pendingBackslashDecoration != undefined) {
+    pendingBackslashDecoration.dispose();
+  }
   if (terminal != undefined) {
     terminal.dispose();
   }
