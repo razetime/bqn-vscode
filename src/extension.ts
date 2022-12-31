@@ -17,39 +17,60 @@ export function activate(context: vscode.ExtensionContext) {
   const backslashCommand = vscode.commands.registerTextEditorCommand(
     "language-bqn.backslash",
     (editor, edit) => {
-      edit.insert(editor.selection.active, "\\");
+      const initialPositions = editor.selections.map((s) => s.active);
+      for (const position of initialPositions) {
+        edit.insert(position, "\\");
+      }
       if (pending) {
         return;
       }
       pending = true;
-      const p1 = editor.selection.active;
-      let sawBackslash = false;
       const subscription = vscode.workspace.onDidChangeTextDocument((event) => {
-        event.contentChanges.forEach(onChange);
+        for (const change of event.contentChanges) {
+          if (!onChange(change)) {
+            pending = false;
+            subscription.dispose();
+            break;
+          }
+        }
       });
-      const onChange = (change: vscode.TextDocumentContentChangeEvent) => {
-        if (!sawBackslash) {
+      let unseenBackslashes = initialPositions.length;
+      const editsToMake: [vscode.Range, string][] = [];
+      const onChange = (
+        change: vscode.TextDocumentContentChangeEvent
+      ): boolean => {
+        if (unseenBackslashes > 0) {
           console.assert(change.text === "\\");
-          sawBackslash = true;
-          return;
+          unseenBackslashes--;
+          return true;
         }
-        subscription.dispose();
-        pending = false;
-        const p2 = change.range.start;
         const key = change.text;
-        const expected =
-          p2.line === p1.line &&
-          p2.character === p1.character + 1 &&
-          key.length === 1;
-        if (!expected) {
-          return;
+        if (key.length !== 1) {
+          return false;
         }
-        const range = new vscode.Range(p1, p2.translate(0, 1));
+        const final = change.range.start;
+        const initial = initialPositions.find((p) => {
+          return p.line === final.line && p.character === final.character - 1;
+        });
+        if (initial == undefined) {
+          return false;
+        }
+        const range = new vscode.Range(initial, final.translate(0, 1));
         const character = map[key];
         if (character == undefined) {
-          return;
+          return false;
         }
-        editor.edit((e) => e.replace(range, character));
+        editsToMake.push([range, character]);
+        if (editsToMake.length !== initialPositions.length) {
+          return true;
+        }
+        subscription.dispose();
+        editor.edit((e) => {
+          for (const [range, character] of editsToMake) {
+            e.replace(range, character);
+          }
+        });
+        return false;
       };
     }
   );
