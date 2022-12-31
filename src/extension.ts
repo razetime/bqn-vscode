@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import * as path from "path";
+import * as helpJson from "./help.json";
 
 let pendingBackslashDecoration: vscode.TextEditorDecorationType;
 
@@ -15,9 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
     map[key] = bqv[i];
   }
 
+  const config = getConfig();
   pendingBackslashDecoration = vscode.window.createTextEditorDecorationType({
     backgroundColor:
-      getConfig().pendingBackslashBackgroundColor ||
+      config.pendingBackslashBackgroundColor ||
       new vscode.ThemeColor("editor.symbolHighlightBackground"),
   });
 
@@ -105,6 +107,21 @@ export function activate(context: vscode.ExtensionContext) {
   };
   for (const [name, callback] of Object.entries(commands)) {
     vscode.commands.registerTextEditorCommand(name, callback);
+  }
+
+  if (config.enableHoverDocumentation) {
+    vscode.languages.registerHoverProvider("bqn", {
+      provideHover(document, position) {
+        const range = new vscode.Range(position, position.translate(0, 1));
+        const glyph = document.getText(range);
+        const map = helpJson as { [glyph: string]: string[] };
+        const help = map[glyph];
+        if (help == undefined) {
+          return;
+        }
+        return new vscode.Hover(help, range);
+      },
+    });
   }
 }
 

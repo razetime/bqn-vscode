@@ -150,6 +150,11 @@
                 "bqn.pendingBackslashBackgroundColor": {
                     "type": "string",
                     "description": "Background color to use for the backslash when entering a symbol."
+                },
+                "bqn.enableHoverDocumentation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show documentation when hovering over BQN glyphs."
                 }
             }
         }
