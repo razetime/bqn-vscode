@@ -56,12 +56,12 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(backslashCommand);
 
   const commands = {
-    "language-bqn.createTerminal": createTerminal,
-    "language-bqn.loadScript": loadScript,
-    "language-bqn.clearImportsAndLoadScript": clearImportsAndLoadScript,
-    "language-bqn.executeSelection": executeSelection,
-    "language-bqn.executeLine": executeLine,
-    "language-bqn.executeLineAdvance": executeLineAdvance,
+    "language-bqn.createTerminal": cmdCreateTerminal,
+    "language-bqn.loadScript": cmdLoadScript,
+    "language-bqn.clearImportsAndLoadScript": cmdClearImportsAndLoadScript,
+    "language-bqn.executeSelection": cmdExecuteSelection,
+    "language-bqn.executeLine": cmdExecuteLine,
+    "language-bqn.executeLineAdvance": cmdExecuteLineAdvance,
   };
   for (const [name, callback] of Object.entries(commands)) {
     vscode.commands.registerTextEditorCommand(name, callback);
@@ -85,16 +85,12 @@ function getConfig() {
   return vscode.workspace.getConfiguration("bqn");
 }
 
-type Focus = "terminal" | "editor";
-
-function showTerminal(focus: Focus) {
-  const preserveFocus = focus === "editor";
-  terminal.show(preserveFocus);
-}
-
-async function createOrShowTerminal(editor: vscode.TextEditor, focus: Focus) {
+async function createOrShowTerminal(
+  editor: vscode.TextEditor,
+  options: { preserveFocus: boolean }
+) {
   if (terminal != undefined && terminal.exitStatus == undefined) {
-    showTerminal(focus);
+    terminal.show(options.preserveFocus);
     return;
   }
   const config = getConfig();
@@ -105,19 +101,22 @@ async function createOrShowTerminal(editor: vscode.TextEditor, focus: Focus) {
     location: vscode.TerminalLocation.Panel,
     cwd: terminalCwd,
   });
-  showTerminal(focus);
+  terminal.show(options.preserveFocus);
   await sleep(config.sendToNewReplDelay);
 }
 
-function createTerminal(editor: vscode.TextEditor) {
-  createOrShowTerminal(editor, "terminal");
+function cmdCreateTerminal(editor: vscode.TextEditor) {
+  createOrShowTerminal(editor, { preserveFocus: false });
 }
 
-async function loadScript(editor: vscode.TextEditor): Promise<void> {
-  const config = getConfig();
+async function runCommands(
+  editor: vscode.TextEditor,
+  commands: (script: string) => string[]
+): Promise<void> {
   const tasks = [];
-  tasks.push(createOrShowTerminal(editor, "editor"));
-  if (config.saveBeforeLoadScript) {
+  tasks.push(createOrShowTerminal(editor, { preserveFocus: true }));
+  const needsScriptParam = commands.length > 0;
+  if (needsScriptParam && getConfig().saveBeforeLoadScript) {
     tasks.push(editor.document.save());
   }
   await Promise.all(tasks);
@@ -125,39 +124,47 @@ async function loadScript(editor: vscode.TextEditor): Promise<void> {
   // is loading a script from a different directory than the one they started
   // the REPL in (and hence imports won't work properly).
   const script = path.relative(terminalCwd, editor.document.fileName);
-  terminal.sendText(`)ex ${script}`, false);
-  await sleep(config.sendLoadScriptNewlineDelay);
-  terminal.sendText("\n", false);
-}
-
-async function execute(editor: vscode.TextEditor, code: string) {
-  await createOrShowTerminal(editor, "editor");
-  terminal.sendText(code, !code.endsWith("\n"));
-}
-
-async function clearImportsAndLoadScript(editor: vscode.TextEditor) {
-  await execute(editor, ")clearImportCache");
-  await loadScript(editor);
-}
-
-function executeSelection(editor: vscode.TextEditor) {
-  if (editor.selection.isEmpty) {
-    return;
+  for (const cmd of commands(script)) {
+    terminal.sendText(cmd, true);
   }
-  // Strip out comments to avoid "Error: Empty program" cluttering the REPL.
-  const code = editor.document
-    .getText(editor.selection)
-    .replace(/#[^\r\n]*/g, "")
-    .replace(/(\r?\n){3,}/g, "$1$1");
-  execute(editor, code);
 }
 
-function executeLine(editor: vscode.TextEditor) {
+function cmdLoadScript(editor: vscode.TextEditor) {
+  runCommands(editor, (script) => [`)ex ${script}`]);
+}
+
+function cmdClearImportsAndLoadScript(editor: vscode.TextEditor) {
+  runCommands(editor, (script) => [")clearImportCache", `)ex ${script}`]);
+}
+
+async function execute(editor: vscode.TextEditor, text: string) {
+  await createOrShowTerminal(editor, { preserveFocus: true });
+  // We surround the text with control characters "\x1b[200~" and "\x1b[201~" to
+  // indicate bracketed paste mode to replxx. This makes it treat the code as a
+  // whole, rather than trying to evaluate after each newline, which would fail
+  // e.g. for a line ending in "{" that starts a block.
+  //
+  // TODO: Once the extension API adds the third parameter `bracketedPasteMode`,
+  // pass true for that instead of doing this manually. For more details:
+  // https://github.com/microsoft/vscode/issues/153592#issuecomment-1182045382
+  // https://github.com/microsoft/vscode/commit/65f97ed1d96989e64c57a689dae062579c75d5f3
+  // https://github.com/microsoft/vscode/commit/89c00c59b6215802b8c02d9b0407f2a8340aed23
+  if (getConfig().executableSupportsReplxx) {
+    text = `\x1b[200~${text}\x1b[201~`;
+  }
+  terminal.sendText(text, true);
+}
+
+function cmdExecuteSelection(editor: vscode.TextEditor) {
+  execute(editor, editor.document.getText(editor.selection));
+}
+
+function cmdExecuteLine(editor: vscode.TextEditor) {
   execute(editor, editor.document.lineAt(editor.selection.active.line).text);
 }
 
-function executeLineAdvance(editor: vscode.TextEditor) {
-  executeLine(editor);
+function cmdExecuteLineAdvance(editor: vscode.TextEditor) {
+  cmdExecuteLine(editor);
   const line = editor.selection.active.line;
   let n = 1;
   while (

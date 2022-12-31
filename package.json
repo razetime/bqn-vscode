@@ -127,17 +127,17 @@
                 "bqn.saveBeforeLoadScript": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Save the file before loading it for the \"Load Script\" command."
+                    "description": "Save the file before loading it for \"Load Script\" and related commands."
                 },
                 "bqn.sendToNewReplDelay": {
                     "type": "number",
                     "default": 500,
                     "description": "Time in milliseconds to wait before sending text to a newly created BQN REPL. This works around a problem where input gets messed up when sent before BQN is ready."
                 },
-                "bqn.sendLoadScriptNewlineDelay": {
-                    "type": "number",
-                    "default": 20,
-                    "description": "Time in milliseconds to wait before a newline to the REPL after an `)ex` command to load a script. This works around a problem where input gets messed up when sent too quickly."
+                "bqn.executableSupportsReplxx": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether `bqn.executablePath` is built with REPLXX support. If it is not, set this to false."
                 }
             }
         }
