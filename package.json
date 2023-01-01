@@ -63,8 +63,16 @@
                 "title": "BQN: Load Script"
             },
             {
+                "command": "language-bqn.clearImports",
+                "title": "BQN: Clear Imports"
+            },
+            {
                 "command": "language-bqn.clearImportsAndLoadScript",
                 "title": "BQN: Clear Imports and Load Script"
+            },
+            {
+                "command": "language-bqn.profileScript",
+                "title": "BQN: Profile Script"
             },
             {
                 "command": "language-bqn.executeSelection",
@@ -127,17 +135,26 @@
                 "bqn.saveBeforeLoadScript": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Save the file before loading it for the \"Load Script\" command."
+                    "description": "Save the file before loading it for \"Load Script\" and related commands."
                 },
                 "bqn.sendToNewReplDelay": {
                     "type": "number",
                     "default": 500,
                     "description": "Time in milliseconds to wait before sending text to a newly created BQN REPL. This works around a problem where input gets messed up when sent before BQN is ready."
                 },
-                "bqn.sendLoadScriptNewlineDelay": {
-                    "type": "number",
-                    "default": 20,
-                    "description": "Time in milliseconds to wait before a newline to the REPL after an `)ex` command to load a script. This works around a problem where input gets messed up when sent too quickly."
+                "bqn.executableSupportsReplxx": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether `bqn.executablePath` is built with REPLXX support. If it is not, set this to false."
+                },
+                "bqn.pendingBackslashBackgroundColor": {
+                    "type": "string",
+                    "description": "Background color to use for the backslash when entering a symbol."
+                },
+                "bqn.enableHoverDocumentation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show documentation when hovering over BQN glyphs."
                 }
             }
         }

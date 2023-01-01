@@ -1,4 +1,6 @@
 .vscode/**
 .vscode-test/**
 .gitignore
-snippetGenerator.js
+gen_snippets.js
+gen_help.sh
+gen_help_writer.lua
