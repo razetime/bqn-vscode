@@ -10,6 +10,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - CBQN WASM interpreter bundled with the extension
 
 ## Released
+- v0.1.1 (changes by @mk12)
+  - Use bracketed paste mode
+  - "Clear Imports" and "Profile Script" commands
+  - Support multiple cursors
+  - Highlight pending backslash
+  - Documentation for symbols on hover
 - v0.1.0 (changes by @mk12)
   * **Implement "Execute Selection"**.
   * **Rewrite the backslash command** to be more reliable.
