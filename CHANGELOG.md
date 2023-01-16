@@ -10,6 +10,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - CBQN WASM interpreter bundled with the extension
 
 ## Released
+- v0.1.2
+  - fix syntax highlighting problem with strands (`‿`)
 - v0.1.1 (changes by @mk12)
   - Use bracketed paste mode
   - "Clear Imports" and "Profile Script" commands
