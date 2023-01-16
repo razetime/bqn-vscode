@@ -54,6 +54,7 @@ local function expand_relative_links(el, url_file)
         written_urls[url] = true
         f:write(el.target .. "\n")
       end
+      return el
     end
   }
   f:close()

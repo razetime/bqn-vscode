@@ -1,448 +1,448 @@
 {
     "𝔾": [
         "[Mathematical Double-struck G](https://mlochbaum.github.io/BQN/help/2-modifierrightoperand.html) (`𝔾`, *keymap:* `\\G`)",
-        "`𝔾`: [**2-Modifier Right operand**](../doc/block.md#operands)\n\nA variable assigned to the right operand of a 2-modifier block. `𝕘` can be used to access the right operand as a subject."
+        "`𝔾`: [**2-Modifier Right operand**](https://mlochbaum.github.io/BQN/doc/block.html#operands)\n\nA variable assigned to the right operand of a 2-modifier block. `𝕘` can be used to access the right operand as a subject."
     ],
     "|": [
         "[Pipe](https://mlochbaum.github.io/BQN/help/absolutevalue_modulus.html) (`|`)",
-        "`| 𝕩`: [**Absolute Value**](../doc/arithmetic.md#additional-arithmetic)\n\nAbsolute Value of `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 | 𝕩`: [**Modulus**](../doc/arithmetic.md#additional-arithmetic)\n\nRemainder of `𝕩` divided by `𝕨`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`| 𝕩`: [**Absolute Value**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#additional-arithmetic)\n\nAbsolute Value of `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 | 𝕩`: [**Modulus**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#additional-arithmetic)\n\nRemainder of `𝕩` divided by `𝕨`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "⟜": [
         "[Left Multimap](https://mlochbaum.github.io/BQN/help/after_bind.html) (`⟜`, *keymap:* `\\l`)",
-        "`𝔽⟜𝕘 𝕩`: [**Bind**](../doc/hook.md#bind)\n\nSupply `𝕘` as a right argument to `𝔽` (`𝕩 𝔽 𝕘`).\n\n`𝕘` is a constant, `𝔽` must be dyadic.",
-        "`𝔽⟜𝔾 𝕩`: [**After**](../doc/hook.md)\n\nApply `𝔾` to `𝕩`, and supply it as a right argument to `𝔽` (`𝕩 𝔽 (𝔾 𝕩)`).\n\n`𝔽` must be dyadic, `𝔾` must be monadic.",
-        "`𝕨 𝔽⟜𝔾 𝕩`: [**Dyadic After**](../doc/hook.md)\n\nApply `𝔾` to `𝕩`, and supply it as a right argument to `𝔽` (`𝕨 𝔽 (𝔾 𝕩)`).\n\n`𝔽` must be dyadic, `𝔾` must be monadic."
+        "`𝔽⟜𝕘 𝕩`: [**Bind**](https://mlochbaum.github.io/BQN/doc/hook.html#bind)\n\nSupply `𝕘` as a right argument to `𝔽` (`𝕩 𝔽 𝕘`).\n\n`𝕘` is a constant, `𝔽` must be dyadic.",
+        "`𝔽⟜𝔾 𝕩`: [**After**](https://mlochbaum.github.io/BQN/doc/hook.html)\n\nApply `𝔾` to `𝕩`, and supply it as a right argument to `𝔽` (`𝕩 𝔽 (𝔾 𝕩)`).\n\n`𝔽` must be dyadic, `𝔾` must be monadic.",
+        "`𝕨 𝔽⟜𝔾 𝕩`: [**Dyadic After**](https://mlochbaum.github.io/BQN/doc/hook.html)\n\nApply `𝔾` to `𝕩`, and supply it as a right argument to `𝔽` (`𝕨 𝔽 (𝔾 𝕩)`).\n\n`𝔽` must be dyadic, `𝔾` must be monadic."
     ],
     "!": [
         "[Exclamation Mark](https://mlochbaum.github.io/BQN/help/assert_assertwithmessage.html) (`!`)",
-        "`! 𝕩`: [**Assert**](../doc/assert.md#assert)\n\nThrow an error if `𝕩` is not 1.",
-        "`𝕨 ! 𝕩`: [**Assert With Message**](../doc/assert.md#assert)\n\nThrow an error with message `𝕨` if `𝕩` is not 1."
+        "`! 𝕩`: [**Assert**](https://mlochbaum.github.io/BQN/doc/assert.html#assert)\n\nThrow an error if `𝕩` is not 1.",
+        "`𝕨 ! 𝕩`: [**Assert With Message**](https://mlochbaum.github.io/BQN/doc/assert.html#assert)\n\nThrow an error with message `𝕨` if `𝕩` is not 1."
     ],
     "∘": [
         "[Ring Operator](https://mlochbaum.github.io/BQN/help/atop.html) (`∘`, *keymap:* `\\j`)",
-        "`𝔽∘𝔾 𝕩`: [**Atop**](../doc/compose.md)\n\nApply `𝔾` to `𝕩`, then apply `𝔽` (`𝔽 𝔾 𝕩`).\n\n`𝔽` and `𝔾` must be monadic.",
-        "`𝕨 𝔽∘𝔾 𝕩`: [**Dyadic Atop**](../doc/compose.md)\n\nApply `𝔾` to `𝕨` and `𝕩`, then apply `𝔽` (`𝔽 (𝕨 𝔾 𝕩)`).\n\n`𝔽` must be monadic, and `𝔾` must be dyadic."
+        "`𝔽∘𝔾 𝕩`: [**Atop**](https://mlochbaum.github.io/BQN/doc/compose.html)\n\nApply `𝔾` to `𝕩`, then apply `𝔽` (`𝔽 𝔾 𝕩`).\n\n`𝔽` and `𝔾` must be monadic.",
+        "`𝕨 𝔽∘𝔾 𝕩`: [**Dyadic Atop**](https://mlochbaum.github.io/BQN/doc/compose.html)\n\nApply `𝔾` to `𝕨` and `𝕩`, then apply `𝔽` (`𝔽 (𝕨 𝔾 𝕩)`).\n\n`𝔽` must be monadic, and `𝔾` must be dyadic."
     ],
     "⊸": [
         "[Multimap](https://mlochbaum.github.io/BQN/help/before_bind.html) (`⊸`, *keymap:* `\\h`)",
-        "`𝕗⊸𝔾 𝕩`: [**Bind Left**](../doc/hook.md#bind)\n\nSupply `𝕗` as a left argument to `𝔾` (`𝕗 𝔾 𝕩`).\n\n`𝕗` is a constant, `𝔾` must be dyadic.",
-        "`𝔽⊸𝔾 𝕩`: [**Before**](../doc/hook.md)\n\nApply `𝔽` to `𝕩`, and supply it as a left argument to `𝔾` (`(𝔽 𝕩) 𝔾 𝕩`).\n\n`𝔽` must be monadic, `𝔾` must be dyadic.",
-        "`𝕨 𝔽⊸𝔾 𝕩`: [**Dyadic Before**](../doc/hook.md)\n\nApply `𝔽` to `𝕨`, and supply it as a left argument to `𝔾` (`(𝔽 𝕨) 𝔾 𝕩`).\n\n`𝔽` must be monadic, `𝔾` must be dyadic."
+        "`𝕗⊸𝔾 𝕩`: [**Bind Left**](https://mlochbaum.github.io/BQN/doc/hook.html#bind)\n\nSupply `𝕗` as a left argument to `𝔾` (`𝕗 𝔾 𝕩`).\n\n`𝕗` is a constant, `𝔾` must be dyadic.",
+        "`𝔽⊸𝔾 𝕩`: [**Before**](https://mlochbaum.github.io/BQN/doc/hook.html)\n\nApply `𝔽` to `𝕩`, and supply it as a left argument to `𝔾` (`(𝔽 𝕩) 𝔾 𝕩`).\n\n`𝔽` must be monadic, `𝔾` must be dyadic.",
+        "`𝕨 𝔽⊸𝔾 𝕩`: [**Dyadic Before**](https://mlochbaum.github.io/BQN/doc/hook.html)\n\nApply `𝔽` to `𝕨`, and supply it as a left argument to `𝔾` (`(𝔽 𝕨) 𝔾 𝕩`).\n\n`𝔽` must be monadic, `𝔾` must be dyadic."
     ],
     "[": [
         "[Left Square Bracket](https://mlochbaum.github.io/BQN/help/beginarray.html) (`[`)",
-        "`[ ...`: [**Begin array**](../doc/arrayrepr.md#high-rank-arrays)\n\nStarts a high-rank array. Entries must be separated by `,` or `⋄`. These must have the same shape. They become major cells of the result.\n\nMust end with a corresponding `]`."
+        "`[ ...`: [**Begin array**](https://mlochbaum.github.io/BQN/doc/arrayrepr.html#high-rank-arrays)\n\nStarts a high-rank array. Entries must be separated by `,` or `⋄`. These must have the same shape. They become major cells of the result.\n\nMust end with a corresponding `]`."
     ],
     "{": [
         "[Left Curly Bracket](https://mlochbaum.github.io/BQN/help/beginblock.html) (`{`)",
-        "`{ ...`: [**Begin Block**](../doc/block.md)\n\nStarts a block, which can be one of:\n\n- Function\n- 1-Modifier\n- 2-Modifier\n- Namespace\n- Immediate Block\n\nMust end with a corresponding `}`."
+        "`{ ...`: [**Begin Block**](https://mlochbaum.github.io/BQN/doc/block.html)\n\nStarts a block, which can be one of:\n\n- Function\n- 1-Modifier\n- 2-Modifier\n- Namespace\n- Immediate Block\n\nMust end with a corresponding `}`."
     ],
     "(": [
         "[Left Parenthesis](https://mlochbaum.github.io/BQN/help/beginexpression.html) (`(`)",
-        "`( ...`: [**Begin Expression**](../doc/expression.md#parentheses)\n\n`(` supercedes any precedence order, so that an expression in `()` is evaluated fully before it can be used in the outer context."
+        "`( ...`: [**Begin Expression**](https://mlochbaum.github.io/BQN/doc/expression.html#parentheses)\n\n`(` supercedes any precedence order, so that an expression in `()` is evaluated fully before it can be used in the outer context."
     ],
     "⟨": [
         "[Mathematical Left Angle Bracket](https://mlochbaum.github.io/BQN/help/beginlist.html) (`⟨`, *keymap:* `\\(`)",
-        "`⟨ ...`: [**Begin list**](../doc/arrayrepr.md#brackets)\n\nStarts a list. Inner elements must be separated by `,` or `⋄`. Lists can be nested in other lists.\n\nMust end with a corresponding `⟩`."
+        "`⟨ ...`: [**Begin list**](https://mlochbaum.github.io/BQN/doc/arrayrepr.html#brackets)\n\nStarts a list. Inner elements must be separated by `,` or `⋄`. Lists can be nested in other lists.\n\nMust end with a corresponding `⟩`."
     ],
     "⎊": [
         "[Circled Triangle Down](https://mlochbaum.github.io/BQN/help/catch.html) (`⎊`)",
-        "`𝔽⎊𝔾 𝕩`, `𝕨 𝔽⎊𝔾 𝕩`: [**Catch**](../doc/assert.md#catch)\n\nApply `𝔽` to the arguments.\n\nIf an error happens when `𝔽` is applied, cancel its execution, apply `𝔾` to the arguments and return its result.\n\nOtherwise, return the result of `𝔽`."
+        "`𝔽⎊𝔾 𝕩`, `𝕨 𝔽⎊𝔾 𝕩`: [**Catch**](https://mlochbaum.github.io/BQN/doc/assert.html#catch)\n\nApply `𝔽` to the arguments.\n\nIf an error happens when `𝔽` is applied, cancel its execution, apply `𝔾` to the arguments and return its result.\n\nOtherwise, return the result of `𝔽`."
     ],
     "⌈": [
         "[Left Ceiling](https://mlochbaum.github.io/BQN/help/ceiling_maximum.html) (`⌈`, *keymap:* `\\B`)",
-        "`⌈ 𝕩`: [**Ceiling**](../doc/arithmetic.md#additional-arithmetic)\n\nRound `𝕩` up to the nearest integer.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 ⌈ 𝕩`: [**Maximum**](../doc/arithmetic.md#additional-arithmetic)\n\nMaximum of `𝕨` and `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`⌈ 𝕩`: [**Ceiling**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#additional-arithmetic)\n\nRound `𝕩` up to the nearest integer.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 ⌈ 𝕩`: [**Maximum**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#additional-arithmetic)\n\nMaximum of `𝕨` and `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "˘": [
         "[Breve](https://mlochbaum.github.io/BQN/help/cells.html) (`˘`, *keymap:* `\\1`)",
-        "`𝔽˘ 𝕩`, `𝕨 𝔽˘ 𝕩`: [**Cells**](../doc/rank.md#cells)\n\nApply `𝔽` to/between the major cells of the arguments. (`𝔽⎉¯1`)"
+        "`𝔽˘ 𝕩`, `𝕨 𝔽˘ 𝕩`: [**Cells**](https://mlochbaum.github.io/BQN/doc/rank.html#cells)\n\nApply `𝔽` to/between the major cells of the arguments. (`𝔽⎉¯1`)"
     ],
     "↩": [
         "[Leftwards Arrow With Hook](https://mlochbaum.github.io/BQN/help/change.html) (`↩`, *keymap:* `\\'`)",
-        "`n ↩ v`: [**Change**](../doc/expression.md#assignment)\n\nChanges the value of variable with name `n` to value `v`.\n\nVariable `n` must already exist.",
-        "`n F↩`: [**Modify**](../doc/expression.md#assignment)\n\nApply function `F` to existing variable `n`, and assign the result back to `n`.",
-        "`n F↩ v`: [**Modify**](../doc/expression.md#assignment)\n\nAssign `n F v` to `n`."
+        "`n ↩ v`: [**Change**](https://mlochbaum.github.io/BQN/doc/expression.html#assignment)\n\nChanges the value of variable with name `n` to value `v`.\n\nVariable `n` must already exist.",
+        "`n F↩`: [**Modify**](https://mlochbaum.github.io/BQN/doc/expression.html#assignment)\n\nApply function `F` to existing variable `n`, and assign the result back to `n`.",
+        "`n F↩ v`: [**Modify**](https://mlochbaum.github.io/BQN/doc/expression.html#assignment)\n\nAssign `n F v` to `n`."
     ],
     "'": [
         "[Single Quote](https://mlochbaum.github.io/BQN/help/character.html) (`'`)",
-        "`'c'`: [**Character**](../doc/token.md#characters-and-strings)\n\nA character literal whose value is the character between quotes. Any character can be used, even `'` and newline."
+        "`'c'`: [**Character**](https://mlochbaum.github.io/BQN/doc/token.html#characters-and-strings)\n\nA character literal whose value is the character between quotes. Any character can be used, even `'` and newline."
     ],
     "◶": [
         "[Circle with Lower Right Quadrant](https://mlochbaum.github.io/BQN/help/choose.html) (`◶`, *keymap:* `\\$`)",
-        "`𝔽◶𝕘 𝕩`, `𝕨 𝔽◶𝕘 𝕩`: [**Choose**](../doc/choose.md)\n\nApply `𝔽` to the arguments and use the result to [pick](first_pick.md#𝕨--𝕩-pick) (`⊑`) a function from list `𝕘`. Apply the picked function to the arguments."
+        "`𝔽◶𝕘 𝕩`, `𝕨 𝔽◶𝕘 𝕩`: [**Choose**](https://mlochbaum.github.io/BQN/doc/choose.html)\n\nApply `𝔽` to the arguments and use the result to [pick](https://mlochbaum.github.io/BQN/help/first_pick.html#𝕨--𝕩-pick) (`⊑`) a function from list `𝕘`. Apply the picked function to the arguments."
     ],
     "⊐": [
         "[Square Original Of](https://mlochbaum.github.io/BQN/help/classify_indexof.html) (`⊐`, *keymap:* `\\o`)",
-        "`⊐ 𝕩`: [**Classify**](../doc/selfcmp.md#classify)\n\nTranslate major cells of `𝕩` to unique ID numbers based on first occurrence.",
-        "`𝕨 ⊐ 𝕩`: [**Index Of**](../doc/search.md#index-of)\n\nFirst index of each major cell of `𝕩` in `𝕨`. Rank of `𝕩` must be at least cell rank of `𝕨`.\n\nIf a cell is not found in `𝕨`, the length of `𝕨` (`≠𝕨`) is used for that position."
+        "`⊐ 𝕩`: [**Classify**](https://mlochbaum.github.io/BQN/doc/selfcmp.html#classify)\n\nTranslate major cells of `𝕩` to unique ID numbers based on first occurrence.",
+        "`𝕨 ⊐ 𝕩`: [**Index Of**](https://mlochbaum.github.io/BQN/doc/search.html#index-of)\n\nFirst index of each major cell of `𝕩` in `𝕨`. Rank of `𝕩` must be at least cell rank of `𝕨`.\n\nIf a cell is not found in `𝕨`, the length of `𝕨` (`≠𝕨`) is used for that position."
     ],
     "#": [
         "[Number Sign](https://mlochbaum.github.io/BQN/help/comment.html) (`#`)",
-        "`#`: [**Comment**](../doc/token.md#comments)\n\nCreate a comment that extends to the end of the line.\n\nAnything written in comments is ignored."
+        "`#`: [**Comment**](https://mlochbaum.github.io/BQN/doc/token.html#comments)\n\nCreate a comment that extends to the end of the line.\n\nAnything written in comments is ignored."
     ],
     "+": [
         "[Plus](https://mlochbaum.github.io/BQN/help/conjugate_add.html) (`+`)",
-        "`+ 𝕩`: [**Conjugate**](../doc/arithmetic.md#basic-arithmetic)\n\nComplex conjugate of `𝕩`. BQN doesn't support complex numbers yet, so it has no effect.",
-        "`𝕨 + 𝕩`: [**Add**](../doc/arithmetic.md#basic-arithmetic)\n\n`𝕨` added to `𝕩`. Either `𝕨` or `𝕩` can be a character, and if so, the other has to be an integer.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`+ 𝕩`: [**Conjugate**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\nComplex conjugate of `𝕩`. BQN doesn't support complex numbers yet, so it has no effect.",
+        "`𝕨 + 𝕩`: [**Add**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n`𝕨` added to `𝕩`. Either `𝕨` or `𝕩` can be a character, and if so, the other has to be an integer.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "˙": [
         "[Dot Above](https://mlochbaum.github.io/BQN/help/constant.html) (`˙`, *keymap:* `\\\"`)",
-        "`𝔽˙ 𝕩`, `𝕨 𝔽˙ 𝕩`: [**Constant**](../doc/constant.md)\n\nReturns a function that will always return `𝕗`."
+        "`𝔽˙ 𝕩`, `𝕨 𝔽˙ 𝕩`: [**Constant**](https://mlochbaum.github.io/BQN/doc/constant.html)\n\nReturns a function that will always return `𝕗`."
     ],
     "𝕊": [
         "[Mathematical Double-struck S](https://mlochbaum.github.io/BQN/help/currentfunction.html) (`𝕊`, *keymap:* `\\S`)",
-        "`𝕊`: [**Current Function**](../doc/block.md#self-reference)\n\nA variable assigned to the current function block. `𝕤` accesses the same value but has a subject role.\n\n`𝕊` can be used for recursion."
+        "`𝕊`: [**Current Function**](https://mlochbaum.github.io/BQN/doc/block.html#self-reference)\n\nA variable assigned to the current function block. `𝕤` accesses the same value but has a subject role.\n\n`𝕊` can be used for recursion."
     ],
     "𝕣": [
         "[Mathematical Double-struck R](https://mlochbaum.github.io/BQN/help/currentmodifier.html) (`𝕣`, *keymap:* `\\R`)",
-        "`𝕣`: [**Current Modifier**](../doc/block.md#self-reference)\n\nA variable assigned to the current modifier block. Add underscores to the beginning and/or end (`_𝕣`, `_𝕣_`) to use it in a modifier role."
+        "`𝕣`: [**Current Modifier**](https://mlochbaum.github.io/BQN/doc/block.html#self-reference)\n\nA variable assigned to the current modifier block. Add underscores to the beginning and/or end (`_𝕣`, `_𝕣_`) to use it in a modifier role."
     ],
     "⍷": [
         "[Epsilon Underbar](https://mlochbaum.github.io/BQN/help/deduplicate_find.html) (`⍷`, *keymap:* `\\E`)",
-        "`⍷ 𝕩`: [**Deduplicate**](../doc/selfcmp.md#deduplicate)\n\nUnique major cells of `𝕩`.",
-        "`𝕨 ⍷ 𝕩`: [**Find**](../doc/find.md)\n\nMark the top left location of the occurrences of `𝕨` in `𝕩` with a 1, and other locations with 0.\n\nResult is the same shape as `(≢𝕨)↕x`."
+        "`⍷ 𝕩`: [**Deduplicate**](https://mlochbaum.github.io/BQN/doc/selfcmp.html#deduplicate)\n\nUnique major cells of `𝕩`.",
+        "`𝕨 ⍷ 𝕩`: [**Find**](https://mlochbaum.github.io/BQN/doc/find.html)\n\nMark the top left location of the occurrences of `𝕨` in `𝕩` with a 1, and other locations with 0.\n\nResult is the same shape as `(≢𝕨)↕x`."
     ],
     "←": [
         "[Leftwards Arrow](https://mlochbaum.github.io/BQN/help/define.html) (`←`, *keymap:* `\\[`)",
-        "`n ← v`: [**Define**](../doc/expression.md#assignment)\n\nDefines a new variable with name `n` and value `v`.\n\nVariable `n` must not already exist in the scope."
+        "`n ← v`: [**Define**](https://mlochbaum.github.io/BQN/doc/expression.html#assignment)\n\nDefines a new variable with name `n` and value `v`.\n\nVariable `n` must not already exist in the scope."
     ],
     "⚇": [
         "[Circle With Two Dots](https://mlochbaum.github.io/BQN/help/depth.html) (`⚇`, *keymap:* `\\@`)",
-        "`𝔽⚇𝕘 𝕩`, `𝕨 𝔽⚇𝕘 𝕩`: [**Depth**](../doc/depth.md#the-depth-modifier)\n\nApply `𝔽` to the cells of the arguments at depth given in `𝕘`. Negative numbers count down from the top level and non-negative ones from the bottom up."
+        "`𝔽⚇𝕘 𝕩`, `𝕨 𝔽⚇𝕘 𝕩`: [**Depth**](https://mlochbaum.github.io/BQN/doc/depth.html#the-depth-modifier)\n\nApply `𝔽` to the cells of the arguments at depth given in `𝕘`. Negative numbers count down from the top level and non-negative ones from the bottom up."
     ],
     "≡": [
         "[Identical To](https://mlochbaum.github.io/BQN/help/depth_match.html) (`≡`, *keymap:* `\\m`)",
-        "`≡ 𝕩`: [**Depth**](../doc/depth.md)\n\nHighest level of nesting in `𝕩`.",
-        "`𝕨 ≡ 𝕩`: [**Match**](../doc/match.md)\n\nDoes `𝕨` exactly match `𝕩`?"
+        "`≡ 𝕩`: [**Depth**](https://mlochbaum.github.io/BQN/doc/depth.html)\n\nHighest level of nesting in `𝕩`.",
+        "`𝕨 ≡ 𝕩`: [**Match**](https://mlochbaum.github.io/BQN/doc/match.html)\n\nDoes `𝕨` exactly match `𝕩`?"
     ],
     "⥊": [
         "[Barb](https://mlochbaum.github.io/BQN/help/deshape_reshape.html) (`⥊`, *keymap:* `\\z`)",
-        "`⥊ 𝕩`: [**Deshape**](../doc/reshape.md)\n\nPut all elements of `𝕩` in a rank 1 array, promoting to an array if necessary.",
-        "`𝕨 ⥊ 𝕩`: [**Reshape**](../doc/reshape.md)\n\nPut all elements of `𝕩` in an array of shape `𝕨`, removing elements or repeating them cyclically if necessary.\n\nA single element in `𝕨` can be a function, which will be replaced with an appropriate length:\n\n- `∘` Exact fit\n- `⌊` Round length down, discarding elements\n- `⌽` Round length up\n- `↑` Round length up, and use element fill to add extra elements."
+        "`⥊ 𝕩`: [**Deshape**](https://mlochbaum.github.io/BQN/doc/reshape.html)\n\nPut all elements of `𝕩` in a rank 1 array, promoting to an array if necessary.",
+        "`𝕨 ⥊ 𝕩`: [**Reshape**](https://mlochbaum.github.io/BQN/doc/reshape.html)\n\nPut all elements of `𝕩` in an array of shape `𝕨`, removing elements or repeating them cyclically if necessary.\n\nA single element in `𝕨` can be a function, which will be replaced with an appropriate length:\n\n- `∘` Exact fit\n- `⌊` Round length down, discarding elements\n- `⌽` Round length up\n- `↑` Round length up, and use element fill to add extra elements."
     ],
     "¨": [
         "[Diaresis](https://mlochbaum.github.io/BQN/help/each.html) (`¨`, *keymap:* `\\2`)",
-        "`𝔽¨ 𝕩`, `𝕨 𝔽¨ 𝕩`: [**Each**](../doc/map.md)\n\nApply `𝔽` to/between the elements of the arguments. (`𝔽⚇¯1`)"
+        "`𝔽¨ 𝕩`, `𝕨 𝔽¨ 𝕩`: [**Each**](https://mlochbaum.github.io/BQN/doc/map.html)\n\nApply `𝔽` to/between the elements of the arguments. (`𝔽⚇¯1`)"
     ],
     "<": [
         "[Lesser Than](https://mlochbaum.github.io/BQN/help/enclose_lessthan.html) (`<`)",
-        "`< 𝕩`: [**Enclose**](../doc/enclose.md)\n\nCreate a unit array containing `𝕩`. (`(≢<𝕩) ≡ ⟨⟩`)",
-        "`𝕨 < 𝕩`: [**Lesser Than**](../doc/arithmetic.md#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`< 𝕩`: [**Enclose**](https://mlochbaum.github.io/BQN/doc/enclose.html)\n\nCreate a unit array containing `𝕩`. (`(≢<𝕩) ≡ ⟨⟩`)",
+        "`𝕨 < 𝕩`: [**Lesser Than**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "]": [
         "[Right Square Bracket](https://mlochbaum.github.io/BQN/help/endarray.html) (`]`)",
-        "`... ]`: [**End array**](../doc/arrayrepr.md#high-rank-arrays)\n\nEnds an array started by a `[`. See [Begin Array](beginarray.md) for more details."
+        "`... ]`: [**End array**](https://mlochbaum.github.io/BQN/doc/arrayrepr.html#high-rank-arrays)\n\nEnds an array started by a `[`. See [Begin Array](https://mlochbaum.github.io/BQN/help/beginarray.html) for more details."
     ],
     "}": [
         "[Right Curly Bracket](https://mlochbaum.github.io/BQN/help/endblock.html) (`}`)",
-        "`... }`: [**End Block**](../doc/block.md)\n\nStarts a block, which starts with `}`. See [Begin Block](beginblock.md) for more details."
+        "`... }`: [**End Block**](https://mlochbaum.github.io/BQN/doc/block.html)\n\nStarts a block, which starts with `}`. See [Begin Block](https://mlochbaum.github.io/BQN/help/beginblock.html) for more details."
     ],
     ")": [
         "[Right Parenthesis](https://mlochbaum.github.io/BQN/help/endexpression.html) (`)`)",
-        "`... )`: [**End Expression**](../doc/expression.md#parentheses)\n\nThe closing symbol for `(`. See [Begin Expression](beginexpression.md) for more details."
+        "`... )`: [**End Expression**](https://mlochbaum.github.io/BQN/doc/expression.html#parentheses)\n\nThe closing symbol for `(`. See [Begin Expression](https://mlochbaum.github.io/BQN/help/beginexpression.html) for more details."
     ],
     "⟩": [
         "[Mathematical Right Angle Bracket](https://mlochbaum.github.io/BQN/help/endlist.html) (`⟩`, *keymap:* `\\)`)",
-        "`... ⟩`: [**End list**](../doc/arrayrepr.md#brackets)\n\nEnds a list started by a `⟨`. See [Begin List](beginlist.md) for more details."
+        "`... ⟩`: [**End list**](https://mlochbaum.github.io/BQN/doc/arrayrepr.html#brackets)\n\nEnds a list started by a `⟨`. See [Begin List](https://mlochbaum.github.io/BQN/help/beginlist.html) for more details."
     ],
     "⋈": [
         "[Bow Tie](https://mlochbaum.github.io/BQN/help/enlist_pair.html) (`⋈`, *keymap:* `\\Z`)",
-        "`⋈ 𝕩`: [**Enlist**](../doc/pair.md)\n\nPut `𝕩` in a single element list. (`⟨𝕩⟩`)",
-        "`𝕨 ⋈ 𝕩`: [**Pair**](../doc/pair.md)\n\nPut `𝕨` and `𝕩` in a two element list. (`⟨𝕨, 𝕩⟩`)"
+        "`⋈ 𝕩`: [**Enlist**](https://mlochbaum.github.io/BQN/doc/pair.html)\n\nPut `𝕩` in a single element list. (`⟨𝕩⟩`)",
+        "`𝕨 ⋈ 𝕩`: [**Pair**](https://mlochbaum.github.io/BQN/doc/pair.html)\n\nPut `𝕨` and `𝕩` in a two element list. (`⟨𝕨, 𝕩⟩`)"
     ],
     "⋆": [
         "[Star](https://mlochbaum.github.io/BQN/help/exponential_power.html) (`⋆`, *keymap:* `\\+`)",
-        "`⋆ 𝕩`: [**Exponential**](../doc/arithmetic.md#basic-arithmetic)\n\n`e` (Euler's constant) to the power of `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 ⋆ 𝕩`: [**Power**](../doc/arithmetic.md#basic-arithmetic)\n\n`𝕨` to the power of `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`⋆ 𝕩`: [**Exponential**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n`e` (Euler's constant) to the power of `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 ⋆ 𝕩`: [**Power**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n`𝕨` to the power of `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "⇐": [
         "[Leftward Double Arrow](https://mlochbaum.github.io/BQN/help/export.html) (`⇐`, *keymap:* `\\?`)",
-        "`n ⇐ v`: [**Export Definition**](../doc/namespace.md#exports)\n\nDefine a variable with name `n` and export it from the current namespace.",
-        "`n ⇐`: [**Export names**](../doc/namespace.md#exports)\n\nExport the names given in `n` from the current namespace. Names must be defined somewhere in the scope."
+        "`n ⇐ v`: [**Export Definition**](https://mlochbaum.github.io/BQN/doc/namespace.html#exports)\n\nDefine a variable with name `n` and export it from the current namespace.",
+        "`n ⇐`: [**Export names**](https://mlochbaum.github.io/BQN/doc/namespace.html#exports)\n\nExport the names given in `n` from the current namespace. Names must be defined somewhere in the scope."
     ],
     "⊑": [
         "[Square Image Of Or Equal To](https://mlochbaum.github.io/BQN/help/first_pick.html) (`⊑`, *keymap:* `\\I`)",
-        "`⊑ 𝕩`: [**First**](../doc/pick.md#first)\n\nFirst element of `𝕩`.",
-        "`𝕨 ⊑ 𝕩`: [**Pick**](../doc/pick.md)\n\nPick the element of `𝕩` at index `𝕨`."
+        "`⊑ 𝕩`: [**First**](https://mlochbaum.github.io/BQN/doc/pick.html#first)\n\nFirst element of `𝕩`.",
+        "`𝕨 ⊑ 𝕩`: [**Pick**](https://mlochbaum.github.io/BQN/doc/pick.html)\n\nPick the element of `𝕩` at index `𝕨`."
     ],
     "⊏": [
         "[Square Image Of](https://mlochbaum.github.io/BQN/help/firstcell_select.html) (`⊏`, *keymap:* `\\i`)",
-        "`⊏ 𝕩`: [**First Cell**](../doc/select.md#first-cell)\n\nFirst major cell of `𝕩`.",
-        "`𝕨 ⊏ 𝕩`: [**Select**](../doc/select.md)\n\nSelect the major cells of `𝕩` at the indices in `𝕨`."
+        "`⊏ 𝕩`: [**First Cell**](https://mlochbaum.github.io/BQN/doc/select.html#first-cell)\n\nFirst major cell of `𝕩`.",
+        "`𝕨 ⊏ 𝕩`: [**Select**](https://mlochbaum.github.io/BQN/doc/select.html)\n\nSelect the major cells of `𝕩` at the indices in `𝕨`."
     ],
     "⌊": [
         "[Left Floor](https://mlochbaum.github.io/BQN/help/floor_minimum.html) (`⌊`, *keymap:* `\\b`)",
-        "`⌊ 𝕩`: [**Floor**](../doc/arithmetic.md#additional-arithmetic)\n\nRound `𝕩` down to the nearest integer.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 ⌊ 𝕩`: [**Minimum**](../doc/arithmetic.md#additional-arithmetic)\n\nMinimum of `𝕨` and `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`⌊ 𝕩`: [**Floor**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#additional-arithmetic)\n\nRound `𝕩` down to the nearest integer.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 ⌊ 𝕩`: [**Minimum**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#additional-arithmetic)\n\nMinimum of `𝕨` and `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "´": [
         "[Acute Accent](https://mlochbaum.github.io/BQN/help/fold.html) (`´`, *keymap:* `\\5`)",
-        "`𝔽´ 𝕩`: [**Fold**](../doc/fold.md)\n\nFold over `𝕩` with `𝔽` from right to left i.e. Insert `𝔽` between the elements of `𝕩`.\n\n`𝕩` must be a simple list (`1 = =𝕩`).",
-        "`𝕨 𝔽´ 𝕩`: [**Fold With Initial**](../doc/fold.md#initial-element)\n\nMonadic fold, but use `𝕨` as initial right argument."
+        "`𝔽´ 𝕩`: [**Fold**](https://mlochbaum.github.io/BQN/doc/fold.html)\n\nFold over `𝕩` with `𝔽` from right to left i.e. Insert `𝔽` between the elements of `𝕩`.\n\n`𝕩` must be a simple list (`1 = =𝕩`).",
+        "`𝕨 𝔽´ 𝕩`: [**Fold With Initial**](https://mlochbaum.github.io/BQN/doc/fold.html#initial-element)\n\nMonadic fold, but use `𝕨` as initial right argument."
     ],
     "⍒": [
         "[Del Stile](https://mlochbaum.github.io/BQN/help/gradedown_binsdown.html) (`⍒`, *keymap:* `\\V`)",
-        "`⍒ 𝕩`: [**Grade Down**](../doc/order.md#grade)\n\nIndices of `𝕩` that would sort its major cells in descending order.",
-        "`𝕨 ⍒ 𝕩`: [**Bins Down**](../doc/order.md#bins)\n\nBinary search for each cell of `𝕩` in `𝕨`, returning the number of major cells in `𝕨` greater than or equal to that cell.\n\n`𝕨` must be sorted in descending order.\n\n[Right Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`⍒ 𝕩`: [**Grade Down**](https://mlochbaum.github.io/BQN/doc/order.html#grade)\n\nIndices of `𝕩` that would sort its major cells in descending order.",
+        "`𝕨 ⍒ 𝕩`: [**Bins Down**](https://mlochbaum.github.io/BQN/doc/order.html#bins)\n\nBinary search for each cell of `𝕩` in `𝕨`, returning the number of major cells in `𝕨` greater than or equal to that cell.\n\n`𝕨` must be sorted in descending order.\n\n[Right Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "⍋": [
         "[Delta Stile](https://mlochbaum.github.io/BQN/help/gradeup_binsup.html) (`⍋`, *keymap:* `\\T`)",
-        "`⍋ 𝕩`: [**Grade Up**](../doc/order.md#grade)\n\nIndices of `𝕩` that would sort its major cells in ascending order.",
-        "`𝕨 ⍋ 𝕩`: [**Bins Up**](../doc/order.md#bins)\n\nBinary search for each cell of `𝕩` in `𝕨`, returning the number of major cells in `𝕨` less than or equal to that cell.\n\n`𝕨` must be sorted in ascending order."
+        "`⍋ 𝕩`: [**Grade Up**](https://mlochbaum.github.io/BQN/doc/order.html#grade)\n\nIndices of `𝕩` that would sort its major cells in ascending order.",
+        "`𝕨 ⍋ 𝕩`: [**Bins Up**](https://mlochbaum.github.io/BQN/doc/order.html#bins)\n\nBinary search for each cell of `𝕩` in `𝕨`, returning the number of major cells in `𝕨` less than or equal to that cell.\n\n`𝕨` must be sorted in ascending order."
     ],
     "≥": [
         "[Greater Than or Equal To](https://mlochbaum.github.io/BQN/help/greaterthanorequalto.html) (`≥`, *keymap:* `\\>`)",
-        "`𝕨 ≥ 𝕩`: [**Greater Than or Equal To**](../doc/arithmetic.md#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`𝕨 ≥ 𝕩`: [**Greater Than or Equal To**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "⊔": [
         "[Square Cup](https://mlochbaum.github.io/BQN/help/groupindices_group.html) (`⊔`, *keymap:* `\\u`)",
-        "`⊔ 𝕩`: [**Group Indices**](../doc/group.md)\n\nGroup the indices of the major cells of `𝕩` by their respective values.\n\n`𝕩` must consist of integers. Groups start from 0.",
-        "`𝕨 ⊔ 𝕩`: [**Group**](../doc/group.md)\n\nGroup the major cells of `𝕩` by their respective indices in `𝕨`.\n\nIf an element corresponds to `¯1`, it is excluded from grouping.\n\nAn extra element can be added to the end of `𝕨` to specify length of the result."
+        "`⊔ 𝕩`: [**Group Indices**](https://mlochbaum.github.io/BQN/doc/group.html)\n\nGroup the indices of the major cells of `𝕩` by their respective values.\n\n`𝕩` must consist of integers. Groups start from 0.",
+        "`𝕨 ⊔ 𝕩`: [**Group**](https://mlochbaum.github.io/BQN/doc/group.html)\n\nGroup the major cells of `𝕩` by their respective indices in `𝕨`.\n\nIf an element corresponds to `¯1`, it is excluded from grouping.\n\nAn extra element can be added to the end of `𝕨` to specify length of the result."
     ],
     ":": [
         "[Colon](https://mlochbaum.github.io/BQN/help/header.html) (`:`)",
-        "`:`: [**Header**](../doc/block.md#block-headers)\n\nPlaced at the end of a block header. A header has syntax that matches the way the block is called. It indicates the block type, and number and structure of inputs.\n\nMultiple bodies are searched in order to find one with a matching header."
+        "`:`: [**Header**](https://mlochbaum.github.io/BQN/doc/block.html#block-headers)\n\nPlaced at the end of a block header. A header has syntax that matches the way the block is called. It indicates the block type, and number and structure of inputs.\n\nMultiple bodies are searched in order to find one with a matching header."
     ],
     "⊣": [
         "[Left Tack](https://mlochbaum.github.io/BQN/help/identity_left.html) (`⊣`, *keymap:* `\\{`)",
-        "`⊣ 𝕩`: [**Identity**](../doc/identity.md)\n\nReturn `𝕩`.",
-        "`𝕨 ⊣ 𝕩`: [**Left**](../doc/identity.md)\n\nReturn `𝕨`."
+        "`⊣ 𝕩`: [**Identity**](https://mlochbaum.github.io/BQN/doc/identity.html)\n\nReturn `𝕩`.",
+        "`𝕨 ⊣ 𝕩`: [**Left**](https://mlochbaum.github.io/BQN/doc/identity.html)\n\nReturn `𝕨`."
     ],
     "⊢": [
         "[Right Tack](https://mlochbaum.github.io/BQN/help/identity_right.html) (`⊢`, *keymap:* `\\}`)",
-        "`⊢ 𝕩`: [**Identity**](../doc/identity.md)\n\nReturn `𝕩`.",
-        "`𝕨 ⊢ 𝕩`: [**Right**](../doc/identity.md)\n\nReturn `𝕩`."
+        "`⊢ 𝕩`: [**Identity**](https://mlochbaum.github.io/BQN/doc/identity.html)\n\nReturn `𝕩`.",
+        "`𝕨 ⊢ 𝕩`: [**Right**](https://mlochbaum.github.io/BQN/doc/identity.html)\n\nReturn `𝕩`."
     ],
     "/": [
         "[Solidus](https://mlochbaum.github.io/BQN/help/indices_replicate.html) (`/`)",
-        "`/ 𝕩`: [**Indices**](../doc/replicate.md#indices)\n\nRepeat the index of each element in `𝕩` by the element's value. `𝕩` must be rank 1.",
-        "`𝕨 / 𝕩`: [**Replicate**](../doc/replicate.md)\n\nRepeat each major cell in `𝕩` by the corresponding element in `𝕨`.\n\nUnit `𝕨` applies to all elements."
+        "`/ 𝕩`: [**Indices**](https://mlochbaum.github.io/BQN/doc/replicate.html#indices)\n\nRepeat the index of each element in `𝕩` by the element's value. `𝕩` must be rank 1.",
+        "`𝕨 / 𝕩`: [**Replicate**](https://mlochbaum.github.io/BQN/doc/replicate.html)\n\nRepeat each major cell in `𝕩` by the corresponding element in `𝕨`.\n\nUnit `𝕨` applies to all elements."
     ],
     "∞": [
         "[Infinity](https://mlochbaum.github.io/BQN/help/infinity.html) (`∞`, *keymap:* `\\8`)",
-        "`∞`: [**Infinity**](../doc/token.md#numbers)\n\nMathematical constant Infinity, a numeric literal. Can be negative (`¯∞`)."
+        "`∞`: [**Infinity**](https://mlochbaum.github.io/BQN/doc/token.html#numbers)\n\nMathematical constant Infinity, a numeric literal. Can be negative (`¯∞`)."
     ],
     "˝": [
         "[Double Acute Accent](https://mlochbaum.github.io/BQN/help/insert.html) (`˝`, *keymap:* `\\6`)",
-        "`𝔽˝ 𝕩`: [**Insert**](../doc/fold.md)\n\nFold over cells of `𝕩` with `𝔽` from end to start, that is, insert `𝔽` between the major cells of `𝕩`.",
-        "`𝕨 𝔽˝ 𝕩`: [**Insert With Initial**](../doc/fold.md#initial-element)\n\nMonadic insert, but use `𝕨` as initial right argument.\n\nIf"
+        "`𝔽˝ 𝕩`: [**Insert**](https://mlochbaum.github.io/BQN/doc/fold.html)\n\nFold over cells of `𝕩` with `𝔽` from end to start, that is, insert `𝔽` between the major cells of `𝕩`.",
+        "`𝕨 𝔽˝ 𝕩`: [**Insert With Initial**](https://mlochbaum.github.io/BQN/doc/fold.html#initial-element)\n\nMonadic insert, but use `𝕨` as initial right argument.\n\nIf"
     ],
     "∾": [
         "[Lazy S](https://mlochbaum.github.io/BQN/help/join_jointo.html) (`∾`, *keymap:* `\\,`)",
-        "`∾ 𝕩`: [**Join**](../doc/join.md)\n\nJoin all elements of `𝕩` together.\n\nElement ranks must be compatible.",
-        "`𝕨 ∾ 𝕩`: [**Join To**](../doc/join.md)\n\nJoin `𝕨` to `𝕩` along the first axis."
+        "`∾ 𝕩`: [**Join**](https://mlochbaum.github.io/BQN/doc/join.html)\n\nJoin all elements of `𝕩` together.\n\nElement ranks must be compatible.",
+        "`𝕨 ∾ 𝕩`: [**Join To**](https://mlochbaum.github.io/BQN/doc/join.html)\n\nJoin `𝕨` to `𝕩` along the first axis."
     ],
     "𝕨": [
         "[Mathematical Double-struck W](https://mlochbaum.github.io/BQN/help/leftargument.html) (`𝕨`, *keymap:* `\\w`)",
-        "`𝕨`: [**Left Argument**](../doc/block.md#arguments)\n\nA variable assigned to the left argument of a block. `𝕎` can be used to access the left argument as a function.\n\nIn a call with no left argument, `𝕨` functions as [Nothing](nothing.md) and `𝕎` can't be used."
+        "`𝕨`: [**Left Argument**](https://mlochbaum.github.io/BQN/doc/block.html#arguments)\n\nA variable assigned to the left argument of a block. `𝕎` can be used to access the left argument as a function.\n\nIn a call with no left argument, `𝕨` functions as [Nothing](https://mlochbaum.github.io/BQN/help/nothing.html) and `𝕎` can't be used."
     ],
     "≠": [
         "[Not Equal](https://mlochbaum.github.io/BQN/help/length_notequals.html) (`≠`, *keymap:* `\\/`)",
-        "`≠ 𝕩`: [**Length**](../doc/shape.md)\n\nLength of the first dimension of `𝕩`.",
-        "`𝕨 ≠ 𝕩`: [**Not Equal To**](../doc/arithmetic.md#comparisons)\n\nDo argument atoms not match?\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`≠ 𝕩`: [**Length**](https://mlochbaum.github.io/BQN/doc/shape.html)\n\nLength of the first dimension of `𝕩`.",
+        "`𝕨 ≠ 𝕩`: [**Not Equal To**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#comparisons)\n\nDo argument atoms not match?\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "≤": [
         "[Lesser Than or Equal To](https://mlochbaum.github.io/BQN/help/lessthanorequalto.html) (`≤`, *keymap:* `\\<`)",
-        "`𝕨 ≤ 𝕩`: [**Lesser Than or Equal To**](../doc/arithmetic.md#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`𝕨 ≤ 𝕩`: [**Lesser Than or Equal To**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "∊": [
         "[Element Of](https://mlochbaum.github.io/BQN/help/markfirst_memberof.html) (`∊`, *keymap:* `\\e`)",
-        "`∊ 𝕩`: [**Mark Firsts**](../doc/selfcmp.md#mark-firsts)\n\nMark the first occurrence of each major cell in `𝕩` with a 1, and all other occurrences with a 0.",
-        "`𝕨 ∊ 𝕩`: [**Member Of**](../doc/search.md#member-of)\n\nIs each cell in `𝕨` a major cell of `𝕩`?"
+        "`∊ 𝕩`: [**Mark Firsts**](https://mlochbaum.github.io/BQN/doc/selfcmp.html#mark-firsts)\n\nMark the first occurrence of each major cell in `𝕩` with a 1, and all other occurrences with a 0.",
+        "`𝕨 ∊ 𝕩`: [**Member Of**](https://mlochbaum.github.io/BQN/doc/search.html#member-of)\n\nIs each cell in `𝕨` a major cell of `𝕩`?"
     ],
     ">": [
         "[Greater Than](https://mlochbaum.github.io/BQN/help/merge_greaterthan.html) (`>`)",
-        "`> 𝕩`: [**Merge**](../doc/couple.md)\n\nCombine an array of arrays into one array. All elements of `𝕩` must have the same rank, and the result rank is that plus the rank of `𝕩`.\n\nReturns and boxed atoms unchanged.",
-        "`𝕨 > 𝕩`: [**Greater Than**](../doc/arithmetic.md#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`> 𝕩`: [**Merge**](https://mlochbaum.github.io/BQN/doc/couple.html)\n\nCombine an array of arrays into one array. All elements of `𝕩` must have the same rank, and the result rank is that plus the rank of `𝕩`.\n\nReturns and boxed atoms unchanged.",
+        "`𝕨 > 𝕩`: [**Greater Than**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#comparisons)\n\n`𝕨` and `𝕩` can both be either numbers or characters.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "¯": [
         "[Macron](https://mlochbaum.github.io/BQN/help/minus.html) (`¯`, *keymap:* `\\9`)",
-        "`¯`: [**Minus**](../doc/token.md#numbers)\n\nPrefix before numbers to indicate that they are negative.\n\nNote that this is not the same as `-`, since it is part of the number, rather than a primitive that negates its value."
+        "`¯`: [**Minus**](https://mlochbaum.github.io/BQN/doc/token.html#numbers)\n\nPrefix before numbers to indicate that they are negative.\n\nNote that this is not the same as `-`, since it is part of the number, rather than a primitive that negates its value."
     ],
     "𝔽": [
         "[Mathematical Double-struck F](https://mlochbaum.github.io/BQN/help/modifierleftoperand.html) (`𝔽`, *keymap:* `\\F`)",
-        "`𝔽`: [**Modifier Left operand**](../doc/block.md#operands)\n\nA variable assigned to the left operand of a modifier block. `𝕗` can be used to access the left operand as a subject."
+        "`𝔽`: [**Modifier Left operand**](https://mlochbaum.github.io/BQN/doc/block.html#operands)\n\nA variable assigned to the left operand of a modifier block. `𝕗` can be used to access the left operand as a subject."
     ],
     ".": [
         "[Full Stop](https://mlochbaum.github.io/BQN/help/namespacefield.html) (`.`)",
-        "`ns . name`: [**Namespace Field**](../doc/namespace.md)\n\nAccess a field with name `name` in namespace `ns`. Field must have been exported with `⇐`."
+        "`ns . name`: [**Namespace Field**](https://mlochbaum.github.io/BQN/doc/namespace.html)\n\nAccess a field with name `name` in namespace `ns`. Field must have been exported with `⇐`."
     ],
     "-": [
         "[Minus](https://mlochbaum.github.io/BQN/help/negate_subtract.html) (`-`)",
-        "`- 𝕩`: [**Negate**](../doc/arithmetic.md#basic-arithmetic)\n\nAdditive Inverse of `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 - 𝕩`: [**Subtract**](../doc/arithmetic.md#basic-arithmetic)\n\nSubtract `𝕩` from `𝕨`. `𝕨` and `𝕩` can be characters or numbers.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`- 𝕩`: [**Negate**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\nAdditive Inverse of `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 - 𝕩`: [**Subtract**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\nSubtract `𝕩` from `𝕨`. `𝕨` and `𝕩` can be characters or numbers.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     ";": [
         "[Semicolon](https://mlochbaum.github.io/BQN/help/nextbody.html) (`;`)",
-        "`;`: [**Next Body**](../doc/block.md#multiple-bodies)\n\nEnd the current block body and start a new one. [Headers](header.md) (`:`) and [predicates](predicate.md) (`?`) can control which body is evaluated. A function can have two headers without these, indicating the monadic and dyadic cases."
+        "`;`: [**Next Body**](https://mlochbaum.github.io/BQN/doc/block.html#multiple-bodies)\n\nEnd the current block body and start a new one. [Headers](https://mlochbaum.github.io/BQN/help/header.html) (`:`) and [predicates](https://mlochbaum.github.io/BQN/help/predicate.html) (`?`) can control which body is evaluated. A function can have two headers without these, indicating the monadic and dyadic cases."
     ],
     "¬": [
         "[Not](https://mlochbaum.github.io/BQN/help/not_span.html) (`¬`, *keymap:* `\\~`)",
-        "`¬ 𝕩`: [**Logical Not**](../doc/logic.md)\n\nLogical Not of `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 ¬ 𝕩`: [**Span**](../doc/logic.md)\n\nCount of numbers in the inclusive range from `𝕩` to `𝕨`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`¬ 𝕩`: [**Logical Not**](https://mlochbaum.github.io/BQN/doc/logic.html)\n\nLogical Not of `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 ¬ 𝕩`: [**Span**](https://mlochbaum.github.io/BQN/doc/logic.html)\n\nCount of numbers in the inclusive range from `𝕩` to `𝕨`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "·": [
         "[Middle Dot](https://mlochbaum.github.io/BQN/help/nothing.html) (`·`, *keymap:* `\\:`)",
-        "`·`: [**Nothing**](../doc/expression.md#nothing)\n\nIndicates no value. If a left argument is Nothing, the function is called with no left argument, and if the right is Nothing, it's not called and \"returns\" Nothing.",
-        "[In Trains](../doc/train.md#2-train-3-train)\n\nNothing can serve as a left argument in a train to string together multiple monadic functions.",
-        "[Destructuring](../doc/expression.md#destructuring)\n\nFor pattern matching in assignment or a block header, Nothing indicates an unused value."
+        "`·`: [**Nothing**](https://mlochbaum.github.io/BQN/doc/expression.html#nothing)\n\nIndicates no value. If a left argument is Nothing, the function is called with no left argument, and if the right is Nothing, it's not called and \"returns\" Nothing.",
+        "[In Trains](https://mlochbaum.github.io/BQN/doc/train.html#2-train-3-train)\n\nNothing can serve as a left argument in a train to string together multiple monadic functions.",
+        "[Destructuring](https://mlochbaum.github.io/BQN/doc/expression.html#destructuring)\n\nFor pattern matching in assignment or a block header, Nothing indicates an unused value."
     ],
     "@": [
         "[Commercial At](https://mlochbaum.github.io/BQN/help/nullcharacter.html) (`@`)",
-        "`@`: [**Null Character**](../doc/token.md#characters-and-strings)\n\nNull character, code point 0 in ASCII. A shortcut character literal.\n\nAdd to a code point number to get that character."
+        "`@`: [**Null Character**](https://mlochbaum.github.io/BQN/doc/token.html#characters-and-strings)\n\nNull character, code point 0 in ASCII. A shortcut character literal.\n\nAdd to a code point number to get that character."
     ],
     "⊒": [
         "[Square Original Of or Equal To](https://mlochbaum.github.io/BQN/help/occurrencecount_progressiveindexof.html) (`⊒`, *keymap:* `\\O`)",
-        "`⊒ 𝕩`: [**Occurrence Count**](../doc/selfcmp.md#occurrence-count)\n\nNumber of times each major cell of `𝕩` has occurred before the current position.",
-        "`𝕨 ⊒ 𝕩`: [**Progressive Index Of**](../doc/search.md#progressive-index-of)\n\nIndex of the first unused match of each major cell of `𝕩` in `𝕨`. If there are no more matches left, the length of `𝕨` is placed in that position."
+        "`⊒ 𝕩`: [**Occurrence Count**](https://mlochbaum.github.io/BQN/doc/selfcmp.html#occurrence-count)\n\nNumber of times each major cell of `𝕩` has occurred before the current position.",
+        "`𝕨 ⊒ 𝕩`: [**Progressive Index Of**](https://mlochbaum.github.io/BQN/doc/search.html#progressive-index-of)\n\nIndex of the first unused match of each major cell of `𝕩` in `𝕨`. If there are no more matches left, the length of `𝕨` is placed in that position."
     ],
     "○": [
         "[Circle](https://mlochbaum.github.io/BQN/help/over.html) (`○`, *keymap:* `\\k`)",
-        "`𝔽○𝔾 𝕩`: [**Atop**](../doc/compose.md)\n\nApply `𝔾` to `𝕩`, then apply `𝔽` (`𝔽 𝔾 𝕩`).\n\n`𝔽` and `𝔾` must be monadic.",
-        "`𝕨 𝔽○𝔾 𝕩`: [**Over**](../doc/compose.md)\n\nApply `𝔾` to `𝕨` and `𝕩`, then apply `𝔽` to them (`(𝔾 𝕨) 𝔽 (𝔾 𝕩)`).\n\n`𝔽` must be dyadic, `𝔾` must be monadic."
+        "`𝔽○𝔾 𝕩`: [**Atop**](https://mlochbaum.github.io/BQN/doc/compose.html)\n\nApply `𝔾` to `𝕩`, then apply `𝔽` (`𝔽 𝔾 𝕩`).\n\n`𝔽` and `𝔾` must be monadic.",
+        "`𝕨 𝔽○𝔾 𝕩`: [**Over**](https://mlochbaum.github.io/BQN/doc/compose.html)\n\nApply `𝔾` to `𝕨` and `𝕩`, then apply `𝔽` to them (`(𝔾 𝕨) 𝔽 (𝔾 𝕩)`).\n\n`𝔽` must be dyadic, `𝔾` must be monadic."
     ],
     "π": [
         "[Pi](https://mlochbaum.github.io/BQN/help/pi.html) (`π`, *keymap:* `\\p`)",
-        "`π`: [**Pi**](../doc/token.md#numbers)\n\nThe mathematical constant pi, a numeric literal. Can be negative (`¯π`)."
+        "`π`: [**Pi**](https://mlochbaum.github.io/BQN/doc/token.html#numbers)\n\nThe mathematical constant pi, a numeric literal. Can be negative (`¯π`)."
     ],
     "?": [
         "[Question Mark](https://mlochbaum.github.io/BQN/help/predicate.html) (`?`)",
-        "`?`: [**Predicate**](../doc/block.md#predicates)\n\nFollows a statement in a block, which must return 0 or 1. If it's 0, stop the current body and evaluate the next eligible one instead. Variables defined before the `?` stay if execution continues (1) but don't carry over to other bodies (0)."
+        "`?`: [**Predicate**](https://mlochbaum.github.io/BQN/doc/block.html#predicates)\n\nFollows a statement in a block, which must return 0 or 1. If it's 0, stop the current body and evaluate the next eligible one instead. Variables defined before the `?` stay if execution continues (1) but don't carry over to other bodies (0)."
     ],
     "↑": [
         "[Up Arrow](https://mlochbaum.github.io/BQN/help/prefixes_take.html) (`↑`, *keymap:* `\\r`)",
-        "`↑ 𝕩`: [**Prefixes**](../doc/prefixes.md)\n\nPrefixes of array `𝕩` along its first axis.",
-        "`𝕨 ↑ 𝕩`: [**Take**](../doc/take.md)\n\nFor each integer in `𝕨`, take that many elements from each dimension of `𝕩`.\n\nNegative numbers take from the end.\n\nIf any of the elements in `𝕨` are greater than the length of their respective dimension, the dimension is extended with a fill value."
+        "`↑ 𝕩`: [**Prefixes**](https://mlochbaum.github.io/BQN/doc/prefixes.html)\n\nPrefixes of array `𝕩` along its first axis.",
+        "`𝕨 ↑ 𝕩`: [**Take**](https://mlochbaum.github.io/BQN/doc/take.html)\n\nFor each integer in `𝕨`, take that many elements from each dimension of `𝕩`.\n\nNegative numbers take from the end.\n\nIf any of the elements in `𝕨` are greater than the length of their respective dimension, the dimension is extended with a fill value."
     ],
     "↕": [
         "[Up Down Arrow](https://mlochbaum.github.io/BQN/help/range_windows.html) (`↕`, *keymap:* `\\d`)",
-        "`↕ 𝕩`: [**Range**](../doc/range.md)\n\nReturn all indices that would index into an array of shape `𝕩`.\n\nWhen given a single number, range from `0` to `𝕩-1`.",
-        "`𝕨 ↕ 𝕩`: [**Windows**](../doc/windows.md)\n\nOverlapping slices from `𝕩` of shape `𝕨`."
+        "`↕ 𝕩`: [**Range**](https://mlochbaum.github.io/BQN/doc/range.html)\n\nReturn all indices that would index into an array of shape `𝕩`.\n\nWhen given a single number, range from `0` to `𝕩-1`.",
+        "`𝕨 ↕ 𝕩`: [**Windows**](https://mlochbaum.github.io/BQN/doc/windows.html)\n\nOverlapping slices from `𝕩` of shape `𝕨`."
     ],
     "⎉": [
         "[Circled Horizontal Bar With Notch](https://mlochbaum.github.io/BQN/help/rank.html) (`⎉`, *keymap:* `\\!`)",
-        "`𝔽⎉𝕘 𝕩`, `𝕨 𝔽⎉𝕘 𝕩`: [**Rank**](../doc/rank.md#rank)\n\nApply `𝔽` to cells at ranks given in `𝕘`. Non-negative numbers indicate the rank of the cell and negative ones indicate the difference from full rank.\n\nThe ranks applied are given by the following:\n\n- `⎉ c` Rank-c cells of `𝕩` (monadic) or both arguments (dyadic)\n- `⎉ b‿c` Rank-b cells of `𝕨` and rank-c cells of `𝕩` (dyadic)\n- `⎉ a‿b‿c` Rank-a cells of `𝕩` (monadic), b-cells of `𝕨` and c-cells of `𝕩` (dyadic)"
+        "`𝔽⎉𝕘 𝕩`, `𝕨 𝔽⎉𝕘 𝕩`: [**Rank**](https://mlochbaum.github.io/BQN/doc/rank.html#rank)\n\nApply `𝔽` to cells at ranks given in `𝕘`. Non-negative numbers indicate the rank of the cell and negative ones indicate the difference from full rank.\n\nThe ranks applied are given by the following:\n\n- `⎉ c` Rank-c cells of `𝕩` (monadic) or both arguments (dyadic)\n- `⎉ b‿c` Rank-b cells of `𝕨` and rank-c cells of `𝕩` (dyadic)\n- `⎉ a‿b‿c` Rank-a cells of `𝕩` (monadic), b-cells of `𝕨` and c-cells of `𝕩` (dyadic)"
     ],
     "=": [
         "[Equal](https://mlochbaum.github.io/BQN/help/rank_equals.html) (`=`)",
-        "`= 𝕩`: [**Rank**](../doc/shape.md)\n\nReturns the number of dimensions in `𝕩`.",
-        "`𝕨 = 𝕩`: [**Equal To**](../doc/arithmetic.md#comparisons)\n\nDo argument atoms match?\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`= 𝕩`: [**Rank**](https://mlochbaum.github.io/BQN/doc/shape.html)\n\nReturns the number of dimensions in `𝕩`.",
+        "`𝕨 = 𝕩`: [**Equal To**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#comparisons)\n\nDo argument atoms match?\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "÷": [
         "[Divide](https://mlochbaum.github.io/BQN/help/reciprocal_divide.html) (`÷`, *keymap:* `\\-`)",
-        "`÷ 𝕩`: [**Reciprocal**](../doc/arithmetic.md#basic-arithmetic)\n\nGives `1 ÷ 𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 ÷ 𝕩`: [**Divide**](../doc/arithmetic.md#basic-arithmetic)\n\n`𝕨` divided by `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`÷ 𝕩`: [**Reciprocal**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\nGives `1 ÷ 𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 ÷ 𝕩`: [**Divide**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n`𝕨` divided by `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "⍟": [
         "[Circle Star](https://mlochbaum.github.io/BQN/help/repeat.html) (`⍟`, *keymap:* `\\#`)",
-        "`𝔽⍟𝔾 𝕩`, `𝕨 𝔽⍟𝔾 𝕩`: [**Repeat**](../doc/repeat.md)\n\nApply `𝔾` to `𝕨` and `𝕩`, then apply `𝔽` to `𝕩` that many times. If `𝕨` is given, use it each time as a constant left argument.\n\nIf `𝔾` returns an array, give `𝔽⍟𝕩` for each of its elements."
+        "`𝔽⍟𝔾 𝕩`, `𝕨 𝔽⍟𝔾 𝕩`: [**Repeat**](https://mlochbaum.github.io/BQN/doc/repeat.html)\n\nApply `𝔾` to `𝕨` and `𝕩`, then apply `𝔽` to `𝕩` that many times. If `𝕨` is given, use it each time as a constant left argument.\n\nIf `𝔾` returns an array, give `𝔽⍟𝕩` for each of its elements."
     ],
     "⌽": [
         "[Circle Stile](https://mlochbaum.github.io/BQN/help/reverse_rotate.html) (`⌽`, *keymap:* `\\q`)",
-        "`⌽ 𝕩`: [**Reverse**](../doc/reverse.md)\n\nReverse `𝕩` along the first axis.",
-        "`𝕨 ⌽ 𝕩`: [**Rotate**](../doc/reverse.md#rotate)\n\nMove the first `𝕨` elements of `𝕩` to its end. Negative `𝕨` reverses the direction of rotation."
+        "`⌽ 𝕩`: [**Reverse**](https://mlochbaum.github.io/BQN/doc/reverse.html)\n\nReverse `𝕩` along the first axis.",
+        "`𝕨 ⌽ 𝕩`: [**Rotate**](https://mlochbaum.github.io/BQN/doc/reverse.html#rotate)\n\nMove the first `𝕨` elements of `𝕩` to its end. Negative `𝕨` reverses the direction of rotation."
     ],
     "𝕩": [
         "[Mathematical Double-struck X](https://mlochbaum.github.io/BQN/help/rightargument.html) (`𝕩`, *keymap:* `\\x`)",
-        "`𝕩`: [**Right Argument**](../doc/block.md#arguments)\n\nA variable assigned to the right argument of a block. `𝕏` can be used to access the right argument as a function."
+        "`𝕩`: [**Right Argument**](https://mlochbaum.github.io/BQN/doc/block.html#arguments)\n\nA variable assigned to the right argument of a block. `𝕏` can be used to access the right argument as a function."
     ],
     "`": [
         "[Grave](https://mlochbaum.github.io/BQN/help/scan.html) (`` ` ``)",
-        "`` 𝔽` 𝕩 ``: [**Scan**](../doc/scan.md)\n\nScan over `𝕩` with `𝔽` from left to right, producing intermediate values.",
+        "`` 𝔽` 𝕩 ``: [**Scan**](https://mlochbaum.github.io/BQN/doc/scan.html)\n\nScan over `𝕩` with `𝔽` from left to right, producing intermediate values.",
         "**`` 𝕨 𝔽` 𝕩 ``: Scan With initial**\n\nMonadic scan, but use `𝕨` as initial left argument."
     ],
     "˜": [
         "[Small Tilde](https://mlochbaum.github.io/BQN/help/self_swap.html) (`˜`, *keymap:* `` \\` ``)",
-        "`𝔽˜ 𝕩`: [**Self**](../doc/swap.md)\n\nSupplies `𝕩` as a left argument to `𝔽` (`𝕩 𝔽 𝕩`).",
-        "`𝕨 𝔽˜ 𝕩`: [**Swap**](../doc/swap.md)\n\nSwaps the arguments of `𝔽` (`𝕩 𝔽 𝕨`)."
+        "`𝔽˜ 𝕩`: [**Self**](https://mlochbaum.github.io/BQN/doc/swap.html)\n\nSupplies `𝕩` as a left argument to `𝔽` (`𝕩 𝔽 𝕩`).",
+        "`𝕨 𝔽˜ 𝕩`: [**Swap**](https://mlochbaum.github.io/BQN/doc/swap.html)\n\nSwaps the arguments of `𝔽` (`𝕩 𝔽 𝕨`)."
     ],
     ",": [
         "[Comma](https://mlochbaum.github.io/BQN/help/separator.html) (`,`)",
-        "`,` or `⋄`: [**Separator**](../doc/token.md#separators)\n\nSeparates statements in blocks, programs, and arrays. Characters `,` and `⋄` are interchangeable with each other and with newline."
+        "`,` or `⋄`: [**Separator**](https://mlochbaum.github.io/BQN/doc/token.html#separators)\n\nSeparates statements in blocks, programs, and arrays. Characters `,` and `⋄` are interchangeable with each other and with newline."
     ],
     "⋄": [
         "[Diamond](https://mlochbaum.github.io/BQN/help/separator.html) (`⋄`)",
-        "`,` or `⋄`: [**Separator**](../doc/token.md#separators)\n\nSeparates statements in blocks, programs, and arrays. Characters `,` and `⋄` are interchangeable with each other and with newline."
+        "`,` or `⋄`: [**Separator**](https://mlochbaum.github.io/BQN/doc/token.html#separators)\n\nSeparates statements in blocks, programs, and arrays. Characters `,` and `⋄` are interchangeable with each other and with newline."
     ],
     "≢": [
         "[Not Identical To](https://mlochbaum.github.io/BQN/help/shape_notmatch.html) (`≢`, *keymap:* `\\M`)",
-        "`≢ 𝕩`: [**Shape**](../doc/shape.md)\n\nLength of each dimension of x.",
-        "`𝕨 ≢ 𝕩`: [**Not Match**](../doc/match.md)\n\nDoes `𝕨` not exactly match `𝕩`?"
+        "`≢ 𝕩`: [**Shape**](https://mlochbaum.github.io/BQN/doc/shape.html)\n\nLength of each dimension of x.",
+        "`𝕨 ≢ 𝕩`: [**Not Match**](https://mlochbaum.github.io/BQN/doc/match.html)\n\nDoes `𝕨` not exactly match `𝕩`?"
     ],
     "»": [
         "[Right Pointing Double Angle Quotation](https://mlochbaum.github.io/BQN/help/shiftafter.html) (`»`, *keymap:* `\\L`)",
-        "`» 𝕩`: [**Nudge**](../doc/shift.md)\n\nRemove the last element of `𝕩`, add a cell of fill values to the start of the first axis of `𝕩`.",
-        "`𝕨 » 𝕩`: [**Shift After**](../doc/shift.md)\n\nRemove the last `≠𝕨` (length) major cells from `𝕩`, join `𝕨` to the start of `𝕩`. Ranks must match."
+        "`» 𝕩`: [**Nudge**](https://mlochbaum.github.io/BQN/doc/shift.html)\n\nRemove the last element of `𝕩`, add a cell of fill values to the start of the first axis of `𝕩`.",
+        "`𝕨 » 𝕩`: [**Shift After**](https://mlochbaum.github.io/BQN/doc/shift.html)\n\nRemove the last `≠𝕨` (length) major cells from `𝕩`, join `𝕨` to the start of `𝕩`. Ranks must match."
     ],
     "«": [
         "[Left Pointing Double Angle Quotation](https://mlochbaum.github.io/BQN/help/shiftbefore.html) (`«`, *keymap:* `\\H`)",
-        "`« 𝕩`: [**Nudge Back**](../doc/shift.md)\n\nRemove the first element of `𝕩`, add a cell of fill values to the end of the first axis of `𝕩`.",
-        "`𝕨 « 𝕩`: [**Shift Before**](../doc/shift.md)\n\nRemove the first `≠𝕨` (length) major cells from `𝕩`, join `𝕨` to the end of `𝕩`. Ranks must match."
+        "`« 𝕩`: [**Nudge Back**](https://mlochbaum.github.io/BQN/doc/shift.html)\n\nRemove the first element of `𝕩`, add a cell of fill values to the end of the first axis of `𝕩`.",
+        "`𝕨 « 𝕩`: [**Shift Before**](https://mlochbaum.github.io/BQN/doc/shift.html)\n\nRemove the first `≠𝕨` (length) major cells from `𝕩`, join `𝕨` to the end of `𝕩`. Ranks must match."
     ],
     "×": [
         "[Times](https://mlochbaum.github.io/BQN/help/sign_multiply.html) (`×`, *keymap:* `\\=`)",
-        "`× 𝕩`: [**Sign**](../doc/arithmetic.md#basic-arithmetic)\n\nSign of `𝕩`.\n\n- `¯1` if `𝕩 < 0`\n- `0` if `𝕩 = 0`\n- `1` if `𝕩 > 0`\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 × 𝕩`: [**Multiply**](../doc/arithmetic.md#basic-arithmetic)\n\n`𝕨` multiplied by `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`× 𝕩`: [**Sign**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\nSign of `𝕩`.\n\n- `¯1` if `𝕩 < 0`\n- `0` if `𝕩 = 0`\n- `1` if `𝕩 > 0`\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 × 𝕩`: [**Multiply**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n`𝕨` multiplied by `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "≍": [
         "[Tape](https://mlochbaum.github.io/BQN/help/solo_couple.html) (`≍`, *keymap:* `\\.`)",
-        "`≍ 𝕩`: [**Solo**](../doc/couple.md)\n\nAdd a dimension to `𝕩`.",
-        "`𝕨 ≍ 𝕩`: [**Couple**](../doc/couple.md)\n\nJoin `𝕨` and `𝕩` along a newly created axis."
+        "`≍ 𝕩`: [**Solo**](https://mlochbaum.github.io/BQN/doc/couple.html)\n\nAdd a dimension to `𝕩`.",
+        "`𝕨 ≍ 𝕩`: [**Couple**](https://mlochbaum.github.io/BQN/doc/couple.html)\n\nJoin `𝕨` and `𝕩` along a newly created axis."
     ],
     "∨": [
         "[Logical Or](https://mlochbaum.github.io/BQN/help/sortdown_or.html) (`∨`, *keymap:* `\\v`)",
-        "`∨ 𝕩`: [**Sort Down**](../doc/order.md#sort)\n\nSort array `𝕩` in descending order.",
-        "`𝕨 ∨ 𝕩`: [**Logical Or**](../doc/logic.md)\n\nLogical Or of `𝕨` and `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`∨ 𝕩`: [**Sort Down**](https://mlochbaum.github.io/BQN/doc/order.html#sort)\n\nSort array `𝕩` in descending order.",
+        "`𝕨 ∨ 𝕩`: [**Logical Or**](https://mlochbaum.github.io/BQN/doc/logic.html)\n\nLogical Or of `𝕨` and `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "∧": [
         "[Logical And](https://mlochbaum.github.io/BQN/help/sortup_and.html) (`∧`, *keymap:* `\\t`)",
-        "`∧ 𝕩`: [**Sort Up**](../doc/order.md#sort)\n\nSort array `𝕩` in ascending order.",
-        "`𝕨 ∧ 𝕩`: [**Logical And**](../doc/logic.md)\n\nLogical And of `𝕨` and `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`∧ 𝕩`: [**Sort Up**](https://mlochbaum.github.io/BQN/doc/order.html#sort)\n\nSort array `𝕩` in ascending order.",
+        "`𝕨 ∧ 𝕩`: [**Logical And**](https://mlochbaum.github.io/BQN/doc/logic.html)\n\nLogical And of `𝕨` and `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "√": [
         "[Root](https://mlochbaum.github.io/BQN/help/squareroot_root.html) (`√`, *keymap:* `\\_`)",
-        "`√ 𝕩`: [**Square root**](../doc/arithmetic.md#basic-arithmetic)\n\n[Pervasive.](../doc/arithmetic.md#pervasion)",
-        "`𝕨 √ 𝕩`: [**Root**](../doc/arithmetic.md#basic-arithmetic)\n\n`𝕨`th root of `𝕩`.\n\n[Pervasive.](../doc/arithmetic.md#pervasion)"
+        "`√ 𝕩`: [**Square root**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)",
+        "`𝕨 √ 𝕩`: [**Root**](https://mlochbaum.github.io/BQN/doc/arithmetic.html#basic-arithmetic)\n\n`𝕨`th root of `𝕩`.\n\n[Pervasive.](https://mlochbaum.github.io/BQN/doc/arithmetic.html#pervasion)"
     ],
     "‿": [
         "[Undertie](https://mlochbaum.github.io/BQN/help/strand.html) (`‿`, *keymap:* `\\ `)",
-        "`‿`: [**Strand**](../doc/arrayrepr.md#strands)\n\nCreate a list via strand notation.\n\nPlacing `‿` between valid BQN expressions will create a list out of the end results of those expressions."
+        "`‿`: [**Strand**](https://mlochbaum.github.io/BQN/doc/arrayrepr.html#strands)\n\nCreate a list via strand notation.\n\nPlacing `‿` between valid BQN expressions will create a list out of the end results of those expressions."
     ],
     "\"": [
         "[Double Quote](https://mlochbaum.github.io/BQN/help/string.html) (`\"`)",
-        "`\"str\"`: [**String**](../doc/token.md#characters-and-strings)\n\nLiteral notation for a string, or list of characters. Double quotes must be escaped by writing them twice. Any other characters can be included directly."
+        "`\"str\"`: [**String**](https://mlochbaum.github.io/BQN/doc/token.html#characters-and-strings)\n\nLiteral notation for a string, or list of characters. Double quotes must be escaped by writing them twice. Any other characters can be included directly."
     ],
     "↓": [
         "[Down Arrow](https://mlochbaum.github.io/BQN/help/suffixes_drop.html) (`↓`, *keymap:* `\\c`)",
-        "`↓ 𝕩`: [**Suffixes**](../doc/prefixes.md)\n\nSuffixes of array `𝕩` along its first axis.",
-        "`𝕨 ↓ 𝕩`: [**Drop**](../doc/take.md)\n\nFor each integer in `𝕨`, drop that many elements from the beginning of each dimension of `𝕩`.\n\nNegative numbers drop from the end."
+        "`↓ 𝕩`: [**Suffixes**](https://mlochbaum.github.io/BQN/doc/prefixes.html)\n\nSuffixes of array `𝕩` along its first axis.",
+        "`𝕨 ↓ 𝕩`: [**Drop**](https://mlochbaum.github.io/BQN/doc/take.html)\n\nFor each integer in `𝕨`, drop that many elements from the beginning of each dimension of `𝕩`.\n\nNegative numbers drop from the end."
     ],
     "•": [
         "[Bullet](https://mlochbaum.github.io/BQN/help/system.html) (`•`, *keymap:* `\\0`)",
-        "`•`: [**System**](../spec/system.md)\n\nA prefix for system functions. `•listSys` gives a list of defined system value names.\n\n`•` is ignored when determining the role of the system value."
+        "`•`: [**System**](https://mlochbaum.github.io/BQN/spec/system.html)\n\nA prefix for system functions. `•listSys` gives a list of defined system value names.\n\n`•` is ignored when determining the role of the system value."
     ],
     "⌜": [
         "[Top Left Corner](https://mlochbaum.github.io/BQN/help/table.html) (`⌜`, *keymap:* `\\4`)",
-        "`𝕨 𝔽⌜ 𝕩`: [**Table**](../doc/map.md)\n\nApply `𝔽` between every possible pair of the elements of the arguments."
+        "`𝕨 𝔽⌜ 𝕩`: [**Table**](https://mlochbaum.github.io/BQN/doc/map.html)\n\nApply `𝔽` between every possible pair of the elements of the arguments."
     ],
     "⍉": [
         "[Circle Backslash](https://mlochbaum.github.io/BQN/help/transpose_reorderaxes.html) (`⍉`, *keymap:* `\\a`)",
-        "`⍉ 𝕩`: [**Transpose**](../doc/transpose.md)\n\nMove the first axis of `𝕩` to the end.",
-        "`𝕨 ⍉ 𝕩`: [**Reorder Axes**](../doc/transpose.md)\n\nRearrange the axes of `𝕩` as per the axis indices in `𝕨`."
+        "`⍉ 𝕩`: [**Transpose**](https://mlochbaum.github.io/BQN/doc/transpose.html)\n\nMove the first axis of `𝕩` to the end.",
+        "`𝕨 ⍉ 𝕩`: [**Reorder Axes**](https://mlochbaum.github.io/BQN/doc/transpose.html)\n\nRearrange the axes of `𝕩` as per the axis indices in `𝕨`."
     ],
     "⌾": [
         "[Circle Jot](https://mlochbaum.github.io/BQN/help/under.html) (`⌾`, *keymap:* `\\K`)",
-        "`𝔽⌾𝔾 𝕩`, `𝕨 𝔽⌾𝔾 𝕩`: [**Under**](../doc/under.md)\n\n- Apply transformation `𝔾` to all arguments\n- Apply `𝔽` to the transformed arguments\n- Undo transformation `𝔾`\n\nWhere `𝔾` must be\n\n- A function invertible by `⁼` (Undo)\n- A structural modification"
+        "`𝔽⌾𝔾 𝕩`, `𝕨 𝔽⌾𝔾 𝕩`: [**Under**](https://mlochbaum.github.io/BQN/doc/under.html)\n\n- Apply transformation `𝔾` to all arguments\n- Apply `𝔽` to the transformed arguments\n- Undo transformation `𝔾`\n\nWhere `𝔾` must be\n\n- A function invertible by `⁼` (Undo)\n- A structural modification"
     ],
     "⁼": [
         "[Superscript Equals Sign](https://mlochbaum.github.io/BQN/help/undo.html) (`⁼`, *keymap:* `\\3`)",
-        "`𝔽⁼ 𝕩`, `𝕨 𝔽⁼ 𝕩`: [**Undo**](../doc/undo.md)\n\nInvert the function `𝔽`, or use its defined inverse. Not all functions have inverses."
+        "`𝔽⁼ 𝕩`, `𝕨 𝔽⁼ 𝕩`: [**Undo**](https://mlochbaum.github.io/BQN/doc/undo.html)\n\nInvert the function `𝔽`, or use its defined inverse. Not all functions have inverses."
     ],
     "⊘": [
         "[Circled Division Slash](https://mlochbaum.github.io/BQN/help/valences.html) (`⊘`, *keymap:* `\\%`)",
-        "`𝔽⊘𝔾 𝕩`: [**Valences**](../doc/valences.md)\n\nApply `𝔽` to `𝕩`.",
-        "`𝕨 𝔽⊘𝔾 𝕩`: [**Dyadic Valences**](../doc/valences.md)\n\nApply `𝔾` to `𝕨` and `𝕩`."
+        "`𝔽⊘𝔾 𝕩`: [**Valences**](https://mlochbaum.github.io/BQN/doc/valences.html)\n\nApply `𝔽` to `𝕩`.",
+        "`𝕨 𝔽⊘𝔾 𝕩`: [**Dyadic Valences**](https://mlochbaum.github.io/BQN/doc/valences.html)\n\nApply `𝔾` to `𝕨` and `𝕩`."
     ]
 }
