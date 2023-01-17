@@ -2,100 +2,11 @@ import * as vscode from "vscode";
 import * as path from "path";
 import * as helpJson from "./help.json";
 
-let pendingBackslashDecoration: vscode.TextEditorDecorationType;
-
 export function activate(context: vscode.ExtensionContext) {
-  const bqk = Array.from(
-    "\\`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:\"zxcvbm,./ZXVBM<>? '"
-  );
-  const bqv = Array.from(
-    "\\˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠⋈𝕏⍒⌈≢≤≥⇐‿↩"
-  );
-  const map: { [key: string]: string } = {};
-  for (const [i, key] of bqk.entries()) {
-    map[key] = bqv[i];
-  }
-
-  const config = getConfig();
-  pendingBackslashDecoration = vscode.window.createTextEditorDecorationType({
-    backgroundColor:
-      config.pendingBackslashBackgroundColor ||
-      new vscode.ThemeColor("editor.symbolHighlightBackground"),
-  });
-
-  let pending = false;
-  const backslashCommand = vscode.commands.registerTextEditorCommand(
-    "language-bqn.backslash",
-    (editor, edit) => {
-      const initialPositions = editor.selections.map((s) => s.active);
-      for (const position of initialPositions) {
-        edit.insert(position, "\\");
-      }
-      if (pending) {
-        return;
-      }
-      pending = true;
-      const subscription = vscode.workspace.onDidChangeTextDocument((event) => {
-        for (const change of event.contentChanges) {
-          if (!onChange(change)) {
-            pending = false;
-            subscription.dispose();
-            editor.setDecorations(pendingBackslashDecoration, []);
-            break;
-          }
-        }
-      });
-      let unseenBackslashes = initialPositions.length;
-      const editsToMake: [vscode.Range, string][] = [];
-      const onChange = (
-        change: vscode.TextDocumentContentChangeEvent
-      ): boolean => {
-        if (unseenBackslashes > 0) {
-          console.assert(change.text === "\\");
-          unseenBackslashes--;
-          if (unseenBackslashes === 0) {
-            editor.setDecorations(
-              pendingBackslashDecoration,
-              initialPositions.map(
-                (p) => new vscode.Range(p, p.translate(0, 1))
-              )
-            );
-          }
-          return true;
-        }
-        const key = change.text;
-        if (key.length !== 1) {
-          return false;
-        }
-        const final = change.range.start;
-        const initial = initialPositions.find((p) => {
-          return p.line === final.line && p.character === final.character - 1;
-        });
-        if (initial == undefined) {
-          return false;
-        }
-        const range = new vscode.Range(initial, final.translate(0, 1));
-        const character = map[key];
-        if (character == undefined) {
-          return false;
-        }
-        editsToMake.push([range, character]);
-        if (editsToMake.length !== initialPositions.length) {
-          return true;
-        }
-        subscription.dispose();
-        editor.edit((e) => {
-          for (const [range, character] of editsToMake) {
-            e.replace(range, character);
-          }
-        });
-        return false;
-      };
-    }
-  );
-  context.subscriptions.push(backslashCommand);
+  setupCmdBackslash(context);
 
   const commands = {
+    "language-bqn.backslash": cmdBackslash,
     "language-bqn.createTerminal": cmdCreateTerminal,
     "language-bqn.loadScript": cmdLoadScript,
     "language-bqn.clearImports": cmdClearImports,
@@ -106,36 +17,126 @@ export function activate(context: vscode.ExtensionContext) {
     "language-bqn.executeLineAdvance": cmdExecuteLineAdvance,
   };
   for (const [name, callback] of Object.entries(commands)) {
-    vscode.commands.registerTextEditorCommand(name, callback);
+    context.subscriptions.push(
+      vscode.commands.registerTextEditorCommand(name, callback)
+    );
   }
 
-  if (config.enableHoverDocumentation) {
-    vscode.languages.registerHoverProvider("bqn", {
-      provideHover(document, position) {
-        const range = new vscode.Range(position, position.translate(0, 1));
-        const glyph = document.getText(range);
-        const map = helpJson as { [glyph: string]: string[] };
-        const help = map[glyph];
-        if (help == undefined) {
-          return;
-        }
-        return new vscode.Hover(help, range);
-      },
-    });
+  if (getConfig().enableHoverDocumentation) {
+    context.subscriptions.push(
+      vscode.languages.registerHoverProvider("bqn", { provideHover })
+    );
   }
 }
 
-let terminal: vscode.Terminal;
-let terminalCwd: string;
-
 export function deactivate() {
-  if (pendingBackslashDecoration != undefined) {
-    pendingBackslashDecoration.dispose();
-  }
   if (terminal != undefined) {
     terminal.dispose();
   }
 }
+
+let pendingBackslashDecoration: vscode.TextEditorDecorationType;
+const backslashKeymap: { [key: string]: string } = {};
+
+function setupCmdBackslash(context: vscode.ExtensionContext) {
+  const bqk = Array.from(
+    "\\`123456890-=~!@#$%^&*()_+qwertuiop[]QWERTIOP{}asdfghjkl;ASFGHKL:\"zxcvbm,./ZXVBM<>? '"
+  );
+  const bqv = Array.from(
+    "\\˜˘¨⁼⌜´˝∞¯•÷×¬⎉⚇⍟◶⊘⎊⍎⍕⟨⟩√⋆⌽𝕨∊↑∧⊔⊏⊐π←→↙𝕎⍷𝕣⍋⊑⊒⍳⊣⊢⍉𝕤↕𝕗𝕘⊸∘○⟜⋄↖𝕊𝔽𝔾«⌾»·˙⥊𝕩↓∨⌊≡∾≍≠⋈𝕏⍒⌈≢≤≥⇐‿↩"
+  );
+  for (const [i, key] of bqk.entries()) {
+    backslashKeymap[key] = bqv[i];
+  }
+  pendingBackslashDecoration = vscode.window.createTextEditorDecorationType({
+    backgroundColor:
+      getConfig().pendingBackslashBackgroundColor ||
+      new vscode.ThemeColor("editor.symbolHighlightBackground"),
+  });
+  context.subscriptions.push(pendingBackslashDecoration);
+}
+
+let backslashPending = false;
+
+function cmdBackslash(editor: vscode.TextEditor, edit: vscode.TextEditorEdit) {
+  const initialPositions = editor.selections.map((s) => s.active);
+  for (const position of initialPositions) {
+    edit.insert(position, "\\");
+  }
+  if (backslashPending) {
+    return;
+  }
+  backslashPending = true;
+  const subscription = vscode.workspace.onDidChangeTextDocument((event) => {
+    for (const change of event.contentChanges) {
+      if (!onChange(change)) {
+        backslashPending = false;
+        subscription.dispose();
+        editor.setDecorations(pendingBackslashDecoration, []);
+        break;
+      }
+    }
+  });
+  let unseenBackslashes = initialPositions.length;
+  const editsToMake: [vscode.Range, string][] = [];
+  const onChange = (change: vscode.TextDocumentContentChangeEvent): boolean => {
+    if (unseenBackslashes > 0) {
+      console.assert(change.text === "\\");
+      unseenBackslashes--;
+      if (unseenBackslashes === 0) {
+        editor.setDecorations(
+          pendingBackslashDecoration,
+          initialPositions.map((p) => new vscode.Range(p, p.translate(0, 1)))
+        );
+      }
+      return true;
+    }
+    const key = change.text;
+    if (key.length !== 1) {
+      return false;
+    }
+    const final = change.range.start;
+    const initial = initialPositions.find((p) => {
+      return p.line === final.line && p.character === final.character - 1;
+    });
+    if (initial == undefined) {
+      return false;
+    }
+    const range = new vscode.Range(initial, final.translate(0, 1));
+    const character = backslashKeymap[key];
+    if (character == undefined) {
+      return false;
+    }
+    editsToMake.push([range, character]);
+    if (editsToMake.length !== initialPositions.length) {
+      return true;
+    }
+    subscription.dispose();
+    editor.edit((e) => {
+      for (const [range, character] of editsToMake) {
+        e.replace(range, character);
+      }
+    });
+    return false;
+  };
+}
+
+function provideHover(
+  document: vscode.TextDocument,
+  position: vscode.Position
+) {
+  const range = new vscode.Range(position, position.translate(0, 1));
+  const glyph = document.getText(range);
+  const map = helpJson as { [glyph: string]: string[] };
+  const help = map[glyph];
+  if (help == undefined) {
+    return;
+  }
+  return new vscode.Hover(help, range);
+}
+
+let terminal: vscode.Terminal;
+let terminalCwd: string;
 
 async function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
