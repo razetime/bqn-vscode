@@ -125,14 +125,30 @@ function provideHover(
   document: vscode.TextDocument,
   position: vscode.Position
 ) {
-  const range = new vscode.Range(position, position.translate(0, 1));
-  const glyph = document.getText(range);
+  const range = singleCharacterRange(document, position);
+  const rawGlyph = document.getText(range);
+  const glyph =
+    { "𝕎": "𝕨", "𝕏": "𝕩", "𝕗": "𝔽", "𝕘": "𝔾", "𝕤": "𝕊" }[rawGlyph] ?? rawGlyph;
   const map = helpJson as { [glyph: string]: string[] };
   const help = map[glyph];
   if (help == undefined) {
     return;
   }
   return new vscode.Hover(help, range);
+}
+
+function singleCharacterRange(
+  document: vscode.TextDocument,
+  position: vscode.Position
+): vscode.Range {
+  const unitRange = new vscode.Range(position, position.translate(0, 1));
+  const unit = document.getText(unitRange);
+  if (unit >= "\uD800" && unit <= "\uDBFF") {
+    // This is the first code unit of a UTF-16 surrogate pair. To get the full
+    // code point, we have to include the next code unit as well.
+    return new vscode.Range(position, position.translate(0, 2));
+  }
+  return unitRange;
 }
 
 let terminal: vscode.Terminal;
