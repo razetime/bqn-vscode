@@ -3,31 +3,27 @@
         "body": [
             "+"
         ],
-        "prefix": [
-            "+"
-        ]
+        "prefix": ["add", "plus", "conj"]
     },
     "Function: Negate, Subtract": {
         "body": [
             "-"
         ],
-        "prefix": [
-            "-"
-        ]
+        "prefix": ["minus", "neg", "sub" ]
     },
     "Function: Sign, Multiply": {
         "body": [
             "×"
         ],
-        "prefix": [
-            "\\="
-        ]
+        "prefix": ["sign", "mul", "\\=" ]
     },
     "Function: Reciprocal, Divide": {
         "body": [
             "÷"
         ],
         "prefix": [
+            "div",
+            "reci",
             "\\-"
         ]
     },
@@ -36,6 +32,8 @@
             "⋆"
         ],
         "prefix": [
+            "exp",
+            "pow",
             "\\+"
         ]
     },
@@ -44,6 +42,8 @@
             "√"
         ],
         "prefix": [
+            "root",
+            "sqrt",
             "\\_"
         ]
     },
@@ -52,6 +52,8 @@
             "⌊"
         ],
         "prefix": [
+            "floor",
+            "min",
             "\\b"
         ]
     },
@@ -60,6 +62,8 @@
             "⌈"
         ],
         "prefix": [
+            "ceil",
+            "max",
             "\\B"
         ]
     },
@@ -68,6 +72,9 @@
             "∧"
         ],
         "prefix": [
+            "asc",
+            "sort",
+            "and",
             "\\t"
         ]
     },
@@ -76,6 +83,9 @@
             "∨"
         ],
         "prefix": [
+            "desc",
+            "sort",
+            "or",
             "\\v"
         ]
     },
@@ -84,6 +94,8 @@
             "¬"
         ],
         "prefix": [
+            "not",
+            "span",
             "\\~"
         ]
     },
@@ -92,7 +104,8 @@
             "|"
         ],
         "prefix": [
-            "|"
+            "abs",
+            "mod"
         ]
     },
     "Function: Less Than or Equal to": {
@@ -100,6 +113,7 @@
             "≤"
         ],
         "prefix": [
+            "less",
             "\\<"
         ]
     },
@@ -108,7 +122,7 @@
             "<"
         ],
         "prefix": [
-            "<"
+            "enc"
         ]
     },
     "Function: Merge, Greater Than": {
@@ -124,6 +138,7 @@
             "≥"
         ],
         "prefix": [
+            "more",
             "\\>"
         ]
     },
@@ -140,6 +155,7 @@
             "≠"
         ],
         "prefix": [
+            "neq",
             "\\/"
         ]
     },
@@ -148,6 +164,8 @@
             "≡"
         ],
         "prefix": [
+            "depth",
+            "match",
             "\\m"
         ]
     },
@@ -156,6 +174,8 @@
             "≢"
         ],
         "prefix": [
+            "shape",
+            "nmatch",
             "\\M"
         ]
     },
@@ -164,6 +184,7 @@
             "⊣"
         ],
         "prefix": [
+            "left",
             "\\{"
         ]
     },
@@ -172,6 +193,7 @@
             "⊢"
         ],
         "prefix": [
+            "right",
             "\\}"
         ]
     },
@@ -180,6 +202,8 @@
             "⥊"
         ],
         "prefix": [
+            "deshape",
+            "reshape",
             "\\z"
         ]
     },
@@ -188,6 +212,8 @@
             "⋈"
         ],
         "prefix": [
+            "enlist",
+            "pair",
             "\\Z"
         ]
     },
@@ -196,6 +222,8 @@
             "∾"
         ],
         "prefix": [
+            "join",
+            "jointo",
             "\\,"
         ]
     },
@@ -204,6 +232,8 @@
             "≍"
         ],
         "prefix": [
+            "solo",
+            "couple",
             "\\."
         ]
     },
