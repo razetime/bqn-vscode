@@ -41,7 +41,7 @@
       "number": {
         "patterns": [
             {
-                "name": "constant.numeric.BQN",
+                "name": "constant.numeric.bqn",
                 "match": "(?<![A-Z_a-z0-9π∞¯])¯?(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*)(i_*(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*))?"
             }
         ]
@@ -50,7 +50,7 @@
         "patterns": [
           {
             "comment": "BQN 1-modifier",
-            "name": "entity.name.function.modifier2.bqn",
+            "name": "keyword.operator.modifier1.bqn",
             "match": "([˙˜˘¨´˝`⌜⁼]|(‿\\K|\\b|^)_[A-Za-z𝕣][_A-Za-z¯π∞0-9]*[^_](\\b|(?=‿)))"
           }
         ]
@@ -59,7 +59,7 @@
         "patterns": [
           {
             "comment": "BQN 2-modifier",
-            "name": "keyword.operator.modifier2.bqn",
+            "name": "keyword.control.modifier2.bqn",
             "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|(‿\\K|\\b|^)_[A-Za-z𝕣][_A-Za-z¯π∞0-9]*_(\\b|(?=‿)))"
           }
         ]
@@ -68,7 +68,7 @@
         "patterns": [
             {
                 "comment": "BQN function",
-                "name": "constant.language.function.bqn",
+                "name": "variable.language.function.bqn",
                 "match": "[𝔽𝔾𝕎𝕏𝕊+\\-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!⍕⍎]|•?(‿\\K|\\b|^)[A-Z][A-Z_a-z0-9π∞¯]*"
             }
         ]
@@ -77,7 +77,7 @@
         "patterns": [
           {
             "comment": "single quote string",
-            "name": "string.quoted.single.bqn",
+            "name": "constant.character.bqn",
             "begin": "'",
             "beginCaptures": {
               "0": {
@@ -113,7 +113,7 @@
       "comment": {
         "patterns": [
             {
-                "name": "comment.line.bqn",
+                "name": "comment.line.number-sign.bqn",
                 "begin": "#",
                 "end": "$",
                 "captures": {
