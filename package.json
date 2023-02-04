@@ -4,7 +4,7 @@
     "description": "BQN array programming language support, backslash completion, snippets and code execution",
     "publisher": "razetime",
     "icon": "logo.png",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "engines": {
         "vscode": "^1.66.0"
     },
@@ -14,6 +14,9 @@
     },
     "categories": [
         "Snippets"
+    ],
+    "activationEvents": [
+        "onLanguage:bqn"
     ],
     "main": "./out/extension.js",
     "contributes": {
