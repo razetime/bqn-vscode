@@ -15,9 +15,6 @@
     "categories": [
         "Snippets"
     ],
-    "activationEvents": [
-        "onLanguage:bqn"
-    ],
     "main": "./out/extension.js",
     "contributes": {
         "languages": [
