@@ -14,6 +14,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
   - Add Latin1 variable support
   - Correct TextMate classes for highlighting
   - Fix double-struck characters not being highlighted
+  - Add in function name-based symbol completion
 - v0.1.2
   - fix syntax highlighting problem with strands (`‿`)
 - v0.1.1 (changes by @mk12)
