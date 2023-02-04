@@ -10,6 +10,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - CBQN WASM interpreter bundled with the extension
 
 ## Released
+- v0.1.3
+  - Add Latin1 variable support
+  - Correct TextMate classes for highlighting
+  - Fix double-struck characters not being highlighted
 - v0.1.2
   - fix syntax highlighting problem with strands (`‿`)
 - v0.1.1 (changes by @mk12)

@@ -22,7 +22,8 @@ You can add these settings to your settings.json file to disable some of the def
 
 - Syntax highlighting.
 - Backslash symbol completion (`\r` -> `↑`) using the [standard BQN keymap], like in the [online REPL].
-- File, line, and selection execution in the integrated terminal (from @suhr). This requires having a `bqn` executable in your PATH, or customizing the `bqn.executablePath` setting.
+- Help popups when hovering over glyphs.
+- File, line, and selection execution in the integrated terminal (from @suhr and @mk12). This requires having a `bqn` executable in your PATH, or customizing the `bqn.executablePath` setting.
 
 ### Planned
 
