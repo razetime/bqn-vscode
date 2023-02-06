@@ -89,8 +89,8 @@
       "string": {
         "patterns": [
           {
-            "comment": "single quote string",
-            "name": "constant.character.bqn",
+            "comment": "character literal",
+            "name": "string.quoted.double.bqn",
             "begin": "'",
             "beginCaptures": {
               "0": {
