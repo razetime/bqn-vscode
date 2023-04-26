@@ -10,6 +10,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - CBQN WASM interpreter bundled with the extension
 
 ## Released
+- v0.1.6
+  - Add BQN language file icon
+- v0.1.5
+  - remove incomplete changes for bqncrate integration
 - v0.1.3
   - Add Latin1 variable support
   - Correct TextMate classes for highlighting
