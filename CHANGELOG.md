@@ -8,10 +8,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Block context highlighting for symbols like `𝕨` and `𝕣`
 - inline code execution similar to [nvim-bqn](https://git.sr.ht/~detegr/nvim-bqn)
 - CBQN WASM interpreter bundled with the extension
+- BQNcrate search
 
 ## Released
 - v0.1.6
   - Add BQN language file icon
+  - Option to disable backslash completion
 - v0.1.5
   - remove incomplete changes for bqncrate integration
 - v0.1.3

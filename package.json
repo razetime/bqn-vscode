@@ -4,7 +4,7 @@
     "description": "BQN array programming language support, backslash completion, snippets and code execution",
     "publisher": "razetime",
     "icon": "logo.png",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "engines": {
         "vscode": "^1.66.0"
     },
@@ -100,7 +100,7 @@
             {
                 "command": "language-bqn.backslash",
                 "key": "\\",
-                "when": "editorTextFocus && editorLangId == 'bqn'"
+                "when": "editorTextFocus && editorLangId == 'bqn' && config.bqn.enableBackslashCompletion"
             },
             {
                 "command": "language-bqn.loadScript",
@@ -161,6 +161,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Show documentation when hovering over BQN glyphs."
+                },
+                "bqn.enableBackslashCompletion": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether backslash completion is enabled or not."
                 }
             }
         }
