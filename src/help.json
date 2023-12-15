@@ -227,7 +227,7 @@
     "˝": [
         "[Double Acute Accent](https://mlochbaum.github.io/BQN/help/insert.html) (`˝`, *keymap:* `\\6`)",
         "`𝔽˝ 𝕩`: [**Insert**](https://mlochbaum.github.io/BQN/doc/fold.html)\n\nFold over cells of `𝕩` with `𝔽` from end to start, that is, insert `𝔽` between the major cells of `𝕩`.",
-        "`𝕨 𝔽˝ 𝕩`: [**Insert With Initial**](https://mlochbaum.github.io/BQN/doc/fold.html#initial-element)\n\nMonadic insert, but use `𝕨` as initial right argument.\n\nIf"
+        "`𝕨 𝔽˝ 𝕩`: [**Insert With Initial**](https://mlochbaum.github.io/BQN/doc/fold.html#initial-element)\n\nMonadic insert, but use `𝕨` as initial right argument."
     ],
     "∾": [
         "[Lazy S](https://mlochbaum.github.io/BQN/help/join_jointo.html) (`∾`, *keymap:* `\\,`)",
@@ -363,7 +363,7 @@
         "`,` or `⋄`: [**Separator**](https://mlochbaum.github.io/BQN/doc/token.html#separators)\n\nSeparates statements in blocks, programs, and arrays. Characters `,` and `⋄` are interchangeable with each other and with newline."
     ],
     "⋄": [
-        "[Diamond](https://mlochbaum.github.io/BQN/help/separator.html) (`⋄`)",
+        "[Diamond](https://mlochbaum.github.io/BQN/help/separator.html) (`⋄`, *keymap:* `\\;`)",
         "`,` or `⋄`: [**Separator**](https://mlochbaum.github.io/BQN/doc/token.html#separators)\n\nSeparates statements in blocks, programs, and arrays. Characters `,` and `⋄` are interchangeable with each other and with newline."
     ],
     "≢": [
