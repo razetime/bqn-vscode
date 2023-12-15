@@ -64,6 +64,10 @@
     "body": ["⥊"],
     "prefix": ["\\z", "deshape", "reshape"]
   },
+  "Function: Enlist, Pair": {
+    "body": ["⋈"],
+    "prefix": ["\\Z", "enlist", "pair"]
+  },
   "Function: Join, Join to": {
     "body": ["∾"],
     "prefix": ["\\,", "join", "join to"]
