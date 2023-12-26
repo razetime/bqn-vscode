@@ -1,141 +1,154 @@
 {
-    "comment": "Reference to the Oniguruma Regex library:\n  https://github.com/kkos/oniguruma/blob/master/doc/RE\n\n* The reference version for this TextMate grammar is the YAML version here:\n  https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml\n  Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)\n* Some in comments throughout the grammar\n",
-    "name": "BQN",
-    "scopeName": "source.bqn",
-    "fileTypes": ["bqn"],
-    "patterns": [
-      {
-        "include": "#bracket"
-      },
-      {
-        "include": "#number"
-      },
-      {
-        "include": "#name"
-      },
-      {
-        "include": "#operator"
-      },
-      {
-        "include": "#variable"
-      },
-      {
-        "include": "#string"
-      },
-      {
-        "include": "#comment"
-      },
-      {
-        "include": "#entity"
-      },
-      {
-        "include": "#subject"
-      }
-    ],
-    "repository": {
-      "bracket": {
-        "patterns": [
-          {
-            "name": "meta.bracket.bqn",
-            "match": "(\\(|\\))"
-          }
-        ]
-      },
-      "number": {
-        "patterns": [
-            {
-                "name": "constant.numeric.bqn",
-                "match": "(?<![A-Z_a-z0-9π∞¯])¯?(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*)(i_*(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*))?"
-            }
-        ]
+  "comment": "Reference to the Oniguruma Regex library:\n  https://github.com/kkos/oniguruma/blob/master/doc/RE\n\n* The reference version for this TextMate grammar is the YAML version here:\n  https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml\n  Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)\n* Some in comments throughout the grammar\n",
+  "name": "BQN",
+  "scopeName": "source.bqn",
+  "fileTypes": ["bqn"],
+  "patterns": [
+    {
+      "include": "#bracket"
     },
-      "entity": {
-        "patterns": [
-          {
-            "comment": "BQN 1-modifier",
-            "name": "keyword.operator.modifier1.bqn",
-            "match": "([˙˜˘¨´˝`⌜⁼]|(‿\\K|\\b|^)_[A-ZÀ-ÖØ-Þa-zß-öø-ÿ𝕣][_A-ZÀ-ÖØ-Þa-zß-öø-ÿ¯π∞0-9]*[^_](\\b|(?=‿)))"
-          }
-        ]
-      },
-      "operator": {
-        "patterns": [
-          {
-            "comment": "BQN 2-modifier",
-            "name": "keyword.control.modifier2.bqn",
-            "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|((?:[𝕗𝔽𝕘𝔾𝕨𝕎𝕩𝕏𝕤𝕊𝕣‿])|\\b|^)_[A-ZÀ-ÖØ-Þa-zß-öø-ÿ𝕣][_A-ZÀ-ÖØ-Þa-zß-öø-ÿ¯π∞0-9]*_(\\b|(?=[𝕗𝔽𝕘𝔾𝕨𝕎𝕩𝕏𝕤𝕊𝕣‿])))"
-          }
-        ]
-      },
-      "subject": {
-        "patterns": [
-          {
-            "comment": "BQN subject",
-            "name": "support.class.bqn",
-            "match": "[𝕗𝕘𝕨𝕩𝕤]|•?[a-zß-öø-ÿ][A-ZÀ-ÖØ-Þa-zß-öø-ÿ_0-9π∞¯]*"
-          }
-        ]
-      },
-      "variable": {
-        "patterns": [
-            {
-                "comment": "BQN function",
-                "name": "variable.language.function.bqn",
-                "match": "[𝔽𝔾𝕎𝕏𝕊+\\-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!⍕⍎]|•?[A-ZÀ-ÖØ-Þ][A-ZÀ-ÖØ-Þa-zß-öø-ÿ_0-9π∞¯]*"
-            }
-        ]
-      },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#name"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#entity"
+    },
+    {
+      "include": "#subject"
+    }
+  ],
+  "repository": {
+    "bracket": {
+      "patterns": [
+        {
+          "name": "meta.bracket.bqn",
+          "match": "(\\(|\\))"
+        }
+      ]
+    },
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.bqn",
+          "match": "(?<![A-Z_a-z0-9π∞¯])¯?(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*)(i_*(¯_*)?((\\d[\\d_]*(\\.\\d[\\d_]*)?|π_*)([eE]_*(¯_*)?\\d[\\d_]*)?|∞_*))?"
+        }
+      ]
+    },
+    "entity": {
+      "patterns": [
+        {
+          "comment": "BQN 1-modifier",
+          "name": "keyword.operator.modifier1.bqn",
+          "match": "([˙˜˘¨´˝`⌜⁼]|(‿\\K|\\b|^)_[A-ZÀ-ÖØ-Þa-zß-öø-ÿ𝕣][_A-ZÀ-ÖØ-Þa-zß-öø-ÿ¯π∞0-9]*[^_](\\b|(?=‿)))"
+        }
+      ]
+    },
+    "operator": {
+      "patterns": [
+        {
+          "comment": "BQN 2-modifier",
+          "name": "keyword.control.modifier2.bqn",
+          "match": "([∘○⊸⟜⌾⊘◶⎊⎉⚇⍟]|((?:[𝕗𝔽𝕘𝔾𝕨𝕎𝕩𝕏𝕤𝕊𝕣‿])|\\b|^)_[A-ZÀ-ÖØ-Þa-zß-öø-ÿ𝕣][_A-ZÀ-ÖØ-Þa-zß-öø-ÿ¯π∞0-9]*_(\\b|(?=[𝕗𝔽𝕘𝔾𝕨𝕎𝕩𝕏𝕤𝕊𝕣‿])))"
+        }
+      ]
+    },
+    "subject": {
+      "patterns": [
+        {
+          "comment": "BQN subject",
+          "name": "support.class.bqn",
+          "match": "[𝕗𝕘𝕨𝕩𝕤]|•?[a-zß-öø-ÿ][A-ZÀ-ÖØ-Þa-zß-öø-ÿ_0-9π∞¯]*"
+        }
+      ]
+    },
+    "variable": {
+      "patterns": [
+        {
+          "comment": "BQN function",
+          "name": "variable.language.function.bqn",
+          "match": "[𝔽𝔾𝕎𝕏𝕊+\\-×÷⋆√⌊⌈|¬∧∨<>≠=≤≥≡≢⊣⊢⥊∾≍⋈↑↓↕«»⌽⍉/⍋⍒⊏⊑⊐⊒∊⍷⊔!⍕⍎]|•?[A-ZÀ-ÖØ-Þ][A-ZÀ-ÖØ-Þa-zß-öø-ÿ_0-9π∞¯]*"
+        }
+      ]
+    },
 
-      "string": {
-        "patterns": [
-          {
-            "comment": "character literal",
-            "name": "string.quoted.double.bqn",
-            "begin": "'",
-            "beginCaptures": {
-              "0": {
-                "name": "punctuation.definition.string.begin.bqn"
-              }
+    "string": {
+      "patterns": [
+        {
+          "comment": "character literal",
+          "name": "string.quoted.double.bqn",
+          "match": "(').(')",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.bqn"
             },
-            "end": "'",
-            "endCaptures": {
-              "0": {
-                "name": "punctuation.definition.string.end.bqn"
-              }
+            "1": {
+              "name": "punctuation.definition.string.end.bqn"
+            }
+          }
+        },
+        {
+          "comment": "character literal (newline)",
+          "name": "string.quoted.double.bqn",
+          "begin": "(')$",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.bqn"
             }
           },
-          {
-            "comment": "double quote string",
-            "name": "string.quoted.double.bqn",
-            "begin": "\"",
-            "beginCaptures": {
-              "0": {
-                "name": "punctuation.definition.string.begin.bqn"
-              }
-            },
-            "end": "\"",
-            "endCaptures": {
-              "0": {
-                "name": "punctuation.definition.string.end.bqn"
-              }
+          "end": "^(')",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.bqn"
             }
           }
-        ]
-      },
-      
-      "comment": {
-        "patterns": [
-            {
-                "name": "comment.line.number-sign.bqn",
-                "begin": "#",
-                "end": "$",
-                "captures": {
-                    "0": {
-                        "name": "punctuation.definition.comment.bqn"
-                    }
-                }
+        },
+        {
+          "comment": "double quote string",
+          "name": "string.quoted.double.bqn",
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.bqn"
             }
-        ]
-      }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.bqn"
+            }
+          }
+        }
+      ]
+    },
+    
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.bqn",
+          "begin": "#",
+          "end": "$",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.bqn"
+            }
+          }
+        }
+      ]
     }
   }
+}
