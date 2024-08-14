@@ -15,14 +15,19 @@ local function render(els)
   }))
 end
 
--- Builds a table mapping BQN glyphs to the character used to type them after a
--- backslash, reading from a file where each line contains those two characters.
-local function build_keymap(filename)
+-- Reads the snippets file and builds a table mapping BQN glyphs to the
+-- character used to type them after a backslash, e.g. "↕" maps to "d".
+local function load_keymap()
+  local f = assert(io.open("snippets/snippets.code-snippets"))
+  local snippets = pandoc.json.decode(assert(f:read("*a")), false)
+  f:close()
   local map = {}
-  for line in io.lines(filename) do
-    -- Note that we can't use indices 1 and 2 because the Unicode characters in
-    -- the first column are more than one byte long.
-    map[line:sub(1, -2)] = line:sub(-1)
+  for name, properties in pairs(snippets) do
+    local glyph = properties.body[1]
+    local chars = properties.prefix[1]
+    if chars:find("^\\") then
+      map[glyph] = chars:sub(2)
+    end
   end
   return map
 end
@@ -134,7 +139,7 @@ local function is_header(el, level)
 end
 
 function Writer(doc, options)
-  local keymap = build_keymap(assert(doc.meta.keymap_file))
+  local keymap = load_keymap()
   doc = expand_relative_links(doc, assert(doc.meta.url_file))
 
   local first = true

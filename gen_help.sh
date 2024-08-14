@@ -35,24 +35,12 @@ if ! command -v pandoc &>/dev/null; then
     exit 1
 fi
 
-keymap_file="$(mktemp)"
 url_file=$(mktemp)
-trap 'rm -f "$keymap_file" "$url_file"' EXIT
-
-node -e '
-const obj = JSON.parse(
-    require("fs").readFileSync("snippets/snippets.code-snippets")
-);
-for (const {body: [glyph], prefix: [p]} of Object.values(obj)) {
-    if (p.startsWith("\\")) {
-        console.log(glyph + p.slice(1));
-    }
-}
-' > "$keymap_file"
+trap 'rm -f "$url_file"' EXIT
 
 find "$bqn_repo/help" -maxdepth 1 -name "*.md" -not -name "README.md" \
     | sort \
-    | xargs pandoc -M keymap_file="$keymap_file" -M url_file="$url_file" \
+    | xargs pandoc -M url_file="$url_file" \
         -f commonmark -t gen_help_writer.lua \
     | npx prettier  --parser json --no-config --tab-width 4 \
     > "$out_file"
@@ -62,7 +50,7 @@ if [[ $check_urls == true ]]; then
     n=0
     while read -r url; do
         {
-            if ! curl --head --silent --fail "$url" 2>/dev/null; then
+            if ! curl --head --silent --show-error --fail "$url" >/dev/null; then
                 echo >&2 "$url: not found"
                 exit 1
             fi
