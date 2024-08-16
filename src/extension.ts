@@ -129,12 +129,25 @@ function provideHover(
   const rawGlyph = document.getText(range);
   const glyph =
     { "𝕎": "𝕨", "𝕏": "𝕩", "𝕗": "𝔽", "𝕘": "𝔾", "𝕤": "𝕊" }[rawGlyph] ?? rawGlyph;
-  const map = helpJson as { [glyph: string]: string[] };
-  const help = map[glyph];
-  if (help == undefined) {
+  const map = helpJson as { glyphs: Record<string, string[]>, system: Record<string, string[]> };
+  const help = map.glyphs[glyph];
+  if (help !== undefined) {
+    return new vscode.Hover(help, range);
+  }
+  const wordRange = document.getWordRangeAtPosition(position, /[a-zA-Z_.]+/);
+  if (wordRange === undefined) {
     return;
   }
-  return new vscode.Hover(help, range);
+  const beforeRange = new vscode.Range(wordRange.start.translate(0, -1), wordRange.start);
+  const beforeChar = document.getText(beforeRange);
+  if (beforeChar !== "•") {
+    return;
+  }
+  const word = document.getText(wordRange);
+  const systemHelp = map.system[word];
+  if (systemHelp !== undefined) {
+    return new vscode.Hover(systemHelp, range);
+  }
 }
 
 function singleCharacterRange(

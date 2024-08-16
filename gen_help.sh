@@ -40,7 +40,7 @@ trap 'rm -f "$url_file"' EXIT
 
 find "$bqn_repo/help" -maxdepth 1 -name "*.md" -not -name "README.md" \
     | sort \
-    | xargs pandoc -M url_file="$url_file" \
+    | xargs pandoc -M bqn_repo="$bqn_repo" -M url_file="$url_file" \
         -f commonmark -t gen_help_writer.lua \
     | npx prettier  --parser json --no-config --tab-width 4 \
     > "$out_file"

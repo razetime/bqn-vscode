@@ -11,7 +11,7 @@ end
 -- Renders a list of Pandoc elements to CommonMark.
 local function render(els)
   return trim(pandoc.write(pandoc.Pandoc(els), "commonmark", {
-    wrap_text = "wrap-none"
+    wrap_text = "wrap-none",
   }))
 end
 
@@ -138,7 +138,10 @@ local function is_header(el, level)
   return el.t == "Header" and el.level == level
 end
 
-function Writer(doc, options)
+-- Given doc which is all BQN/help/*.md files concatenated together, writes a
+-- JSON object mapping each BQN glyph to a list of Markdown strings to display
+-- in a VS Code hover.
+local function write_glyph_help(doc)
   local keymap = load_keymap()
   doc = expand_relative_links(doc, assert(doc.meta.url_file))
 
@@ -246,7 +249,142 @@ function Writer(doc, options)
   end
   flush()
   print "}"
+end
 
+local headers_to_system_namespaces = {
+  ["Files"] = "file",
+  ["Terminal I/O"] = "term",
+  ["Platform"] = "platform",
+  ["Namespaces"] = "ns",
+}
+
+local headers_to_manual_system_entries = {
+  ["Data structures"] = {
+    {"HashMap", "Create a mutable object from the list of initial keys `𝕨` and values `𝕩` that maintains an association mapping keys to values"}
+  },
+  ["Random generation"] = {
+    {"MakeRand", "Initializes a deterministic pseudorandom number generator with seed value `𝕩` (**not** cryptographically secure)"},
+    {"rand", "A globally accessible generator initialized at first use (**not** cryptographically secure)"},
+  },
+  ["Bitwise operations"] = {
+    {"bit._not", "Compute the bitwise NOT of an array `𝕩` of `𝕗`-bit values"},
+    {"bit._and", "Compute the bitwise AND of arrays `w` and `𝕩` of `w`-bit values operating on `u`-bit units, where `u‿w ← 𝕗`"},
+    {"bit._or", "Compute the bitwise OR of arrays `w` and `𝕩` of `w`-bit values operating on `u`-bit units, where `u‿w ← 𝕗`"},
+    {"bit._xor", "Compute the bitwise XOR of arrays `w` and `𝕩` of `w`-bit values operating on `u`-bit units, where `u‿w ← 𝕗`"},
+    {"bit._neg", "Compute the two's complement negation of an array `𝕩` of `𝕗`-bit values"},
+    {"bit._add", "Compute the two's complement addition of arrays `w` and `𝕩` of `w`-bit values operating on `u`-bit units, where `u‿w ← 𝕗`"},
+    {"bit._sub", "Compute the two's complement subtraction of arrays `w` and `𝕩` of `w`-bit values operating on `u`-bit units, where `u‿w ← 𝕗`"},
+    {"bit._mul", "Compute the two's complement multiplication of arrays `w` and `𝕩` of `w`-bit values operating on `u`-bit units, where `u‿w ← 𝕗`"},
+    {"bit._cast", "Convert values in `𝕩` from type `a` to type `b`, where `a‿b ← 𝕗`, and types are represented by a number (bit width) or number-character pair (bit width and 'u' for unsigned, 'i' for signed, 'c' for character, 'f' for float)"},
+  },
+  ["Math"] = {
+    {"math.Cbrt", "Compute the cube root of `𝕩`"},
+    {"math.Log2", "Compute the base-2 logarithm of `𝕩`"},
+    {"math.Log10", "Compute the base-10 logarithm of `𝕩`"},
+    {"math.Log1p", "Compute the natural logarithm of `𝕩`"},
+    {"math.Expm1", "Compute _e_ (Euler's number) raised to the power `𝕩`, minus 1"},
+    {"math.Hypot", "Compute the square root of the sum of the squares of `w` and `𝕩`"},
+    {"math.Sin", "Compute the sine of `𝕩` in radians"},
+    {"math.Cos", "Compute the cosine of `𝕩` in radians"},
+    {"math.Tan", "Compute the tangent of `𝕩` in radians"},
+    {"math.Sinh", "Compute the hyperbolic sine of `𝕩` in radians"},
+    {"math.Cosh", "Compute the hyperbolic cosine of `𝕩` in radians"},
+    {"math.Tanh", "Compute the hyperbolic tangent of `𝕩` in radians"},
+    {"math.ASin", "Compute the inverse sine of `𝕩` in radians"},
+    {"math.ACos", "Compute the inverse cosine of `𝕩` in radians"},
+    {"math.ATan", "Compute the inverse tangent of `𝕩` in radians"},
+    {"math.ASinh", "Compute the inverse hyperbolic sine of `𝕩` in radians"},
+    {"math.ACosh", "Compute the inverse hyperbolic cosine of `𝕩` in radians"},
+    {"math.ATanh", "Compute the inverse hyperbolic tangent of `𝕩` in radians"},
+    {"math.ATan2", "Compute the angle of of vector `𝕨‿𝕩` relative to `1‿0` in radians"},
+    {"math.Fact", "Compute the factorial (or gamma function) of `𝕩`"},
+    {"math.LogFact", "Compute the natural logarithm of the factorial (or gamma function) of `𝕩`"},
+    {"math.Comb", "Compute the binomial function \"`𝕨` choose `𝕩`\""},
+    {"math.Erf", "Compute the error function of `𝕩`"},
+    {"math.ErfC", "Compute the complementary error function of `𝕩`"},
+    {"math.GCD", "Compute the greatest common divisor of `w` and `𝕩`"},
+    {"math.LCM", "Compute the least common multiple of `w` and `𝕩`"},
+  }
+}
+
+-- Reads BQN/spec/system.md and writes a JSON object mapping each system
+-- function name to its description.
+local function write_system_help(bqn_repo)
+  local f = assert(io.open(bqn_repo .. "/spec/system.md"))
+  local doc = pandoc.read(assert(f:read("*a")), "commonmark+pipe_tables+gfm_auto_identifiers")
+  f:close()
+
+  local comma = ""
+  local nearest_header_id
+  local emit = function(name, description)
+    local url = "https://mlochbaum.github.io/BQN/spec/system.html#" .. nearest_header_id
+    local title = pandoc.Para {
+      pandoc.Link(pandoc.Code("•" .. name), url),
+      pandoc.Space(),
+      pandoc.Str "(system value)",
+    }
+    print(comma .. json_str(name) .. ": ["
+      .. json_str(render(title)) .. ", "
+      .. json_str(description) .. "]"
+    )
+    comma = ","
+  end
+
+  local namespace
+  local namespace_level = 1
+
+  print "{"
+  doc:walk {
+    Header = function(el)
+      nearest_header_id = el.identifier
+      local text = pandoc.utils.stringify(el.content)
+      local ns = headers_to_system_namespaces[text]
+      if ns then
+        namespace = ns
+        namespace_level = el.level
+        return
+      end
+      local entries = headers_to_manual_system_entries[text]
+      if entries then
+        for _, entry in ipairs(entries) do
+          emit(entry[1], entry[2])
+        end
+      end
+      if el.level <= namespace_level then
+        namespace = nil
+      end
+    end,
+    Table = function(el)
+      for _, body in ipairs(el.bodies) do
+        for _, row in ipairs(body.body) do
+          if #row.cells == 2 then
+            inlines = pandoc.utils.blocks_to_inlines(row.cells[1].contents)
+            if #inlines == 1 and inlines[1].t == "Code" then
+              local text = inlines[1].text
+              local description = render(row.cells[2].content)
+              local match = text:match("^•(.+)")
+              if match then
+                emit(match, description)
+              elseif namespace then
+                emit(namespace .. "." .. text, description)
+              end
+            end
+          end
+        end
+      end
+    end,
+  }
+  print "}"
+end
+
+function Writer(doc, options)
+  print "{"
+  print "\"glyphs\":"
+  write_glyph_help(doc)
+  print ","
+  print "\"system\":"
+  write_system_help(assert(doc.meta.bqn_repo))
+  print "}"
   -- Prevent pandoc from trying to print the returned doc.
   os.exit(0)
 end
