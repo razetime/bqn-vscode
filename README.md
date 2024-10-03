@@ -1,5 +1,7 @@
 # BQN VS Code plugin
 
+**Development of this extension has moved to [mk12/bqn-vscode](https://github.com/mk12/bqn-vscode). See [#32](https://github.com/razetime/bqn-vscode/issues/32) for details.**
+
 This VS Code extension provides language support for [BQN].
 
 It is available on the [Open VSX Registry] and the [VS Code Marketplace].
@@ -47,8 +49,8 @@ You can add these settings to your settings.json file to disable some of the def
 
 [BQN]: https://mlochbaum.github.io/BQN/
 [CBQN]: https://github.com/dzaima/CBQN
-[Open VSX Registry]: https://open-vsx.org/extension/razetime/bqn-language
-[VS Code Marketplace]: https://marketplace.visualstudio.com/items?itemName=razetime.bqn-language
+[Open VSX Registry]: https://open-vsx.org/extension/mk12/bqn
+[VS Code Marketplace]: https://marketplace.visualstudio.com/items?itemName=mk12.bqn
 [Standard BQN keymap]: https://mlochbaum.github.io/BQN/keymap.html
 [online REPL]: https://mlochbaum.github.io/BQN/try.html
 [nvim-bqn]: https://git.sr.ht/~detegr/nvim-bqn
